@@ -2,7 +2,7 @@
 
 ## Get from leetcode api
 - url: https://leetcode.com/graphql
-- schema:
+- get user:
     ```graphql
     { matchedUser(username: "YOUR_USERNAME") {
         username
@@ -16,10 +16,17 @@
         }
     }
     ```
+- get recent list:
+    ```graphql
+    {
+    recentAcSubmissionList(username: "Ethan-ZYF", limit: 50) {
+        id
+        title
+        titleSlug
+        timestamp
+    }
+    }
+    ```
 
 ## TODO
-- [ ] accounts endpoints
-    - [ ] login
-    - [ ] logout
-    - [ ] register
-    - [ ] 
+- [ ] front end
