@@ -16,3 +16,10 @@
         }
     }
     ```
+
+## TODO
+- [ ] accounts endpoints
+    - [ ] login
+    - [ ] logout
+    - [ ] register
+    - [ ] 
