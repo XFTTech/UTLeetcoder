@@ -1,6 +1,6 @@
 import { React } from 'react';
 import { useState, useEffect } from 'react';
-import { getRecentSubmission } from '../../../backend/api';
+import { getRecentSubmission } from '../Utils/api';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,7 +13,6 @@ import Link from '@mui/material/Link';
 const formatTime = (timestamp) => {
     const date = new Date(timestamp * 1000);
     return date.toLocaleString();
-    // fdsaf
 }
 
 const Submission = () => {
