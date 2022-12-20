@@ -1,16 +1,9 @@
 export class IUser {
-    // constructor() {
-    //     this.lcid = null;
-    //     this.wxid = null;
-    //     this.firstName = null;
-    //     this.lastName = null;
-    // }
-
     constructor(userName, userId, homepage, wxid) {
         this.userName = userName;
-        this.userId = userId;s
+        this.userId = userId;
         this.homepage = homepage;
-        this.wxid = null;
+        this.wxid = wxid;
     }
 }
 
@@ -38,6 +31,28 @@ export class UserAllSubmission {
     // user: IUser
     // submissions: {str: int}
     constructor(user, submissions = {}) {
+        this.user = user;
+        this.submissions = submissions;
+    }
+}
+
+export class RecentAcSubmissionList {
+    // id: int
+    // title: str
+    // titleSlug: str
+    // timestamp: int
+    constructor(id, title, titleSlug, timestamp) {
+        this.id = id;
+        this.title = title;
+        this.titleSlug = titleSlug;
+        this.timestamp = timestamp;
+    }
+}
+
+export class UserRecentSubmissionList {
+    // user: IUser
+    // submissions: [recentAcSubmissionList]
+    constructor(user, submissions = []) {
         this.user = user;
         this.submissions = submissions;
     }
