@@ -30,3 +30,6 @@
 
 ## TODO
 - [ ] front end
+    - [ ] daily ranking
+    - [ ] weekly ranking
+    - [ ] total submission ranking
