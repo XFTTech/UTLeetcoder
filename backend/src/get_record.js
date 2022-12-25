@@ -1,7 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { RecentAcSubmissionList, UserRecentSubmissionList } from './entities.js';
-
+import { getSubmission } from './last_submission.js';
 
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
@@ -16,16 +16,26 @@ const getRecentSubmission = async (username) => {
 }
 
 export const getRecentSubmissionList = async (user) => {
-    let recentSubmissionList = new UserRecentSubmissionList(user);
+    var recentSubmissionList = new UserRecentSubmissionList(user);
+    if (fs.existsSync(`../data/raw/${user}.json`)) {
+        const json = fs.readFileSync(`../data/raw/${user}.json`, 'utf8');
+        const obj = JSON.parse(json);
+        recentSubmissionList.submissions = obj.submissions;
+    }
+    let last_submission = await getSubmission(user);
     await getRecentSubmission(user)
         .then((res) => {
             // console.log(res.data.data.recentAcSubmissionList);
             res.data.data.recentAcSubmissionList.forEach((submission) => {
-                recentSubmissionList.submissions.push(new RecentAcSubmissionList(submission.id, submission.title, submission.titleSlug, submission.timestamp));
+                if (last_submission.get(submission.titleSlug) === 0) {
+                    recentSubmissionList.submissions.push(new RecentAcSubmissionList(submission.id, submission.title, submission.titleSlug, submission.timestamp));
+                    last_submission.set(submission.titleSlug, submission.timestamp);
+                    // console.log(`New submission: ${submission.titleSlug} ${submission.timestamp}`);
+                }
             });
         })
         .catch((err) => {
             console.error(err);
         });
-    return recentSubmissionList;
+    return [recentSubmissionList, last_submission];
 }

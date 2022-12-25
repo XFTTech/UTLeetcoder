@@ -7,8 +7,21 @@ const main = async () => {
     console.log(users_daily_logs.size)
     console.log("after return");
     users.map((user) => {
-        fs.writeFile(`../data/daily_log/${user}.json`, JSON.stringify(Object.fromEntries(users_daily_logs.get(user))), (err) => {
-            if (err) {
+        getRecentSubmissionList(user)
+            .then((res) => {
+                // console.log(res)
+                fs.writeFile(`../data/raw/${user}.json`, JSON.stringify(res[0]), (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
+                fs.writeFile(`../data/last_submission/${user}.json`, JSON.stringify(Object.fromEntries(res[1])), (err) => {
+                    if (err) {
+                        console.error(err);
+                    }
+                });
+            })
+            .catch((err) => {
                 console.error(err);
             }
         });
