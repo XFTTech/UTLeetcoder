@@ -73,3 +73,18 @@ export class UserRecentSubmissionList {
         this.submissions = submissions;
     }
 }
+
+export class Problem {
+    constructor(difficulty, title, titleSlug) {
+        this.title = title;
+        this.titleSlug = titleSlug;
+        this.difficulty = difficulty;
+    }
+}
+
+export class AllProblemList {
+    // problems: [Problem]
+    constructor(problems = []) {
+        this.problems = problems;
+    }
+}

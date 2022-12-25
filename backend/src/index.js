@@ -4,7 +4,6 @@ import { DailyLog, UserHistory, UserAllSubmission } from './entities.js';
 
 const main = async () => {
     const users = JSON.parse(fs.readFileSync('../data/leetcoder_ids.json', 'utf8'));
-    console.log(users[0]);
     users.map((user) => {
         getRecentSubmissionList(user)
             .then((res) => {
