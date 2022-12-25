@@ -11,24 +11,40 @@ export class DailyLog {
     // date: str
     // questions: [str]
     // reviews: [str]
-    constructor(date, questions = [], reviews = []) {
+    constructor(date, questions = []) {
         this.date = date;
         this.questions = questions;
-        this.reviews = reviews;
     }
 }
 
 export class UserHistory {
-    // user: IUser
+    // user: username(string)
     // logs: [DailyLog]
     constructor(user, logs = []) {
         this.user = user;
         this.logs = logs;
     }
+
+    merge(log) {
+        for (let i = 0; i < this.logs.length; i++) {
+            if (this.logs[i].date === log.date) {
+                this.logs[i].questions = this.logs[i].questions.concat(log.questions);
+                return;
+            }
+        }
+        // insert at corect data 
+        for (let i = 0; i < this.logs.length; i++) {
+            if (this.logs[i].date > log.date) {
+                this.logs.splice(i, 0, log);
+                return;
+            }
+        }
+        this.logs.push(log);
+    }
 }
 
 export class UserAllSubmission {
-    // user: IUser
+    // user: username(string)
     // submissions: {str: int}
     constructor(user, submissions = {}) {
         this.user = user;
@@ -50,7 +66,7 @@ export class RecentAcSubmissionList {
 }
 
 export class UserRecentSubmissionList {
-    // user: IUser
+    // user: username(string)
     // submissions: [recentAcSubmissionList]
     constructor(user, submissions = []) {
         this.user = user;
