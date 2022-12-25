@@ -88,3 +88,12 @@ export class AllProblemList {
         this.problems = problems;
     }
 }
+
+export class UserProblem {
+    // titleSlug: str
+    // timestamp: int
+    constructor(titleSlug, timestamp) {
+        this.titleSlug = titleSlug;
+        this.timestamp = timestamp;
+    }
+}

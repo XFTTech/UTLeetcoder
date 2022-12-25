@@ -7,30 +7,13 @@ const main = async () => {
     users.map((user) => {
         getRecentSubmissionList(user)
             .then((res) => {
-                // write to file users[i].json
-                // fs.writeFile(`../data/raw/${user}.json`, JSON.stringify(res), (err) => {
-                //     if (err) {
-                //         console.error(err);
-                //     }
-                // });
-                let daily_map = {};
-                // console.log(res.submissions[0])
-                res.submissions.map((submission) => {
-                    const date = new Date(submission.timestamp * 1000).toLocaleDateString();
-                    if (date in daily_map) {
-                        daily_map[date].push(submission.titleSlug);
-                    } else {
-                        daily_map[date] = [submission.titleSlug];
+                // console.log(res)
+                fs.writeFile(`../data/raw/${user}.json`, JSON.stringify(res[0]), (err) => {
+                    if (err) {
+                        console.error(err);
                     }
                 });
-                // console.log(daily_map);
-                // create list of DailyLog
-                let daily_logs = [];
-                for (const date in daily_map) {
-                    daily_logs.push(new DailyLog(date, daily_map[date]));
-                }
-                // console.log(daily_logs);
-                fs.writeFile(`../data/daily_log/${user}.json`, JSON.stringify(daily_logs), (err) => {
+                fs.writeFile(`../data/last_submission/${user}.json`, JSON.stringify(Object.fromEntries(res[1])), (err) => {
                     if (err) {
                         console.error(err);
                     }

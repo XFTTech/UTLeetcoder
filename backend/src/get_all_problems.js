@@ -42,7 +42,7 @@ export const getAllProblems = async (user) => {
     allProblemList.problems.forEach((problem) => {
         map.set(problem.titleSlug, problem.difficulty);
     });
-    // console.log(map);
+
     fs.writeFile(`../data/problems.json`, JSON.stringify(Object.fromEntries(map)), (err) => {
         if (err) {
             console.error(err);

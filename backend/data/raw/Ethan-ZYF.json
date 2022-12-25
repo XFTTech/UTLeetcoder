@@ -2,6 +2,42 @@
     "user": "Ethan-ZYF",
     "submissions": [
         {
+            "id": "865454341",
+            "title": "Length of Last Word",
+            "titleSlug": "length-of-last-word",
+            "timestamp": "1672006986"
+        },
+        {
+            "id": "865454277",
+            "title": "Two Sum",
+            "titleSlug": "two-sum",
+            "timestamp": "1672006972"
+        },
+        {
+            "id": "865067284",
+            "title": "Number of Great Partitions",
+            "titleSlug": "number-of-great-partitions",
+            "timestamp": "1671939895"
+        },
+        {
+            "id": "865061736",
+            "title": "Maximum Tastiness of Candy Basket",
+            "titleSlug": "maximum-tastiness-of-candy-basket",
+            "timestamp": "1671939238"
+        },
+        {
+            "id": "865046183",
+            "title": "Take K of Each Character From Left and Right",
+            "titleSlug": "take-k-of-each-character-from-left-and-right",
+            "timestamp": "1671937550"
+        },
+        {
+            "id": "865028201",
+            "title": "Shortest Distance to Target String in a Circular Array",
+            "titleSlug": "shortest-distance-to-target-string-in-a-circular-array",
+            "timestamp": "1671935838"
+        },
+        {
             "id": "864997461",
             "title": "Longest Subsequence With Limited Sum",
             "titleSlug": "longest-subsequence-with-limited-sum",
@@ -56,12 +92,6 @@
             "timestamp": "1671597156"
         },
         {
-            "id": "862427193",
-            "title": "Two Sum",
-            "titleSlug": "two-sum",
-            "timestamp": "1671504083"
-        },
-        {
             "id": "862383203",
             "title": "Keys and Rooms",
             "titleSlug": "keys-and-rooms",
@@ -80,46 +110,10 @@
             "timestamp": "1671336168"
         },
         {
-            "id": "861422528",
-            "title": "Cycle Length Queries in a Tree",
-            "titleSlug": "cycle-length-queries-in-a-tree",
-            "timestamp": "1671333995"
-        },
-        {
-            "id": "861416407",
-            "title": "Add Edges to Make Degrees of All Nodes Even",
-            "titleSlug": "add-edges-to-make-degrees-of-all-nodes-even",
-            "timestamp": "1671333470"
-        },
-        {
-            "id": "861387970",
-            "title": "Smallest Value After Replacing With Sum of Prime Factors",
-            "titleSlug": "smallest-value-after-replacing-with-sum-of-prime-factors",
-            "timestamp": "1671331197"
-        },
-        {
-            "id": "861381904",
-            "title": "Count Pairs Of Similar Strings",
-            "titleSlug": "count-pairs-of-similar-strings",
-            "timestamp": "1671330713"
-        },
-        {
-            "id": "861364624",
-            "title": "Minimum Fuel Cost to Report to the Capital",
-            "titleSlug": "minimum-fuel-cost-to-report-to-the-capital",
-            "timestamp": "1671326361"
-        },
-        {
-            "id": "861354565",
-            "title": "Daily Temperatures",
-            "titleSlug": "daily-temperatures",
-            "timestamp": "1671323752"
-        },
-        {
-            "id": "860885646",
-            "title": "Evaluate Reverse Polish Notation",
-            "titleSlug": "evaluate-reverse-polish-notation",
-            "timestamp": "1671238564"
+            "id": "865456706",
+            "title": "Minimum Depth of Binary Tree",
+            "titleSlug": "minimum-depth-of-binary-tree",
+            "timestamp": "1672007559"
         }
     ]
 }
