@@ -1,1 +1,27 @@
-{"12/25/2022":["two-sum","subarray-sums-divisible-by-k","minimum-number-of-flips-to-make-the-binary-string-alternating","minimum-degree-of-a-connected-trio-in-a-graph","take-k-of-each-character-from-left-and-right","number-of-great-partitions"],"12/24/2022":["maximum-tastiness-of-candy-basket","take-k-of-each-character-from-left-and-right","shortest-distance-to-target-string-in-a-circular-array","longest-subsequence-with-limited-sum","ugly-number-iii","minimize-the-maximum-of-two-arrays","count-anagrams","reward-top-k-students","maximum-enemy-forts-that-can-be-captured"],"12/23/2022":["domino-and-tromino-tiling","sum-game","find-all-people-with-secret","number-of-increasing-paths-in-a-grid","stone-game-vi"]}
+{
+    "12/25/2022": [
+        "two-sum",
+        "add-two-numbers",
+        "longest-substring-without-repeating-characters",
+        "median-of-two-sorted-arrays",
+        "zigzag-conversion",
+        "reverse-integer",
+        "string-to-integer-atoi",
+        "regular-expression-matching",
+        "3sum",
+        "jump-game",
+        "subarray-sums-divisible-by-k",
+        "minimum-degree-of-a-connected-trio-in-a-graph",
+        "minimum-number-of-flips-to-make-the-binary-string-alternating",
+        "take-k-of-each-character-from-left-and-right",
+        "number-of-great-partitions",
+        "merge-k-sorted-lists",
+        "longest-common-prefix"
+    ],
+    "12/24/2022": [
+        "ugly-number-iii",
+        "longest-subsequence-with-limited-sum",
+        "shortest-distance-to-target-string-in-a-circular-array",
+        "maximum-tastiness-of-candy-basket"
+    ]
+}

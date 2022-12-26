@@ -9,7 +9,7 @@ const apiClient = axios.create({
     timeout: 10000
 })
 
-const getRecentSubmission = async (username) => {
+export const getRecentSubmission = async (username) => {
     // console.log(username)
     const query = `{recentAcSubmissionList(username: "${username}", limit: 20) {id title titleSlug timestamp}}`
     return await apiClient.get("graphql?query=" + query);

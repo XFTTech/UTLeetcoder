@@ -1,1 +1,131 @@
-{"user":"zhuyuezx","submissions":[{"id":"865450161","title":"Two Sum","titleSlug":"two-sum","timestamp":"1672005928"},{"id":"865167087","title":"Subarray Sums Divisible by K","titleSlug":"subarray-sums-divisible-by-k","timestamp":"1671955826"},{"id":"865161642","title":"Minimum Number of Flips to Make the Binary String Alternating","titleSlug":"minimum-number-of-flips-to-make-the-binary-string-alternating","timestamp":"1671954913"},{"id":"865143957","title":"Minimum Degree of a Connected Trio in a Graph","titleSlug":"minimum-degree-of-a-connected-trio-in-a-graph","timestamp":"1671952065"},{"id":"865102869","title":"Take K of Each Character From Left and Right","titleSlug":"take-k-of-each-character-from-left-and-right","timestamp":"1671945485"},{"id":"865102765","title":"Number of Great Partitions","titleSlug":"number-of-great-partitions","timestamp":"1671945465"},{"id":"865067483","title":"Maximum Tastiness of Candy Basket","titleSlug":"maximum-tastiness-of-candy-basket","timestamp":"1671939918"},{"id":"865041012","title":"Take K of Each Character From Left and Right","titleSlug":"take-k-of-each-character-from-left-and-right","timestamp":"1671937018"},{"id":"865026916","title":"Shortest Distance to Target String in a Circular Array","titleSlug":"shortest-distance-to-target-string-in-a-circular-array","timestamp":"1671935712"},{"id":"864994538","title":"Longest Subsequence With Limited Sum","titleSlug":"longest-subsequence-with-limited-sum","timestamp":"1671926862"},{"id":"864873333","title":"Ugly Number III","titleSlug":"ugly-number-iii","timestamp":"1671902813"},{"id":"864865941","title":"Minimize the Maximum of Two Arrays","titleSlug":"minimize-the-maximum-of-two-arrays","timestamp":"1671901827"},{"id":"864860977","title":"Count Anagrams","titleSlug":"count-anagrams","timestamp":"1671901168"},{"id":"864769857","title":"Reward Top K Students","titleSlug":"reward-top-k-students","timestamp":"1671893180"},{"id":"864759170","title":"Maximum Enemy Forts That Can Be Captured","titleSlug":"maximum-enemy-forts-that-can-be-captured","timestamp":"1671892546"},{"id":"864527745","title":"Domino and Tromino Tiling","titleSlug":"domino-and-tromino-tiling","timestamp":"1671850472"},{"id":"864461219","title":"Sum Game","titleSlug":"sum-game","timestamp":"1671834206"},{"id":"864455587","title":"Find All People With Secret","titleSlug":"find-all-people-with-secret","timestamp":"1671832973"},{"id":"864441897","title":"Number of Increasing Paths in a Grid","titleSlug":"number-of-increasing-paths-in-a-grid","timestamp":"1671830007"},{"id":"864439219","title":"Stone Game VI","titleSlug":"stone-game-vi","timestamp":"1671829464"},{"id":"865450161","title":"Two Sum","titleSlug":"two-sum","timestamp":"1672005928"},{"id":"865167087","title":"Subarray Sums Divisible by K","titleSlug":"subarray-sums-divisible-by-k","timestamp":"1671955826"},{"id":"865161642","title":"Minimum Number of Flips to Make the Binary String Alternating","titleSlug":"minimum-number-of-flips-to-make-the-binary-string-alternating","timestamp":"1671954913"},{"id":"865143957","title":"Minimum Degree of a Connected Trio in a Graph","titleSlug":"minimum-degree-of-a-connected-trio-in-a-graph","timestamp":"1671952065"},{"id":"865102869","title":"Take K of Each Character From Left and Right","titleSlug":"take-k-of-each-character-from-left-and-right","timestamp":"1671945485"},{"id":"865102765","title":"Number of Great Partitions","titleSlug":"number-of-great-partitions","timestamp":"1671945465"},{"id":"865067483","title":"Maximum Tastiness of Candy Basket","titleSlug":"maximum-tastiness-of-candy-basket","timestamp":"1671939918"},{"id":"865026916","title":"Shortest Distance to Target String in a Circular Array","titleSlug":"shortest-distance-to-target-string-in-a-circular-array","timestamp":"1671935712"},{"id":"864994538","title":"Longest Subsequence With Limited Sum","titleSlug":"longest-subsequence-with-limited-sum","timestamp":"1671926862"},{"id":"864873333","title":"Ugly Number III","titleSlug":"ugly-number-iii","timestamp":"1671902813"},{"id":"864865941","title":"Minimize the Maximum of Two Arrays","titleSlug":"minimize-the-maximum-of-two-arrays","timestamp":"1671901827"},{"id":"864860977","title":"Count Anagrams","titleSlug":"count-anagrams","timestamp":"1671901168"},{"id":"864769857","title":"Reward Top K Students","titleSlug":"reward-top-k-students","timestamp":"1671893180"},{"id":"864759170","title":"Maximum Enemy Forts That Can Be Captured","titleSlug":"maximum-enemy-forts-that-can-be-captured","timestamp":"1671892546"},{"id":"864527745","title":"Domino and Tromino Tiling","titleSlug":"domino-and-tromino-tiling","timestamp":"1671850472"},{"id":"864461219","title":"Sum Game","titleSlug":"sum-game","timestamp":"1671834206"},{"id":"864455587","title":"Find All People With Secret","titleSlug":"find-all-people-with-secret","timestamp":"1671832973"},{"id":"864441897","title":"Number of Increasing Paths in a Grid","titleSlug":"number-of-increasing-paths-in-a-grid","timestamp":"1671830007"},{"id":"864439219","title":"Stone Game VI","titleSlug":"stone-game-vi","timestamp":"1671829464"}]}
+{
+    "user": "zhuyuezx",
+    "submissions": [
+        {
+            "id": "865483509",
+            "title": "Median of Two Sorted Arrays",
+            "titleSlug": "median-of-two-sorted-arrays",
+            "timestamp": "1672014487"
+        },
+        {
+            "id": "865481646",
+            "title": "String to Integer (atoi)",
+            "titleSlug": "string-to-integer-atoi",
+            "timestamp": "1672014070"
+        },
+        {
+            "id": "865477064",
+            "title": "Jump Game",
+            "titleSlug": "jump-game",
+            "timestamp": "1672012967"
+        },
+        {
+            "id": "865474362",
+            "title": "Regular Expression Matching",
+            "titleSlug": "regular-expression-matching",
+            "timestamp": "1672012227"
+        },
+        {
+            "id": "865473096",
+            "title": "Reverse Integer",
+            "titleSlug": "reverse-integer",
+            "timestamp": "1672011872"
+        },
+        {
+            "id": "865472749",
+            "title": "3Sum",
+            "titleSlug": "3sum",
+            "timestamp": "1672011785"
+        },
+        {
+            "id": "865471787",
+            "title": "Zigzag Conversion",
+            "titleSlug": "zigzag-conversion",
+            "timestamp": "1672011522"
+        },
+        {
+            "id": "865465177",
+            "title": "Longest Substring Without Repeating Characters",
+            "titleSlug": "longest-substring-without-repeating-characters",
+            "timestamp": "1672009719"
+        },
+        {
+            "id": "865464626",
+            "title": "Add Two Numbers",
+            "titleSlug": "add-two-numbers",
+            "timestamp": "1672009572"
+        },
+        {
+            "id": "865450161",
+            "title": "Two Sum",
+            "titleSlug": "two-sum",
+            "timestamp": "1672005928"
+        },
+        {
+            "id": "865167087",
+            "title": "Subarray Sums Divisible by K",
+            "titleSlug": "subarray-sums-divisible-by-k",
+            "timestamp": "1671955826"
+        },
+        {
+            "id": "865161642",
+            "title": "Minimum Number of Flips to Make the Binary String Alternating",
+            "titleSlug": "minimum-number-of-flips-to-make-the-binary-string-alternating",
+            "timestamp": "1671954913"
+        },
+        {
+            "id": "865143957",
+            "title": "Minimum Degree of a Connected Trio in a Graph",
+            "titleSlug": "minimum-degree-of-a-connected-trio-in-a-graph",
+            "timestamp": "1671952065"
+        },
+        {
+            "id": "865102869",
+            "title": "Take K of Each Character From Left and Right",
+            "titleSlug": "take-k-of-each-character-from-left-and-right",
+            "timestamp": "1671945485"
+        },
+        {
+            "id": "865102765",
+            "title": "Number of Great Partitions",
+            "titleSlug": "number-of-great-partitions",
+            "timestamp": "1671945465"
+        },
+        {
+            "id": "865067483",
+            "title": "Maximum Tastiness of Candy Basket",
+            "titleSlug": "maximum-tastiness-of-candy-basket",
+            "timestamp": "1671939918"
+        },
+        {
+            "id": "865026916",
+            "title": "Shortest Distance to Target String in a Circular Array",
+            "titleSlug": "shortest-distance-to-target-string-in-a-circular-array",
+            "timestamp": "1671935712"
+        },
+        {
+            "id": "864994538",
+            "title": "Longest Subsequence With Limited Sum",
+            "titleSlug": "longest-subsequence-with-limited-sum",
+            "timestamp": "1671926862"
+        },
+        {
+            "id": "864873333",
+            "title": "Ugly Number III",
+            "titleSlug": "ugly-number-iii",
+            "timestamp": "1671902813"
+        },
+        {
+            "id": "865493145",
+            "title": "Merge k Sorted Lists",
+            "titleSlug": "merge-k-sorted-lists",
+            "timestamp": "1672016818"
+        },
+        {
+            "id": "865493650",
+            "title": "Longest Common Prefix",
+            "titleSlug": "longest-common-prefix",
+            "timestamp": "1672016931"
+        }
+    ]
+}

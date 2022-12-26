@@ -1,34 +1,36 @@
 import fs from 'fs';
-import { getRecentSubmissionList } from './get_record.js';
+import { getSubmission } from './last_submission.js';
 
-export const getDailyLogs = async(users) => {
-    // console.log(users)
-    let users_daily_logs = new Map();
-    await Promise.all(users.map(async (user) => {
-        await getRecentSubmissionList(user)
-            .then((res) => {
-                // write to file users[i].json
-                // fs.writeFile(`../data/raw/${user}.json`, JSON.stringify(res), (err) => {
-                //     if (err) {
-                //         console.error(err);
-                //     }
-                // });
-                let daily_map = new Map();
-                // console.log(res.submissions[0])
-                res.submissions.map((submission) => {
-                    const date = new Date(submission.timestamp * 1000).toLocaleDateString();
-                    if (daily_map.has(date)) {
-                        daily_map.get(date).push(submission.titleSlug);
-                    } else {
-                        daily_map.set(date, [submission.titleSlug]);
-                    }
-                });
-                users_daily_logs.set(user, daily_map);
-                console.log(users_daily_logs.size);
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-    }));
-    return users_daily_logs;
+const update_daily_log = async (orig_logs, user) => {
+    const user_submissions = await getSubmission(user);
+    for (const [key, value] of user_submissions) {
+        if (value === 0) continue;
+        const complete_date = new Date(value * 1000).toLocaleDateString();
+        if (orig_logs.has(complete_date)) {
+            // check if there is duplicate
+            if (!orig_logs.get(complete_date).includes(key)) {
+                orig_logs.get(complete_date).push(key);
+            }
+        } else {
+            orig_logs.set(complete_date, [key]);
+        }
+    }
+    return orig_logs;
 }
+
+export const getDailyLogs = async(user, ret) => {
+    let orig_logs = new Map();
+    if (fs.existsSync(`../data/daily_log/${user}.json`)) {
+        const json = fs.readFileSync(`../data/daily_log/${user}.json`, 'utf8');
+        const obj = JSON.parse(json);
+        orig_logs =  new Map(Object.entries(obj));
+    }
+    // console.log("before");
+    // console.log(orig_logs);
+    orig_logs = await update_daily_log(orig_logs, user);
+    console.log("after");
+    console.log(orig_logs);
+    return orig_logs;
+}
+
+getDailyLogs("zhuyuezx");
