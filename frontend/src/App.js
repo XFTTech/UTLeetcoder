@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Image } from 'antd';
+import leetcodeIcon from './leetcode_icon.svg';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -54,15 +56,10 @@ const App = () => {
                         justifyContent: 'flex-end',
                     }}
                 >
-                    <Typography.Title
-                        level={3}
-                        style={{
-                            color: 'white',
-                            textAlign: 'center',
-                        }}
-                    >
-                        {collapsed ? 'UT' : 'UTLeetcoders'}
-                    </Typography.Title>
+                    <Image
+                        width={45}
+                        src={leetcodeIcon}
+                    />
                 </div>
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
             </Sider>
