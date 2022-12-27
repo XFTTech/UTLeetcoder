@@ -1,0 +1,49 @@
+{
+    "12/25/2022": [
+        "two-sum",
+        "length-of-last-word",
+        "minimum-depth-of-binary-tree",
+        "jump-game"
+    ],
+    "12/22/2022": [
+        "best-time-to-buy-and-sell-stock-with-cooldown"
+    ],
+    "12/23/2022": [
+        "domino-and-tromino-tiling"
+    ],
+    "12/21/2022": [
+        "sum-of-distances-in-tree"
+    ],
+    "12/19/2022": [
+        "keys-and-rooms"
+    ],
+    "12/20/2022": [
+        "possible-bipartition"
+    ],
+    "12/18/2022": [
+        "find-if-path-exists-in-graph"
+    ],
+    "12/24/2022": [
+        "longest-subsequence-with-limited-sum",
+        "maximum-enemy-forts-that-can-be-captured",
+        "reward-top-k-students",
+        "minimize-the-maximum-of-two-arrays",
+        "count-anagrams",
+        "shortest-distance-to-target-string-in-a-circular-array",
+        "take-k-of-each-character-from-left-and-right",
+        "maximum-tastiness-of-candy-basket",
+        "number-of-great-partitions"
+    ],
+    "12/17/2022": [
+        "add-edges-to-make-degrees-of-all-nodes-even"
+    ],
+    "12/26/2022": [
+        "checking-existence-of-edge-length-limited-paths",
+        "reverse-prefix-of-word",
+        "number-of-pairs-of-interchangeable-rectangles",
+        "maximum-product-of-the-length-of-two-palindromic-subsequences",
+        "count-number-of-pairs-with-absolute-difference-k",
+        "maximum-white-tiles-covered-by-a-carpet",
+        "maximum-bags-with-full-capacity-of-rocks"
+    ]
+}
