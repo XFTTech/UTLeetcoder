@@ -18,19 +18,19 @@ const update_daily_log = async (orig_logs, user) => {
     return orig_logs;
 }
 
-export const getDailyLogs = async(user, ret) => {
+export const getDailyLogs = async (user, ret) => {
     let orig_logs = new Map();
     if (fs.existsSync(`../data/daily_log/${user}.json`)) {
         const json = fs.readFileSync(`../data/daily_log/${user}.json`, 'utf8');
         const obj = JSON.parse(json);
-        orig_logs =  new Map(Object.entries(obj));
+        orig_logs = new Map(Object.entries(obj));
     }
     // console.log("before");
     // console.log(orig_logs);
     orig_logs = await update_daily_log(orig_logs, user);
-    console.log("after");
-    console.log(orig_logs);
+    // console.log("after");
+    // console.log(orig_logs);
     return orig_logs;
 }
 
-getDailyLogs("zhuyuezx");
+// getDailyLogs("zhuyuezx");

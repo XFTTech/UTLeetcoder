@@ -23,5 +23,16 @@
         "longest-subsequence-with-limited-sum",
         "shortest-distance-to-target-string-in-a-circular-array",
         "maximum-tastiness-of-candy-basket"
+    ],
+    "12/26/2022": [
+        "paint-house",
+        "decoded-string-at-index",
+        "path-with-maximum-minimum-value",
+        "filling-bookcase-shelves",
+        "dice-roll-simulation",
+        "maximum-matrix-sum",
+        "minimize-the-difference-between-target-and-chosen-elements",
+        "maximum-bags-with-full-capacity-of-rocks",
+        "minimum-sum-of-squared-difference"
     ]
 }
