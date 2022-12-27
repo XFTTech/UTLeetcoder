@@ -50,6 +50,8 @@ const App = () => {
                     style={{
                         height: 32,
                         margin: 16,
+                        whiteSpace: 'nowrap',
+                        justifyContent: 'flex-end',
                     }}
                 >
                     <Typography.Title
@@ -59,7 +61,7 @@ const App = () => {
                             textAlign: 'center',
                         }}
                     >
-                        UTLeetcoders
+                        {collapsed ? 'UT' : 'UTLeetcoders'}
                     </Typography.Title>
                 </div>
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
@@ -70,20 +72,33 @@ const App = () => {
                         padding: 0,
                         background: colorBgContainer,
                     }}
-                />
-                <Content
-                    style={{
-                        margin: '0 16px',
-                    }}
                 >
-                    <Breadcrumb
+                    <div
                         style={{
-                            margin: '16px 0',
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center',
+                            height: '100%',
                         }}
                     >
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                    </Breadcrumb>
+                        <Typography.Title
+                            style={{
+                                color: 'black',
+                                marginLeft: 16,
+                                marginTop: 'auto',
+                                marginBottom: 'auto',
+                            }}
+                            level={3}
+                        >
+                            UTLeetcoders
+                        </Typography.Title>
+                    </div>
+                </Header>
+                <Content
+                    style={{
+                        margin: '16px 16px',
+                    }}
+                >
                     <div
                         style={{
                             padding: 24,
@@ -99,7 +114,7 @@ const App = () => {
                         textAlign: 'center',
                     }}
                 >
-                    Ant Design ©2018 Created by Ant UED
+                    UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>
                 </Footer>
             </Layout>
         </Layout>
