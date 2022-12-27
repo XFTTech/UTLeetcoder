@@ -2,7 +2,8 @@
     "12/25/2022": [
         "two-sum",
         "length-of-last-word",
-        "minimum-depth-of-binary-tree"
+        "minimum-depth-of-binary-tree",
+        "jump-game"
     ],
     "12/22/2022": [
         "best-time-to-buy-and-sell-stock-with-cooldown"
@@ -35,5 +36,14 @@
     ],
     "12/17/2022": [
         "add-edges-to-make-degrees-of-all-nodes-even"
+    ],
+    "12/26/2022": [
+        "checking-existence-of-edge-length-limited-paths",
+        "reverse-prefix-of-word",
+        "number-of-pairs-of-interchangeable-rectangles",
+        "maximum-product-of-the-length-of-two-palindromic-subsequences",
+        "count-number-of-pairs-with-absolute-difference-k",
+        "maximum-white-tiles-covered-by-a-carpet",
+        "maximum-bags-with-full-capacity-of-rocks"
     ]
 }
