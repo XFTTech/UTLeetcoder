@@ -50,14 +50,22 @@ const App = () => {
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div
                     style={{
-                        height: 32,
-                        margin: 16,
-                        whiteSpace: 'nowrap',
-                        justifyContent: 'flex-end',
+                        height: 45,
+                        width: 45,
+                        margin: 10,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        display: 'flex',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
                     }}
                 >
                     <Image
+                        preview={false}
                         width={45}
+                        height={45}
+                        style={{
+                        }}
                         src={leetcodeIcon}
                     />
                 </div>
