@@ -1,5 +1,4 @@
 import fs from 'fs';
-import { getSubmission } from './last_submission.js';
 import { DailyLog, UserDaily, UserRecentSubmissionList, RecentAcSubmissionList } from './entities.js';
 
 const format_date = (date) => {
