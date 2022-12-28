@@ -7,7 +7,8 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
-    OrderedListOutlined
+    OrderedListOutlined,
+    DashboardOutlined
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Typography } from 'antd';
@@ -24,7 +25,7 @@ function getItem(label, key, icon, children) {
 
 
 const items = [
-    getItem('Daily Log', '1', <OrderedListOutlined />),
+    getItem('Daily Log', '1', <DashboardOutlined />),
     getItem('Option 2', '2', <DesktopOutlined />),
     getItem('User', 'sub1', <UserOutlined />, [
         getItem('Tom', '3'),
