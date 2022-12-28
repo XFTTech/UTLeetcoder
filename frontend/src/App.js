@@ -7,7 +7,8 @@ import {
     PieChartOutlined,
     TeamOutlined,
     UserOutlined,
-    OrderedListOutlined
+    OrderedListOutlined,
+    DashboardOutlined
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Typography } from 'antd';
@@ -24,7 +25,7 @@ function getItem(label, key, icon, children) {
 
 
 const items = [
-    getItem('Daily Log', '1', <OrderedListOutlined />),
+    getItem('Daily Log', '1', <DashboardOutlined />),
     getItem('Option 2', '2', <DesktopOutlined />),
     getItem('User', 'sub1', <UserOutlined />, [
         getItem('Tom', '3'),
@@ -50,14 +51,22 @@ const App = () => {
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div
                     style={{
-                        height: 32,
-                        margin: 16,
-                        whiteSpace: 'nowrap',
-                        justifyContent: 'flex-end',
+                        height: 45,
+                        width: 45,
+                        margin: 10,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        display: 'flex',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
                     }}
                 >
                     <Image
+                        preview={false}
                         width={45}
+                        height={45}
+                        style={{
+                        }}
                         src={leetcodeIcon}
                     />
                 </div>
