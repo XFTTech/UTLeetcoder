@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { UserDaily } from './entities.js'
 
 export const splitDailyAllUsers = async (users) => {
     let user_all_daily = new Map();
@@ -18,7 +19,14 @@ export const splitDailyAllUsers = async (users) => {
             }
         }
     });
-    // console.log(user_all_daily);
+    for (const [date, detail] of user_all_daily) {
+        users.map(async (user) => {
+            if (!detail.has(user)) {
+                detail.set(user, new UserDaily(user, 0, 0, 0, 0, [], [], []));
+            }
+        });
+    }
+    console.log(user_all_daily);
     return user_all_daily;
 }
 
