@@ -89,7 +89,7 @@ const App = () => {
                             height: '100%',
                         }}
                     >
-                        <Breadcrumb.Item>DailyLog</Breadcrumb.Item>
+                        {/* <Breadcrumb.Item>DailyLog</Breadcrumb.Item> */}
                         {/* <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
                         <Typography.Title
                             style={{
