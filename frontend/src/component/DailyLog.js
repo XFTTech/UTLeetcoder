@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
+import { fontStyle } from '@mui/system';
 
 const { Text, Link } = Typography;
 // import Highlighter from 'react-highlight-words';
@@ -181,6 +182,7 @@ const DailyLog = (props) => {
             setData(res);
         });
     });
+
     return <Table
         columns={columns}
         expandable={{
@@ -193,6 +195,12 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'green',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
                                     }}
                                 >
                                     [{item}]
@@ -209,32 +217,44 @@ const DailyLog = (props) => {
                                     style={{
                                         color: 'orange',
                                     }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
+                                    }}
                                 >
-                                [{item}]
-                            </Link>
+                                    [{item}]
+                                </Link>
                             </ Row>
-            ))
-        }
+                        ))
+                        }
                     </Col >
-    <Col span={8} key='hard'>
-        {(record.hard).map((item) => (
-            <Row key={item}>
-                <Link href={url + item + '/'}
-                    target="_blank"
-                    style={{
-                        color: 'red',
-                    }}
-                >
-                    [{item}]
-                </Link>
-            </ Row>
-        ))}
-    </Col>
+                    <Col span={8} key='hard'>
+                        {(record.hard).map((item) => (
+                            <Row key={item}>
+                                <Link href={url + item + '/'}
+                                    target="_blank"
+                                    style={{
+                                        color: 'red',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
+                                    }}
+                                >
+                                    [{item}]
+                                </Link>
+                            </ Row>
+                        ))}
+                    </Col>
                 </Row >
             ),
-rowExpandable: (record) => record.name !== 'Not Expandable',
+            rowExpandable: (record) => record.name !== 'Not Expandable',
         }}
-dataSource = { data }
+        dataSource={data}
     />;
 };
 export default DailyLog;
