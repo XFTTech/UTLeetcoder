@@ -13,6 +13,8 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Typography } from 'antd';
 import DailyLog from './component/DailyLog';
+import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -26,7 +28,7 @@ function getItem(label, key, icon, children) {
 
 
 const items = [
-    getItem('Daily Log', '1', <DashboardOutlined />),
+    getItem('Daily Log', '1', <TodayOutlinedIcon/>),
     getItem('Option 2', '2', <DesktopOutlined />),
     getItem('User', 'sub1', <UserOutlined />, [
         getItem('Tom', '3'),
