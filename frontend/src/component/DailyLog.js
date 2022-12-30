@@ -3,9 +3,10 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
 
-const { Text, Link } = Typography;
+const { Link } = Typography;
 // import Highlighter from 'react-highlight-words';
 const url = "https://leetcode.com/problems/"
+const userUrl = "https://leetcode.com/"
 
 const fileClient = axios.create({
     baseURL: 'http://localhost:3000/data',
@@ -20,6 +21,10 @@ const getDailyStats = async (date) => {
     return await fileClient.get("daily_stats/" + date + ".json");
 };
 
+/*
+    props: 
+        date: string of date in format "YYYY-MM-DD"
+*/
 const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
@@ -125,31 +130,56 @@ const DailyLog = (props) => {
             title: 'User',
             dataIndex: 'user',
             key: 'user',
+            width: '20%',
+            onCell: (record) => {
+                return {
+                    onClick: () => {
+                        window.open(userUrl + record.user + '/');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.textDecoration = 'underline';
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.color = 'blue';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.textDecoration = 'none';
+                        e.target.style.color = 'navy';
+                    },
+                    style: {
+                        color: 'navy',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'monospace',
+                    }
+                }
+            },
             ...getColumnSearchProps('user'),
         },
         {
             title: 'Easy',
             dataIndex: 'easy_cnt',
             key: 'easy_cnt',
-            sorter: (a, b) => a - b,
+            width: '25%',
+            sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Medium',
             dataIndex: 'medium_cnt',
             key: 'medium_cnt',
-            sorter: (a, b) => a - b,
+            width: '25%',
+            sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Hard',
             dataIndex: 'hard_cnt',
             key: 'hard_cnt',
-            sorter: (a, b) => a - b,
+            width: '25%',
+            sorter: (a, b) => a.hard_cnt - b.hard_cnt,
             sortDirections: ['descend', 'ascend'],
         },
     ];
-    // const today = new Date(new Date().setDate(new Date().getDate() - 2)).toISOString().slice(0, 10);
     const getData = async () => {
         let dailyStatsList;
         let result = [];
@@ -181,18 +211,36 @@ const DailyLog = (props) => {
             setData(res);
         });
     });
+
+
     return <Table
         columns={columns}
         expandable={{
             expandedRowRender: (record) => (
-                <Row key={record.key}>
-                    <Col span={8} key='easy'>
+                <Row key={record.key}
+                    gutter={30}
+                    style={{
+                        marginLeft: '25%',
+                    }}
+                >
+                    <Col span={8}
+                        key='easy'
+                        style={{
+                            borderLeft: '1px solid #e8e8e8',
+                        }}
+                    >
                         {(record.easy).map((item) => (
                             <Row key={item} >
                                 <Link href={url + item + '/'}
                                     target="_blank"
                                     style={{
                                         color: 'green',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
                                     }}
                                 >
                                     [{item}]
@@ -201,7 +249,13 @@ const DailyLog = (props) => {
                         ))}
                     </Col>
 
-                    <Col span={8} key='medium'>
+                    <Col span={8}
+                        key='medium'
+                        style={{
+                            borderLeft: '1px solid #e8e8e8',
+                            borderRight: '1px solid #e8e8e8',
+                        }}
+                    >
                         {(record.medium).map((item) => (
                             <Row key={item}>
                                 <Link href={url + item + '/'}
@@ -209,32 +263,49 @@ const DailyLog = (props) => {
                                     style={{
                                         color: 'orange',
                                     }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
+                                    }}
                                 >
-                                [{item}]
-                            </Link>
+                                    [{item}]
+                                </Link>
                             </ Row>
-            ))
-        }
+                        ))
+                        }
                     </Col >
-    <Col span={8} key='hard'>
-        {(record.hard).map((item) => (
-            <Row key={item}>
-                <Link href={url + item + '/'}
-                    target="_blank"
-                    style={{
-                        color: 'red',
-                    }}
-                >
-                    [{item}]
-                </Link>
-            </ Row>
-        ))}
-    </Col>
+                    <Col span={8}
+                        key='hard'
+                        style={{
+                            borderRight: '1px solid #e8e8e8',
+                        }}
+                    >
+                        {(record.hard).map((item) => (
+                            <Row key={item}>
+                                <Link href={url + item + '/'}
+                                    target="_blank"
+                                    style={{
+                                        color: 'red',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.textDecoration = 'none';
+                                    }}
+                                >
+                                    [{item}]
+                                </Link>
+                            </ Row>
+                        ))}
+                    </Col>
                 </Row >
             ),
-rowExpandable: (record) => record.name !== 'Not Expandable',
+            rowExpandable: (record) => record.name !== 'Not Expandable',
         }}
-dataSource = { data }
+        dataSource={data}
     />;
 };
 export default DailyLog;
