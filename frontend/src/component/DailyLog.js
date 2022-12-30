@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
-import { borderLeft } from '@mui/system';
 
 const { Link } = Typography;
 // import Highlighter from 'react-highlight-words';
 const url = "https://leetcode.com/problems/"
+const userUrl = "https://leetcode.com/"
 
 const fileClient = axios.create({
     baseURL: 'http://localhost:3000/data',
@@ -130,12 +130,36 @@ const DailyLog = (props) => {
             title: 'User',
             dataIndex: 'user',
             key: 'user',
+            width: '20%',
+            onCell: (record) => {
+                return {
+                    onClick: () => {
+                        window.open(userUrl + record.user + '/');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.textDecoration = 'underline';
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.color = 'blue';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.textDecoration = 'none';
+                        e.target.style.color = 'navy';
+                    },
+                    style: {
+                        color: 'navy',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'monospace',
+                    }
+                }
+            },
             ...getColumnSearchProps('user'),
         },
         {
             title: 'Easy',
             dataIndex: 'easy_cnt',
             key: 'easy_cnt',
+            width: '25%',
             sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
         },
@@ -143,6 +167,7 @@ const DailyLog = (props) => {
             title: 'Medium',
             dataIndex: 'medium_cnt',
             key: 'medium_cnt',
+            width: '25%',
             sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
         },
@@ -150,6 +175,7 @@ const DailyLog = (props) => {
             title: 'Hard',
             dataIndex: 'hard_cnt',
             key: 'hard_cnt',
+            width: '25%',
             sorter: (a, b) => a.hard_cnt - b.hard_cnt,
             sortDirections: ['descend', 'ascend'],
         },
@@ -194,7 +220,7 @@ const DailyLog = (props) => {
                 <Row key={record.key}
                     gutter={30}
                     style={{
-                        marginLeft: '30%',
+                        marginLeft: '25%',
                     }}
                 >
                     <Col span={8}
