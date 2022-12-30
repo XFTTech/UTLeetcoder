@@ -20,6 +20,10 @@ const getDailyStats = async (date) => {
     return await fileClient.get("daily_stats/" + date + ".json");
 };
 
+/*
+    props: 
+        date: string of date in format "YYYY-MM-DD"
+*/
 const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
@@ -131,25 +135,24 @@ const DailyLog = (props) => {
             title: 'Easy',
             dataIndex: 'easy_cnt',
             key: 'easy_cnt',
-            sorter: (a, b) => a - b,
+            sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Medium',
             dataIndex: 'medium_cnt',
             key: 'medium_cnt',
-            sorter: (a, b) => a - b,
+            sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Hard',
             dataIndex: 'hard_cnt',
             key: 'hard_cnt',
-            sorter: (a, b) => a - b,
+            sorter: (a, b) => a.hard_cnt - b.hard_cnt,
             sortDirections: ['descend', 'ascend'],
         },
     ];
-    // const today = new Date(new Date().setDate(new Date().getDate() - 2)).toISOString().slice(0, 10);
     const getData = async () => {
         let dailyStatsList;
         let result = [];
@@ -181,6 +184,7 @@ const DailyLog = (props) => {
             setData(res);
         });
     });
+
 
     return <Table
         columns={columns}
