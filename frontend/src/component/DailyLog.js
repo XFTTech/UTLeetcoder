@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table, Col, Row, Typography} from 'antd';
+import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
 
-const { Text } = Typography;
+const { Text, Link } = Typography;
 // import Highlighter from 'react-highlight-words';
-
+const url = "https://leetcode.com/problems/"
 
 const fileClient = axios.create({
     baseURL: 'http://localhost:3000/data',
@@ -35,99 +35,91 @@ const DailyLog = (props) => {
     };
     const getColumnSearchProps = (dataIndex) => ({
         filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => (
-        <div
-            style={{
-            padding: 8,
-            }}
-            onKeyDown={(e) => e.stopPropagation()}
-        >
-            <Input
-            ref={searchInput}
-            placeholder={`Search ${dataIndex}`}
-            value={selectedKeys[0]}
-            onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
-            onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
-            style={{
-                marginBottom: 8,
-                display: 'block',
-            }}
-            />
-            <Space>
-            <Button
-                type="primary"
-                onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
-                icon={<SearchOutlined />}
-                size="small"
+            <div
                 style={{
-                width: 90,
+                    padding: 8,
                 }}
+                onKeyDown={(e) => e.stopPropagation()}
             >
-                Search
-            </Button>
-            <Button
-                onClick={() => clearFilters && handleReset(clearFilters)}
-                size="small"
-                style={{
-                width: 90,
-                }}
-            >
-                Reset
-            </Button>
-            <Button
-                type="link"
-                size="small"
-                onClick={() => {
-                confirm({
-                    closeDropdown: false,
-                });
-                setSearchText(selectedKeys[0]);
-                setSearchedColumn(dataIndex);
-                }}
-            >
-                Filter
-            </Button>
-            <Button
-                type="link"
-                size="small"
-                onClick={() => {
-                close();
-                }}
-            >
-                close
-            </Button>
-            </Space>
-        </div>
+                <Input
+                    ref={searchInput}
+                    placeholder={`Search ${dataIndex}`}
+                    value={selectedKeys[0]}
+                    onChange={(e) => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                    style={{
+                        marginBottom: 8,
+                        display: 'block',
+                    }}
+                />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+                        icon={<SearchOutlined />}
+                        size="small"
+                        style={{
+                            width: 90,
+                        }}
+                    >
+                        Search
+                    </Button>
+                    <Button
+                        onClick={() => clearFilters && handleReset(clearFilters)}
+                        size="small"
+                        style={{
+                            width: 90,
+                        }}
+                    >
+                        Reset
+                    </Button>
+                    <Button
+                        type="link"
+                        size="small"
+                        onClick={() => {
+                            confirm({
+                                closeDropdown: false,
+                            });
+                            setSearchText(selectedKeys[0]);
+                            setSearchedColumn(dataIndex);
+                        }}
+                    >
+                        Filter
+                    </Button>
+                    <Button
+                        type="link"
+                        size="small"
+                        onClick={() => {
+                            close();
+                        }}
+                    >
+                        close
+                    </Button>
+                </Space>
+            </div>
         ),
         filterIcon: (filtered) => (
-        <SearchOutlined
-            style={{
-            color: filtered ? '#1890ff' : undefined,
-            }}
-        />
+            <SearchOutlined
+                style={{
+                    color: filtered ? '#1890ff' : undefined,
+                }}
+            />
         ),
         onFilter: (value, record) =>
-        record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+            record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
         onFilterDropdownOpenChange: (visible) => {
-        if (visible) {
-            setTimeout(() => searchInput.current?.select(), 100);
-        }
+            if (visible) {
+                setTimeout(() => searchInput.current?.select(), 100);
+            }
         },
         render: (text) =>
-        searchedColumn === dataIndex ? (
-            // <Highlighter
-            // highlightStyle={{
-            //     backgroundColor: '#ffc069',
-            //     padding: 0,
-            // }}
-            // searchWords={[searchText]}
-            // autoEscape
-            // textToHighlight={text ? text.toString() : ''}
-            // />
-            searchText
-        ) : (
-            text
-        ),}
-        );
+            searchedColumn === dataIndex ? (
+                searchText
+            ) : (
+                text
+            ),
+    }
+    );
     const columns = [
         {
             title: 'User',
@@ -173,7 +165,7 @@ const DailyLog = (props) => {
                 res.data.forEach((user) => {
                     let userdata = dailyStatsList.get(user)
                     if (userdata) {
-                        let usermap = new Map(Object.entries(userdata? userdata: {}));
+                        let usermap = new Map(Object.entries(userdata ? userdata : {}));
                         usermap.set('key', user);
                         result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
                     }
@@ -183,44 +175,66 @@ const DailyLog = (props) => {
                 console.error(err);
             });
         return result;
-    }; 
+    };
     const [data, setData] = useState(() => {
         getData().then((res) => {
             setData(res);
         });
     });
-    return <Table 
-        columns={columns} 
+    return <Table
+        columns={columns}
         expandable={{
             expandedRowRender: (record) => (
                 <Row key={record.key}>
                     <Col span={8} key='easy'>
                         {(record.easy).map((item) => (
-                            <Row key={item}>
-                                <Text type="success" >{item}</Text>
+                            <Row key={item} >
+                                <Link href={url + item + '/'}
+                                    target="_blank"
+                                    style={{
+                                        color: 'green',
+                                    }}
+                                >
+                                    [{item}]
+                                </Link>
                             </ Row>
                         ))}
                     </Col>
- 
-                    <Col span={8} key='medium'>    
+
+                    <Col span={8} key='medium'>
                         {(record.medium).map((item) => (
                             <Row key={item}>
-                                <Text type="warning">{item}</Text>
+                                <Link href={url + item + '/'}
+                                    target="_blank"
+                                    style={{
+                                        color: 'orange',
+                                    }}
+                                >
+                                [{item}]
+                            </Link>
                             </ Row>
-                        ))}
-                    </Col>
-                    <Col span={8} key='hard'>
-                        {(record.hard).map((item) => (
-                            <Row key={item}>
-                                <Text type="danger" href=""> {item}</Text>
-                            </ Row>
-                        ))}
-                    </Col>
-                </Row>
+            ))
+        }
+                    </Col >
+    <Col span={8} key='hard'>
+        {(record.hard).map((item) => (
+            <Row key={item}>
+                <Link href={url + item + '/'}
+                    target="_blank"
+                    style={{
+                        color: 'red',
+                    }}
+                >
+                    [{item}]
+                </Link>
+            </ Row>
+        ))}
+    </Col>
+                </Row >
             ),
-            rowExpandable: (record) => record.name !== 'Not Expandable',
+rowExpandable: (record) => record.name !== 'Not Expandable',
         }}
-        dataSource={data} 
+dataSource = { data }
     />;
 };
 export default DailyLog;
