@@ -1,1 +1,34 @@
-{"Ethan-ZYF":{"user":"Ethan-ZYF","total":1,"easy_cnt":0,"medium_cnt":0,"hard_cnt":1,"easy":[],"medium":[],"hard":["sum-of-distances-in-tree"]},"zhuyuezx":{"user":"zhuyuezx","total":0,"easy_cnt":0,"medium_cnt":0,"hard_cnt":0,"easy":[],"medium":[],"hard":[]},"Yorafa":{"user":"Yorafa","total":0,"easy_cnt":0,"medium_cnt":0,"hard_cnt":0,"easy":[],"medium":[],"hard":[]}}
+{
+    "Ethan-ZYF": {
+        "user": "Ethan-ZYF",
+        "total": 1,
+        "easy_cnt": 0,
+        "medium_cnt": 0,
+        "hard_cnt": 1,
+        "easy": [],
+        "medium": [],
+        "hard": [
+            "sum-of-distances-in-tree"
+        ]
+    },
+    "zhuyuezx": {
+        "user": "zhuyuezx",
+        "total": 0,
+        "easy_cnt": 0,
+        "medium_cnt": 0,
+        "hard_cnt": 0,
+        "easy": [],
+        "medium": [],
+        "hard": []
+    },
+    "Yorafa": {
+        "user": "Yorafa",
+        "total": 0,
+        "easy_cnt": 0,
+        "medium_cnt": 0,
+        "hard_cnt": 0,
+        "easy": [],
+        "medium": [],
+        "hard": []
+    }
+}

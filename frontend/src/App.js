@@ -109,7 +109,7 @@ const App = () => {
                         margin: '16px 16px',
                     }}
                 >
-                    <DailyLog date={'2022-12-27'} />
+                    <DailyLog date={'2022-12-29'} />
                 </Content>
                 <Footer
                     style={{

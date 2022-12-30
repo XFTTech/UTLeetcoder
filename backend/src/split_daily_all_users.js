@@ -1,10 +1,11 @@
 import fs from 'fs';
 import { UserDaily } from './entities.js'
+const file_path = '../../frontend/public/data/';
 
 export const splitDailyAllUsers = async (users) => {
     let user_all_daily = new Map();
     users.map(async (user) => {
-        const json = fs.readFileSync(`../data/daily_log/${user}.json`, 'utf8');
+        const json = fs.readFileSync(file_path + `daily_log/${user}.json`, 'utf8');
         const obj = JSON.parse(json);
         // console.log(obj);
         const user_daily = new Map(Object.entries(obj));

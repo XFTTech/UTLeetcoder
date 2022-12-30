@@ -2,6 +2,7 @@ import axios from 'axios';
 import fs from 'fs';
 import { RecentAcSubmissionList, UserRecentSubmissionList } from './entities.js';
 import { getSubmission } from './last_submission.js';
+const file_path = '../../frontend/public/data/';
 
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
@@ -17,8 +18,9 @@ export const getRecentSubmission = async (username) => {
 
 export const getRecentSubmissionList = async (user) => {
     var recentSubmissionList = new UserRecentSubmissionList(user);
-    if (fs.existsSync(`../data/raw/${user}.json`)) {
-        const json = fs.readFileSync(`../data/raw/${user}.json`, 'utf8');
+    if (fs.existsSync(file_path + `raw/${user}.json`)) {
+        // console.log('exist');
+        const json = fs.readFileSync(file_path + `raw/${user}.json`, 'utf8');
         const obj = JSON.parse(json);
         recentSubmissionList.submissions = obj.submissions;
     }

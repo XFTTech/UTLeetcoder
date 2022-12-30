@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { DailyLog, UserDaily, UserRecentSubmissionList, RecentAcSubmissionList } from './entities.js';
+const file_path = '../../frontend/public/data/';
 
 const format_date = (date) => {
     const year = date.getFullYear();
@@ -9,7 +10,7 @@ const format_date = (date) => {
 }
 
 const update_daily_log = async (user) => {
-    const json = fs.readFileSync(`../data/raw/${user}.json`, 'utf8');
+    const json = fs.readFileSync(file_path + `raw/${user}.json`, 'utf8');
     const user_raw = JSON.parse(json);
     // console.log(user_raw);
     let orig_logs = new Map();
@@ -26,7 +27,7 @@ const update_daily_log = async (user) => {
 }
 
 const difficulty_classify = async (orig_logs, user) => {
-    const json = fs.readFileSync('../data/problems.json', 'utf8');
+    const json = fs.readFileSync(file_path + 'problems.json', 'utf8');
     const obj = JSON.parse(json);
     const problems = new Map(Object.entries(obj));
     // console.log(problems)
