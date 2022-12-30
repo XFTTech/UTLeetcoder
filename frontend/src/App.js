@@ -12,6 +12,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Typography } from 'antd';
+import DailyLog from './component/DailyLog';
 const { Header, Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
@@ -67,6 +68,7 @@ const App = () => {
                         height={45}
                         style={{
                         }}
+                    
                         src={leetcodeIcon}
                     />
                 </div>
@@ -87,6 +89,8 @@ const App = () => {
                             height: '100%',
                         }}
                     >
+                        <Breadcrumb.Item>DailyLog</Breadcrumb.Item>
+                        {/* <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
                         <Typography.Title
                             style={{
                                 color: 'black',
@@ -105,15 +109,7 @@ const App = () => {
                         margin: '16px 16px',
                     }}
                 >
-                    <div
-                        style={{
-                            padding: 24,
-                            minHeight: 360,
-                            background: colorBgContainer,
-                        }}
-                    >
-                        Bill is a cat.
-                    </div>
+                    <DailyLog date={'2022-12-27'} />
                 </Content>
                 <Footer
                     style={{
