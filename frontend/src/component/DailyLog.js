@@ -233,7 +233,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'green',
-                                        fontSize: '10px'
+                                        fontSize: '16px'
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
@@ -261,7 +261,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'orange',
-                                        fontSize: '10px'
+                                        fontSize: '16px'
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
@@ -288,7 +288,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'red',
-                                        fontSize: '10px'
+                                        fontSize: '16px'
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
