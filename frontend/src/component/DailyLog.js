@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
+import { borderLeft } from '@mui/system';
 
 const { Link } = Typography;
 // import Highlighter from 'react-highlight-words';
@@ -191,12 +192,16 @@ const DailyLog = (props) => {
         expandable={{
             expandedRowRender: (record) => (
                 <Row key={record.key}
+                    gutter={30}
                     style={{
                         marginLeft: '30%',
                     }}
                 >
                     <Col span={8}
                         key='easy'
+                        style={{
+                            borderLeft: '1px solid #e8e8e8',
+                        }}
                     >
                         {(record.easy).map((item) => (
                             <Row key={item} >
@@ -220,7 +225,10 @@ const DailyLog = (props) => {
 
                     <Col span={8}
                         key='medium'
-                        marginLeft='10%'
+                        style={{
+                            borderLeft: '1px solid #e8e8e8',
+                            borderRight: '1px solid #e8e8e8',
+                        }}
                     >
                         {(record.medium).map((item) => (
                             <Row key={item}>
@@ -244,7 +252,9 @@ const DailyLog = (props) => {
                     </Col >
                     <Col span={8}
                         key='hard'
-                        marginLeft='10%'
+                        style={{
+                            borderRight: '1px solid #e8e8e8',
+                        }}
                     >
                         {(record.hard).map((item) => (
                             <Row key={item}>
