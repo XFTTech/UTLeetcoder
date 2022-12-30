@@ -27,6 +27,11 @@
     }
     }
     ```
+## More APIs
+- [Leetcode API](LeetcodeAPI.md)
 
 ## TODO
 - [ ] front end
+    - [ ] daily ranking
+    - [ ] weekly ranking
+    - [ ] total submission ranking
