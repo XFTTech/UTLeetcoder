@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
-import { fontStyle } from '@mui/system';
 
 const { Text, Link } = Typography;
 
@@ -206,12 +205,6 @@ const DailyLog = (props) => {
                                     onMouseLeave={(e) => {
                                         e.target.style.textDecoration = 'none';
                                     }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
                                 >
                                     [{item}]
                                 </Link>
@@ -233,50 +226,37 @@ const DailyLog = (props) => {
                                     onMouseLeave={(e) => {
                                         e.target.style.textDecoration = 'none';
                                     }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
                                 >
-                                        [{item}]
-                                    </Link>
+                                    [{item}]
+                                </Link>
                             </ Row>
-                                    ))
-                                        }
+                        ))
+                        }
                     </Col >
-                                    <Col span={8} key='hard'>
-                                        {(record.hard).map((item) => (
-                                            <Row key={item}>
-                                                <Link href={url + item + '/'}
-                                                    target="_blank"
-                                                    style={{
-                                                        color: 'red',
-                                                    }}
+                    <Col span={8} key='hard'>
+                        {(record.hard).map((item) => (
+                            <Row key={item}>
+                                <Link href={url + item + '/'}
+                                    target="_blank"
+                                    style={{
+                                        color: 'red',
+                                    }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
                                     }}
                                     onMouseLeave={(e) => {
                                         e.target.style.textDecoration = 'none';
                                     }}
-                                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
                                 >
-                                                    [{item}]
-                                                </Link>
-                                            </ Row>
-                                        ))}
-                                    </Col>
+                                    [{item}]
+                                </Link>
+                            </ Row>
+                        ))}
+                    </Col>
                 </Row >
             ),
-                        rowExpandable: (record) => record.name !== 'Not Expandable',
+            rowExpandable: (record) => record.name !== 'Not Expandable',
         }}
-        dataSource = {data}
         dataSource={data}
     />;
 };
