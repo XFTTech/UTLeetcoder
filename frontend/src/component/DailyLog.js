@@ -137,12 +137,10 @@ const DailyLog = (props) => {
                         window.open(userUrl + record.user + '/');
                     },
                     onMouseOver: (e) => {
-                        e.target.style.textDecoration = 'underline';
                         e.target.style.cursor = 'pointer';
                         e.target.style.color = 'blue';
                     },
                     onMouseLeave: (e) => {
-                        e.target.style.textDecoration = 'none';
                         e.target.style.color = 'navy';
                     },
                     style: {
