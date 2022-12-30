@@ -26,7 +26,7 @@ export const splitDailyAllUsers = async (users) => {
             }
         });
     }
-    console.log(user_all_daily);
+    // console.log(user_all_daily);
     return user_all_daily;
 }
 
