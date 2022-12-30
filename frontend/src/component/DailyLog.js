@@ -2,9 +2,8 @@ import React, { useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
-import { fontStyle } from '@mui/system';
 
-const { Text, Link } = Typography;
+const { Link } = Typography;
 // import Highlighter from 'react-highlight-words';
 const url = "https://leetcode.com/problems/"
 
@@ -187,8 +186,14 @@ const DailyLog = (props) => {
         columns={columns}
         expandable={{
             expandedRowRender: (record) => (
-                <Row key={record.key}>
-                    <Col span={8} key='easy'>
+                <Row key={record.key}
+                    style={{
+                        marginLeft: '30%',
+                    }}
+                >
+                    <Col span={8}
+                        key='easy'
+                    >
                         {(record.easy).map((item) => (
                             <Row key={item} >
                                 <Link href={url + item + '/'}
@@ -209,7 +214,10 @@ const DailyLog = (props) => {
                         ))}
                     </Col>
 
-                    <Col span={8} key='medium'>
+                    <Col span={8}
+                        key='medium'
+                        marginLeft='10%'
+                    >
                         {(record.medium).map((item) => (
                             <Row key={item}>
                                 <Link href={url + item + '/'}
@@ -230,7 +238,10 @@ const DailyLog = (props) => {
                         ))
                         }
                     </Col >
-                    <Col span={8} key='hard'>
+                    <Col span={8}
+                        key='hard'
+                        marginLeft='10%'
+                    >
                         {(record.hard).map((item) => (
                             <Row key={item}>
                                 <Link href={url + item + '/'}
