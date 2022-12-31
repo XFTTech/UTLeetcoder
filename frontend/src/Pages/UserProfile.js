@@ -18,7 +18,7 @@ export const UserProfile = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    
+
     useEffect(() => {
         getUserInfo(id).then((res) => {
             setUser(res.data);
@@ -63,37 +63,75 @@ export const UserProfile = () => {
                 </Header>
                 <Content
                     style={{
-                        margin: '16px 16px',
+                        width: '50%',
+                        margin: 'auto',
+                        marginTop: 16,
                     }}
                 >
                     <Row>
-                        <Col span={24}>
-                            <Avatar size={64} src={user.avatar === "" ? default_avatar : user.avatar} />
+                        <Col span={12}>
+                            <Row>
+                                <Typography.Title
+                                    style={{
+                                        color: 'navy',
+                                        marginLeft: 16,
+                                        marginTop: 'auto',
+                                        marginBottom: 'auto',
+                                    }}
+                                    level={2}
+                                    onClick={() => {
+                                        window.open(lcurl + user.lcid);
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        document.body.style.cursor = 'pointer';
+                                        e.target.style.color = 'blue';
+                                        e.target.style.textDecoration = 'underline';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        document.body.style.cursor = 'default';
+                                        e.target.style.color = 'navy';
+                                        e.target.style.textDecoration = 'none';
+                                    }}
+                                >
+                                    {user.lcid}
+                                </Typography.Title>
+                            </Row>
+                            <Row>
+                                <Typography.Title
+                                    style={{
+                                        color: '#2F8819',
+                                        marginLeft: 16,
+                                        marginTop: 'auto',
+                                        marginBottom: 'auto',
+                                    }}
+                                    level={5}
+                                >
+                                    WeChat ID: {user.wxid ? user.wxid : "N/A"}
+                                </Typography.Title>
+                            </Row>
+                            <Row>
+                                <Typography.Text
+                                    style={{
+                                        color: 'black',
+                                        marginLeft: 16,
+                                        marginTop: 'auto',
+                                        marginBottom: 'auto',
+                                    }}
+                                >
+                                    Name: {(user.fname ? user.fname : "") + " " + (user.lname ? user.lname : "")}
+                                </Typography.Text>
+                            </Row>
                         </Col>
-                    </Row>
-                    <Row
-                        gutter={[16, 16]}
-                    >
-                        <Col span={12}>Leetcode ID:</Col>
-                        <Col span={12}>{user.lcid}</Col>
-                    </Row>
-                    <Row
-                        gutter={[16, 16]}
-                    >
-                        <Col span={12}>WeChat ID:</Col>
-                        <Col span={12}>{user.wxid ? user.wxid : ""}</Col>
-                    </Row>
-                    <Row
-                        gutter={[16, 16]}
-                    >
-                        <Col span={12}>Name:</Col>
-                        <Col span={12}>{user.fname ? user.fname : "" + " " + user.lname ? user.lname : ""}</Col>
-                    </Row>
-                    <Row
-                        gutter={[16, 16]}
-                    >
-                        <Col span={12}>Leetcode Home Page:</Col>
-                        <Col span={12}>{lcurl + user.lcid + '/'}</Col>
+                        <Col span={12}>
+                            <Avatar
+                                size={64}
+                                src={user.avatar === "" ? default_avatar : user.avatar}
+                                style={{
+                                    margin: 'auto',
+                                    display: 'block',
+                                }}
+                            />
+                        </Col>
                     </Row>
                 </Content>
                 <Footer
