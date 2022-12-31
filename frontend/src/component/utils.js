@@ -15,3 +15,7 @@ export const getUsers = async () => {
 export const getDailyStats = async (date) => {
     return await fileClient.get("daily_stats/" + date + ".json");
 };
+
+export const getUserInfo = async (lcid) => {
+    return await fileClient.get("user_info/" + lcid + ".json");
+}

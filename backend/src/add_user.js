@@ -10,11 +10,6 @@ const apiClient = axios.create({
     timeout: 10000
 })
 
-const getAllUer = () => {
-    const json = fs.readFileSync(file_path + 'user.json', 'utf8');
-    // parse to a map
-    return new Map(Object.entries(JSON.parse(json)));
-}
 const getAllLCID = () => {
     const json = fs.readFileSync(file_path + 'leetcoder_ids.json', 'utf8');
     // parse to a list
@@ -32,7 +27,6 @@ const addUser = async () => {
     const user = new IUser(obj.LEETCODE_ID, obj.wechat_id, obj.first_name, obj.last_name);
     const avatar = await getAvatar(user.lcid);
     user.avatar = avatar.data.data.matchedUser.profile.userAvatar;
-    const user_map = getAllUer();
     const id_list = getAllLCID();
     if (id_list.includes(user.lcid)) {
         console.log('User already exists');
@@ -40,8 +34,7 @@ const addUser = async () => {
         console.log('User added');
         id_list.push(user.lcid);
     }
-    user_map.set(user.lcid, user);
-    fs.writeFileSync(file_path + 'user.json', JSON.stringify(Object.fromEntries(user_map)));
+    fs.writeFileSync(file_path + '/user_info/' + user.lcid + '.json', JSON.stringify(user));
     fs.writeFileSync(file_path + 'leetcoder_ids.json', JSON.stringify(id_list));
 }
 
