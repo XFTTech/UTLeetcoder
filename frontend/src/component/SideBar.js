@@ -12,18 +12,6 @@ import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const value_nav_pair = new Map([
-    ['1', 'select_daily'],
-]);
-
-const menu_nav = (key) => {
-    if (value_nav_pair.has(key)) {
-        console.log('here');
-        return value_nav_pair.get(key);
-    }
-    return '/';
-}
-
 function getItem(label, key, icon, children) {
     return {
         key,
@@ -33,7 +21,7 @@ function getItem(label, key, icon, children) {
     };
 }
 
-const SideBar = () => {
+const SideBar = (props) => {
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
@@ -44,6 +32,22 @@ const SideBar = () => {
         });
         return [];
     });
+
+    const value_nav_pair = new Map([
+        ['1', 'select_daily']
+    ]);
+    users.forEach((user) => {
+        value_nav_pair.set(user, user);
+    });
+    
+    const menu_nav = (key) => {
+        if (value_nav_pair.has(key)) {
+            console.log('here');
+            return value_nav_pair.get(key);
+        }
+        return '/';
+    }
+
     const items = [
         getItem('Daily Log', '1', <TodayOutlinedIcon/>),
         getItem('Option 2', '2', <DesktopOutlined />),
