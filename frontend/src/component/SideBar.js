@@ -77,6 +77,12 @@ const SideBar = () => {
                     onClick={() => {
                         window.location.href = '/';
                     }}
+                    onMouseEnter={() => {
+                        document.body.style.cursor = 'pointer';
+                    }}
+                    onMouseLeave={() => {
+                        document.body.style.cursor = 'default';
+                    }}
                 />
             </div>
             <Menu 
