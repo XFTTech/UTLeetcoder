@@ -74,6 +74,9 @@ const SideBar = () => {
                     }}
                 
                     src={leetcodeIcon}
+                    onClick={() => {
+                        window.location.href = '/';
+                    }}
                 />
             </div>
             <Menu 

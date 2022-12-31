@@ -32,7 +32,7 @@ const DailyLog = (props) => {
                     usermap.set('key', user);
                     result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
                 }
-            });    
+            });
             return result;
         };
         if (props.date === '') return;
