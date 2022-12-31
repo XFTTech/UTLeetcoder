@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, Layout, theme } from 'antd';
 import SideBar from '../component/SideBar';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const BlankPage = () => {
     const {
