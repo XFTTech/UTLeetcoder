@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import { getDailyStats, userUrl, problemUrl } from './utils';
+import Highlighter from 'react-highlight-words';
 
 const { Link } = Typography;
 /*
     props: 
         date: string of date in format "YYYY-MM-DD"
+        users: list of users
 */
 const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
@@ -132,12 +134,18 @@ const DailyLog = (props) => {
         },
         render: (text) =>
             searchedColumn === dataIndex ? (
-                searchText
-            ) : (
-                text
-            ),
-    }
-    );
+                <Highlighter
+                    highlightStyle={{
+                        backgroundColor: '#ffc069',
+                        padding: 0,
+                    }}
+                    searchWords={[searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+      ) : (
+        text
+      ),});
     const columns = [
         {
             title: 'User',
