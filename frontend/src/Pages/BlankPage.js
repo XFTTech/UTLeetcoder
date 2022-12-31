@@ -1,44 +1,13 @@
 import React, { useState } from 'react';
-import { Typography, Image, Layout, Menu, theme, DatePicker } from 'antd';
-import leetcodeIcon from '../leetcode_icon.svg';
-import { getUsers } from '../component/utils';
-import {
-    DesktopOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined,
-} from '@ant-design/icons';
-import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
+import { Typography, Layout, theme } from 'antd';
+import SideBar from '../component/SideBar';
 
 const { Header, Content, Footer, Sider } = Layout;
 
-function getItem(label, key, icon, children) {
-    return {
-        key,
-        icon,
-        children,
-        label,
-    };
-}
-
 const BlankPage = () => {
-    const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const [users, setUsers] = useState(() => {
-        getUsers().then((res) => {
-            setUsers(res.data);
-        });
-        return [];
-    });
-    const items = [
-        getItem('Daily Log', '1', <TodayOutlinedIcon/>),
-        getItem('Option 2', '2', <DesktopOutlined />),
-        getItem('User', 'sub1', <UserOutlined />, users.map((user) => getItem(user, user))),
-        getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-        getItem('Files', '9', <FileOutlined />),
-    ];
     
     return (
         <Layout
@@ -46,31 +15,7 @@ const BlankPage = () => {
                 minHeight: '100vh',
             }}
         >
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <div
-                    style={{
-                        height: 45,
-                        width: 45,
-                        margin: 10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        display: 'flex',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                    }}
-                >
-                    <Image
-                        preview={false}
-                        width={45}
-                        height={45}
-                        style={{
-                        }}
-                    
-                        src={leetcodeIcon}
-                    />
-                </div>
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-            </Sider>
+            <SideBar/>
             <Layout className="site-layout">
                 <Header
                     style={{
