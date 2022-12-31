@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
-import { getUsers, getDailyStats, userUrl, problemUrl} from './utils';
+import { getDailyStats, userUrl, problemUrl } from './utils';
 
 const { Link } = Typography;
 /*
@@ -25,27 +25,21 @@ const DailyLog = (props) => {
                 .catch((err) => {
                     console.error(err);
                 });
-            await getUsers()
-                .then((res) => {
-                    res.data.forEach((user) => {
-                        let userdata = dailyStatsList.get(user)
-                        if (userdata) {
-                            let usermap = new Map(Object.entries(userdata ? userdata : {}));
-                            usermap.set('key', user);
-                            result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
-                        }
-                    });
-                })
-                .catch((err) => {
-                    console.error(err);
-                });
+            props.users.forEach((user) => {
+                let userdata = dailyStatsList.get(user)
+                if (userdata) {
+                    let usermap = new Map(Object.entries(userdata ? userdata : {}));
+                    usermap.set('key', user);
+                    result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
+                }
+            });    
             return result;
         };
         if (props.date === '') return;
         getData().then((res) => {
             setData(res);
         });
-    }, [props.date]);
+    }, [props]);
 
     const searchInput = useRef(null);
     const handleSearch = (selectedKeys, confirm, dataIndex) => {

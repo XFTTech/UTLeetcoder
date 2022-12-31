@@ -9,6 +9,7 @@ import {
 } from '@ant-design/icons';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import DailyLog from './component/DailyLog';
+import { getUsers } from './component/utils';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -21,19 +22,6 @@ function getItem(label, key, icon, children) {
     };
 }
 
-
-const items = [
-    getItem('Daily Log', '1', <TodayOutlinedIcon/>),
-    getItem('Option 2', '2', <DesktopOutlined />),
-    getItem('User', 'sub1', <UserOutlined />, [
-        getItem('Tom', '3'),
-        getItem('Bill', '4'),
-        getItem('Alex', '5'),
-    ]),
-    getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-    getItem('Files', '9', <FileOutlined />),
-];
-
 const today = new Date((new Date().setDate(new Date().getDate() - 1))).toISOString().slice(0, 10);
 
 const App = () => {
@@ -42,6 +30,20 @@ const App = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+    const [users, setUsers] = useState(() => {
+        getUsers().then((res) => {
+            setUsers(res.data);
+        });
+        return [];
+    });
+    const items = [
+        getItem('Daily Log', '1', <TodayOutlinedIcon/>),
+        getItem('Option 2', '2', <DesktopOutlined />),
+        getItem('User', 'sub1', <UserOutlined />, users.map((user) => getItem(user, user))),
+        getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+        getItem('Files', '9', <FileOutlined />),
+    ];
+    
     return (
         <Layout
             style={{
@@ -109,7 +111,7 @@ const App = () => {
                     }}
                 >
                     <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
-                    <DailyLog date={selectedDay} />
+                    <DailyLog date={selectedDay} users={users} />
                 </Content>
                 <Footer
                     style={{
