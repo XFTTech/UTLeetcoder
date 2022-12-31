@@ -198,9 +198,6 @@ const DailyLog = (props) => {
             expandedRowRender: (record) => (
                 <Row key={record.key}
                     gutter={30}
-                    style={{
-                        marginLeft: '25%',
-                    }}
                 >
                     <Col span={8}
                         key='easy'

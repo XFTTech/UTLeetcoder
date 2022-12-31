@@ -63,7 +63,7 @@ const DailyLogTable = () => {
                         margin: '16px 16px',
                     }}
                 >
-                    <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
+                    <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)}/>
                     <DailyLog date={selectedDay} users={users} />
                 </Content>
                 <Footer
@@ -74,7 +74,7 @@ const DailyLogTable = () => {
                     UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>
                 </Footer>
             </Layout>
-        </Layout>
+        </Layout >
     );
 }
 
