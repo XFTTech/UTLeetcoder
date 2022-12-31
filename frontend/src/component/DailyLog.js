@@ -2,26 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
-import axios from 'axios';
+import { getUsers, getDailyStats, userUrl, problemUrl} from './utils';
 
 const { Link } = Typography;
-// import Highlighter from 'react-highlight-words';
-const url = "https://leetcode.com/problems/"
-const userUrl = "https://leetcode.com/"
-
-const fileClient = axios.create({
-    baseURL: 'http://localhost:3000/data',
-    timeout: 10000
-});
-
-const getUsers = async () => {
-    return await fileClient.get("leetcoder_ids.json");
-};
-
-const getDailyStats = async (date) => {
-    return await fileClient.get("daily_stats/" + date + ".json");
-};
-
 /*
     props: 
         date: string of date in format "YYYY-MM-DD"
@@ -32,6 +15,33 @@ const DailyLog = (props) => {
     const [data, setData] = useState();
 
     useEffect(() => {
+        const getData = async () => {
+            let dailyStatsList;
+            let result = [];
+            await getDailyStats(props.date)
+                .then((res) => {
+                    dailyStatsList = new Map(Object.entries(res.data));
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+            await getUsers()
+                .then((res) => {
+                    res.data.forEach((user) => {
+                        let userdata = dailyStatsList.get(user)
+                        if (userdata) {
+                            let usermap = new Map(Object.entries(userdata ? userdata : {}));
+                            usermap.set('key', user);
+                            result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
+                        }
+                    });
+                })
+                .catch((err) => {
+                    console.error(err);
+                });
+            return result;
+        };
+        if (props.date === '') return;
         getData().then((res) => {
             setData(res);
         });
@@ -187,32 +197,6 @@ const DailyLog = (props) => {
             sortDirections: ['descend', 'ascend'],
         },
     ];
-    const getData = async () => {
-        let dailyStatsList;
-        let result = [];
-        await getDailyStats(props.date)
-            .then((res) => {
-                dailyStatsList = new Map(Object.entries(res.data));
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-        await getUsers()
-            .then((res) => {
-                res.data.forEach((user) => {
-                    let userdata = dailyStatsList.get(user)
-                    if (userdata) {
-                        let usermap = new Map(Object.entries(userdata ? userdata : {}));
-                        usermap.set('key', user);
-                        result.push(JSON.parse(JSON.stringify(Object.fromEntries(usermap))));
-                    }
-                });
-            })
-            .catch((err) => {
-                console.error(err);
-            });
-        return result;
-    };
 
     return <Table
         columns={columns}
@@ -232,7 +216,7 @@ const DailyLog = (props) => {
                     >
                         {(record.easy).map((item) => (
                             <Row key={item} >
-                                <Link href={url + item + '/'}
+                                <Link href={problemUrl + item + '/'}
                                     target="_blank"
                                     style={{
                                         color: 'green',
@@ -260,7 +244,7 @@ const DailyLog = (props) => {
                     >
                         {(record.medium).map((item) => (
                             <Row key={item}>
-                                <Link href={url + item + '/'}
+                                <Link href={problemUrl + item + '/'}
                                     target="_blank"
                                     style={{
                                         color: 'orange',
@@ -287,7 +271,7 @@ const DailyLog = (props) => {
                     >
                         {(record.hard).map((item) => (
                             <Row key={item}>
-                                <Link href={url + item + '/'}
+                                <Link href={problemUrl + item + '/'}
                                     target="_blank"
                                     style={{
                                         color: 'red',

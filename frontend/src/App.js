@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import { Image } from 'antd';
+import { Typography, Image, Layout, Menu, theme, DatePicker } from 'antd';
 import leetcodeIcon from './leetcode_icon.svg';
 import {
     DesktopOutlined,
     FileOutlined,
-    PieChartOutlined,
     TeamOutlined,
     UserOutlined,
-    OrderedListOutlined,
-    DashboardOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme, Input, DatePicker } from 'antd';
-import { Typography } from 'antd';
-import DailyLog from './component/DailyLog';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
+import DailyLog from './component/DailyLog';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -39,10 +34,11 @@ const items = [
     getItem('Files', '9', <FileOutlined />),
 ];
 
+const today = new Date((new Date().setDate(new Date().getDate() - 1))).toISOString().slice(0, 10);
 
 const App = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const [selectedDay, setSelectedDay] = useState('');
+    const [selectedDay, setSelectedDay] = useState(today);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
