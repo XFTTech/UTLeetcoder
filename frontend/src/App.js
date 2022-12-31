@@ -10,7 +10,7 @@ import {
     OrderedListOutlined,
     DashboardOutlined
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, theme, Input, DatePicker } from 'antd';
 import { Typography } from 'antd';
 import DailyLog from './component/DailyLog';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
@@ -42,6 +42,7 @@ const items = [
 
 const App = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [selectedDay, setSelectedDay] = useState('');
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -111,7 +112,8 @@ const App = () => {
                         margin: '16px 16px',
                     }}
                 >
-                    <DailyLog date={'2022-12-27'} />
+                    <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
+                    <DailyLog date={selectedDay} />
                 </Content>
                 <Footer
                     style={{

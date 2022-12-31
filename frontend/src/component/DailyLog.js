@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
 import axios from 'axios';
@@ -28,6 +29,14 @@ const getDailyStats = async (date) => {
 const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        getData().then((res) => {
+            setData(res);
+        });
+    }, [props.date]);
+
     const searchInput = useRef(null);
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
         confirm();
@@ -204,12 +213,6 @@ const DailyLog = (props) => {
             });
         return result;
     };
-    const [data, setData] = useState(() => {
-        getData().then((res) => {
-            setData(res);
-        });
-    });
-
 
     return <Table
         columns={columns}
