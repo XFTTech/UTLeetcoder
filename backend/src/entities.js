@@ -1,9 +1,10 @@
 export class IUser {
-    constructor(userName, userId, homepage, wxid) {
-        this.userName = userName;
-        this.userId = userId;
-        this.homepage = homepage;
+    constructor(lcid, wxid, fname, lname) {
+        this.lcid = lcid;
         this.wxid = wxid;
+        this.fname = fname;
+        this.lname = lname;
+        this.avatar = '';
     }
 }
 
