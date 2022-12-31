@@ -12,7 +12,6 @@ const writeData = async (path, data) => {
 const update_submission = async (user) => {
     await getRecentSubmissionList(user)
         .then(async (res) => {
-            // console.log(res)
             await writeData(file_path + `raw/${user}.json`,
                 JSON.stringify(res[0]));
             await writeData(file_path + `last_submission/${user}.json`,
@@ -27,7 +26,6 @@ const update_submission = async (user) => {
 const update_daily_log = async (user) => {
     await getDailyLogs(user)
         .then(async (res) => {
-            // console.log(res)
             await writeData(file_path + `daily_log/${user}.json`,
                 JSON.stringify(Object.fromEntries(res)));
             console.log('write complete2')

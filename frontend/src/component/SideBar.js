@@ -42,7 +42,6 @@ const SideBar = (props) => {
     
     const menu_nav = (key) => {
         if (value_nav_pair.has(key)) {
-            console.log('here');
             return value_nav_pair.get(key);
         }
         return '/';

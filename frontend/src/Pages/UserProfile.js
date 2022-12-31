@@ -14,7 +14,6 @@ const { Header, Content, Footer } = Layout;
 
 export const UserProfile = () => {
     const { id } = useParams();
-    console.log(id);
     const [user, setUser] = useState({});
     const {
         token: { colorBgContainer },
@@ -25,7 +24,6 @@ export const UserProfile = () => {
             setUser(res.data);
         });
     }, []);
-    // console.log(user);
     return (
         <Layout
             style={{

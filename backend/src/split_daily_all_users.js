@@ -7,7 +7,6 @@ export const splitDailyAllUsers = async (users) => {
     users.map(async (user) => {
         const json = fs.readFileSync(file_path + `daily_log/${user}.json`, 'utf8');
         const obj = JSON.parse(json);
-        // console.log(obj);
         const user_daily = new Map(Object.entries(obj));
         for (const [date, detail] of user_daily) {
             if (user_all_daily.has(date)) {
@@ -27,7 +26,6 @@ export const splitDailyAllUsers = async (users) => {
             }
         });
     }
-    // console.log(user_all_daily);
     return user_all_daily;
 }
 
