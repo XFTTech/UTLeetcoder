@@ -19,14 +19,14 @@ const DailyLogTable = () => {
         });
         return [];
     });
-    
+
     return (
         <Layout
             style={{
                 minHeight: '100vh',
             }}
         >
-            <SideBar/>
+            <SideBar />
             <Layout className="site-layout">
                 <Header
                     style={{
@@ -46,14 +46,15 @@ const DailyLogTable = () => {
                         {/* <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
                         <Typography.Title
                             style={{
-                                color: 'black',
+                                color: 'navy',
                                 marginLeft: 16,
                                 marginTop: 'auto',
                                 marginBottom: 'auto',
+                                fontFamily: 'Tahoma',
                             }}
                             level={3}
                         >
-                            UTLeetcoders
+                            Daily Log on {selectedDay}
                         </Typography.Title>
                     </div>
                 </Header>
