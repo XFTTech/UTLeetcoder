@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import ErrorPage from './Pages/ErrorPage';
+import Error404 from './Pages/Error404';
 import DailyLogTable from './Pages/DailyLogTable';
 import { UserProfile } from './Pages/UserProfile';
 import { userLoader } from './component/utils';
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error404 />,
     loader: userLoader,
     children: [
       {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <UserProfile />,
-      }
+      },
     ],
   },
 ]);

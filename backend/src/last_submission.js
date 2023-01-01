@@ -8,18 +8,22 @@ export const getSubmission = async (username) => {
     // if not, create a new one
     // if yes, read the file and update the map
 
+
+    const json = fs.readFileSync(file_path + `problems.json`, 'utf8');
+    const obj = JSON.parse(json);
+    let map = new Map(Object.entries(obj));
+
+    map.forEach((value, key) => {
+        map.set(key, 0);
+    });
     if (!fs.existsSync(file_path + `last_submission/${username}.json`)) {
-        const json = fs.readFileSync(file_path + `problems.json`, 'utf8');
-        const obj = JSON.parse(json);
-        const map = new Map(Object.entries(obj));
-        map.forEach((value, key) => {
-            map.set(key, 0);
-        });
-        return map;
-    } else {
-        const json = fs.readFileSync(file_path + `last_submission/${username}.json`, 'utf8');
-        const obj = JSON.parse(json);
-        const map = new Map(Object.entries(obj));
         return map;
     }
+    const user_json = fs.readFileSync(file_path + `last_submission/${username}.json`, 'utf8');
+    const user_obj = JSON.parse(user_json);
+    const user_submission = new Map(Object.entries(user_obj));
+    user_submission.forEach((value, key) => {
+        map.set(key, value);
+    });
+    return map;
 }
