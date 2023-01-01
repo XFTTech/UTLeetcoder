@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { Typography, Layout, theme, DatePicker } from 'antd';
-import SideBar from '../component/SideBar';
+import { Layout, DatePicker } from 'antd';
 import DailyLog from '../component/DailyLog';
-import { getUsers, userLoader } from '../component/utils';
+import { getUsers } from '../component/utils';
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 const today = new Date((new Date().setDate(new Date().getDate() - 1))).toISOString().slice(0, 10);
 
 const DailyLogTable = () => {
     const [selectedDay, setSelectedDay] = useState(today);
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
