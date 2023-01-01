@@ -22,10 +22,7 @@ function getItem(label, key, icon, children) {
 
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
-    const [current, setCurrent] = useState('1');
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
+    
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -87,14 +84,15 @@ const SideBar = () => {
                     onMouseLeave={() => {
                         document.body.style.cursor = 'default';
                     }}
+                    onClick={() => {
+                        window.location.href = '/';
+                    }}
                 /> 
             </Link>
             </div>
             <Menu
                 theme="dark"
-                defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
-                selectedKeys={[current]}
                 mode="inline"
                 items={items}
                 onClick={(e) => {

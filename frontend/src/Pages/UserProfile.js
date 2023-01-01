@@ -1,29 +1,24 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Typography, Layout, theme } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import { Col, Row } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../component/utils';
-import SideBar from '../component/SideBar';
 const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
 const lcurl = "https://leetcode.com/";
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 export const UserProfile = () => {
     const { id } = useParams();
     const [user, setUser] = useState({});
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
 
     useEffect(() => {
         getUserInfo(id).then((res) => {
             setUser(res.data);
         });
-    }, []);
+    }, [id]);
     return (
         <Content
             style={{
