@@ -21,7 +21,7 @@ function getItem(label, key, icon, children) {
     };
 }
 
-const SideBar = (props) => {
+const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const [current, setCurrent] = useState('1');
     const {
