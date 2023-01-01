@@ -6,6 +6,7 @@ import { Col, Row } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../component/utils';
 import { userUrl } from '../component/utils';
+import Error404 from './Error404';
 
 const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
 
@@ -14,12 +15,22 @@ const { Content } = Layout;
 export const UserProfile = () => {
     const { id } = useParams();
     const [user, setUser] = useState({});
+    const [userFound, setUserFound] = useState(true);
 
     useEffect(() => {
         getUserInfo(id).then((res) => {
             setUser(res.data);
+            setUserFound(true);
+        }).catch((err) => {
+            // console.log(err);
+            setUserFound(false);
         });
     }, [id]);
+
+    if (!userFound) {
+        return <Error404 />;
+    }
+
     return (
         <Content
             style={{
