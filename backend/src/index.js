@@ -49,13 +49,16 @@ const split_daily_all_users = async (users) => {
 const split_weekly_all_users = async (users) => {
     // console.log('start split_weekly');
     const user_all_weekly = await splitWeeklyAllUsers(users);
+    let weeks = [];
     for (const week of user_all_weekly.keys()) {
         const str_week = week.toString();
         if (str_week.length === 1) {
             str_week = '0' + str_week;
         }
+        weeks.push(str_week);
         await writeData(file_path + `weekly_stats/week-${str_week}.json`,
             JSON.stringify(Object.fromEntries(user_all_weekly.get(week))));
+        await writeData(file_path + `weeks.json`, JSON.stringify(weeks));
     }
     console.log('split_weekly complete');
 }
