@@ -5,7 +5,7 @@ import { getUsers } from '../component/utils';
 
 const { Content } = Layout;
 
-const today = new Date((new Date().setDate(new Date().getDate() - 1))).toISOString().slice(0, 10);
+const today = new Date().toLocaleString('en-CA').split(',')[0].replaceAll('/', '-');
 
 const DailyLogTable = () => {
     const [selectedDay, setSelectedDay] = useState(today);
