@@ -2,6 +2,7 @@ import { getDailyLogs } from './get_daily_logs.js';
 import { getRecentSubmissionList } from './get_record.js';
 import { splitDailyAllUsers } from './split_daily_all_users.js';
 import { splitWeeklyAllUsers } from './split_weekly_all_users.js';
+import { UserAlltimeStats } from './get_alltime.js';
 import fs from 'fs';
 const file_path = '../../frontend/public/data/';
 
@@ -59,6 +60,7 @@ const split_weekly_all_users = async (users) => {
         await writeData(file_path + `weekly_stats/week-${str_week}.json`,
             JSON.stringify(Object.fromEntries(user_all_weekly.get(week))));
         await writeData(file_path + `weeks.json`, JSON.stringify(weeks));
+        await writeData(file_path + `alltime.json`, JSON.stringify(Object.fromEntries(await UserAlltimeStats(users))));
     }
     console.log('split_weekly complete');
 }
