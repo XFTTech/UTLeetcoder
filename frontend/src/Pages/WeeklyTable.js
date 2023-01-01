@@ -22,19 +22,20 @@ const WeeklyTable = () => {
         });
         return [];
     });
+    const [content, setContent] = useState('Click to select a week');
     const [weeks, setWeeks] = useState(() => {
         getWeeks().then((res) => {
             setWeeks(res.data);
+            setContent(res.data[0]);
         });
         return [];
     });
-    const [content, setContent] = useState('Click to select a week');
     const items = weeks.map((week) => {
         return getItem(week, week);
     });
 
     const handleMenuClick = (e) => {
-        message.info('Switch to ' + e.key + '.');
+        // message.info('Switch to ' + e.key + '.');
         if (e.key !== 'Click to select a week'){
             setContent(e.key);
         }
@@ -52,7 +53,7 @@ const WeeklyTable = () => {
             }}
         >
             <Space wrap>
-                <Dropdown menu={menuProps}>
+                <Dropdown menu={menuProps} >
                 <Button>
                     <Space>
                     {content}
