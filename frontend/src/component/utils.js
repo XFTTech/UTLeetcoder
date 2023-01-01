@@ -12,8 +12,16 @@ export const getUsers = async () => {
     return await fileClient.get("/leetcoder_ids.json");
 };
 
+export const getWeeks = async () => {
+    return await fileClient.get("/weeks.json");
+};
+
 export const getDailyStats = async (date) => {
     return await fileClient.get("/daily_stats/" + date + ".json");
+};
+
+export const getWeeklyStats = async (week) => {
+    return await fileClient.get("/weekly_stats/week-" + week + ".json");
 };
 
 export const getUserInfo = async (lcid) => {

@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Pie } from '@ant-design/plots';
 
+/*
+    props:
+        daily: the given daily statistics
+*/
+
 export const UserPie = (props) => {
     const [data, setData] = useState([]);
     useEffect(() => {

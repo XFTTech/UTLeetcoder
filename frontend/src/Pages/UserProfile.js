@@ -15,7 +15,6 @@ export const UserProfile = () => {
     const [selectedDay, setSelectedDay] = useState('');
     const [user, setUser] = useState({});
     const [userFound, setUserFound] = useState(true);
-    const [daily, setDaily] = useState(new Map());
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
@@ -28,10 +27,9 @@ export const UserProfile = () => {
         });
         getUserDailyStats(id).then((res) => {
             let tempDailyMap = new Map(Object.entries(res.data ? res.data : {}));
-            setDaily(tempDailyMap);
-            setDailyData(daily.get(selectedDay));
+            setDailyData(tempDailyMap.get(selectedDay));
         });
-    }, [id]);
+    }, [id, selectedDay]);
 
     if (!userFound) {
         return <Error404 />;

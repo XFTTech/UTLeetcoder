@@ -40,7 +40,7 @@ const SideBar = () => {
 
     const items = [
         getItem(<Link to="/select_daily">Daily Log</Link>, '1', <TodayOutlinedIcon />),
-        getItem(<Link to="/weekly_log">Weekly Log</Link>, '2', <DesktopOutlined />),
+        getItem(<Link to="/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
             let temp = "/" + user;
             return ( getItem(<Link to={temp}>{user}</Link>, user) );

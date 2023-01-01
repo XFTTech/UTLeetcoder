@@ -8,6 +8,7 @@ import Error404 from './Pages/Error404';
 import DailyLogTable from './Pages/DailyLogTable';
 import { UserProfile } from './Pages/UserProfile';
 import { userLoader } from './component/utils';
+import WeeklyTable from './Pages/WeeklyTable';
 
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: 'select_daily',
         element: <DailyLogTable />,
+      },
+      {
+        path: 'select_weekly',
+        element: <WeeklyTable />,
       },
       {
         path: ':id',
