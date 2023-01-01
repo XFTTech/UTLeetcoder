@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Typography, Layout, theme } from 'antd';
+import { Typography, Layout } from 'antd';
 import { Avatar } from 'antd';
 import { Col, Row } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../component/utils';
+import { userUrl } from '../component/utils';
+
 const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
-const lcurl = "https://leetcode.com/";
 
 const { Content } = Layout;
 
@@ -39,7 +40,7 @@ export const UserProfile = () => {
                             }}
                             level={2}
                             onClick={() => {
-                                window.open(lcurl + user.lcid);
+                                window.open(userUrl + user.lcid);
                             }}
                             onMouseEnter={(e) => {
                                 document.body.style.cursor = 'pointer';

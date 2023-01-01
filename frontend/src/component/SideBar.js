@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Image, Menu, theme } from 'antd';
+import { Layout, Image, Menu } from 'antd';
 import leetcodeIcon from '../leetcode_icon.svg';
 import { getUsers } from '../component/utils';
 import {
@@ -37,13 +37,6 @@ const SideBar = () => {
     users.forEach((user) => {
         value_nav_pair.set(user, user);
     });
-
-    const menu_nav = (key) => {
-        if (value_nav_pair.has(key)) {
-            return value_nav_pair.get(key);
-        }
-        return '/';
-    }
 
     const items = [
         getItem(<Link to="/select_daily">Daily Log</Link>, '1', <TodayOutlinedIcon />),
@@ -95,9 +88,6 @@ const SideBar = () => {
                 defaultOpenKeys={['sub1']}
                 mode="inline"
                 items={items}
-                onClick={(e) => {
-                    console.log(e.key);
-                }}
             />
         </Sider >
     )

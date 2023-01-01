@@ -1,15 +1,14 @@
 import React from 'react';
 import { Typography, Layout, theme } from 'antd';
 import SideBar from './component/SideBar';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Footer } = Layout;
 
 const App = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const { users } = useLoaderData();
     return (
         <Layout
             style={{
