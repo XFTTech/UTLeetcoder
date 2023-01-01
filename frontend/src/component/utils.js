@@ -20,6 +20,10 @@ export const getUserInfo = async (lcid) => {
     return await fileClient.get("/user_info/" + lcid + ".json");
 }
 
+export const getUserDailyStats = async (lcid) => {
+    return await fileClient.get("/daily_log/" + lcid + ".json");
+}
+
 export const userLoader = async () => {
     const users = (await getUsers()).data;
     return { users };

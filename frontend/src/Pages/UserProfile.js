@@ -1,25 +1,29 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Typography, Layout } from 'antd';
-import { Avatar } from 'antd';
-import { Col, Row } from 'antd';
+import { Layout, DatePicker } from 'antd';
 import { useParams } from 'react-router-dom';
-import { getUserInfo } from '../component/utils';
-import { userUrl } from '../component/utils';
-
-const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+import { getUserDailyStats, getUserInfo } from '../component/utils';
+import { UserCard } from '../component/UserCard';
+import { UserPie } from '../component/UserPie';
 
 const { Content } = Layout;
 
 export const UserProfile = () => {
     const { id } = useParams();
+    const [selectedDay, setSelectedDay] = useState('');
     const [user, setUser] = useState({});
-
+    const [daily, setDaily] = useState(new Map());
+    const [dailyData, setDailyData] = useState([]);
     useEffect(() => {
         getUserInfo(id).then((res) => {
             setUser(res.data);
         });
-    }, [id]);
+        getUserDailyStats(id).then((res) => {
+            let tempDailyMap = new Map(Object.entries(res.data ? res.data : {}));
+            setDaily(tempDailyMap);
+            setDailyData(daily.get(selectedDay));
+        });
+    }, [id, selectedDay]);
     return (
         <Content
             style={{
@@ -28,71 +32,9 @@ export const UserProfile = () => {
                 marginTop: 16,
             }}
         >
-            <Row>
-                <Col span={12}>
-                    <Row>
-                        <Typography.Title
-                            style={{
-                                color: 'navy',
-                                marginLeft: 16,
-                                marginTop: 'auto',
-                                marginBottom: 'auto',
-                            }}
-                            level={2}
-                            onClick={() => {
-                                window.open(userUrl + user.lcid);
-                            }}
-                            onMouseEnter={(e) => {
-                                document.body.style.cursor = 'pointer';
-                                e.target.style.color = 'blue';
-                                e.target.style.textDecoration = 'underline';
-                            }}
-                            onMouseLeave={(e) => {
-                                document.body.style.cursor = 'default';
-                                e.target.style.color = 'navy';
-                                e.target.style.textDecoration = 'none';
-                            }}
-                        >
-                            {user.lcid}
-                        </Typography.Title>
-                    </Row>
-                    <Row>
-                        <Typography.Title
-                            style={{
-                                color: '#2F8819',
-                                marginLeft: 16,
-                                marginTop: 'auto',
-                                marginBottom: 'auto',
-                            }}
-                            level={5}
-                        >
-                            WeChat ID: {user.wxid ? user.wxid : "N/A"}
-                        </Typography.Title>
-                    </Row>
-                    <Row>
-                        <Typography.Text
-                            style={{
-                                color: 'black',
-                                marginLeft: 16,
-                                marginTop: 'auto',
-                                marginBottom: 'auto',
-                            }}
-                        >
-                            Name: {(user.fname ? user.fname : "") + " " + (user.lname ? user.lname : "")}
-                        </Typography.Text>
-                    </Row>
-                </Col>
-                <Col span={12}>
-                    <Avatar
-                        size={64}
-                        src={user.avatar === "" ? default_avatar : user.avatar}
-                        style={{
-                            margin: 'auto',
-                            display: 'block',
-                        }}
-                    />
-                </Col>
-            </Row>
+            <UserCard user={user} />
+            <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
+            <UserPie daily={dailyData} />
         </Content>
     );
 }
