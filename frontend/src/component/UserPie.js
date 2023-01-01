@@ -9,19 +9,19 @@ import { Pie } from '@ant-design/plots';
 export const UserPie = (props) => {
     const [data, setData] = useState([]);
     useEffect(() => {
-        if (props.daily) {
+        if (props.data) {
             let temp = [
                 {
                     type: 'Easy',
-                    value: props.daily.easy_cnt? props.daily.easy_cnt : 0,
+                    value: props.data.easy_cnt? props.data.easy_cnt : 0,
                 },
                 {
                     type: 'Medium',
-                    value: props.daily.medium_cnt? props.daily.medium_cnt : 0,
+                    value: props.data.medium_cnt? props.data.medium_cnt : 0,
                 },
                 {
                     type: 'Hard',
-                    value: props.daily.hard_cnt? props.daily.hard_cnt : 0,
+                    value: props.data.hard_cnt? props.data.hard_cnt : 0,
                 },
             ];
             setData(temp);

@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Layout, DatePicker } from 'antd';
+import { Layout } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../component/utils';
 import { UserCard } from '../component/UserCard';
 import { UserPie } from '../component/UserPie';
 import Error404 from './Error404';
-import { getUserDailyStats } from '../component/utils';
+import { getAllStats } from '../component/utils';
 
 const { Content } = Layout;
 
 export const UserProfile = () => {
     const { id } = useParams();
-    const [selectedDay, setSelectedDay] = useState('');
     const [user, setUser] = useState({});
     const [userFound, setUserFound] = useState(true);
-    const [dailyData, setDailyData] = useState([]);
+    const [data, setData] = useState({});
 
     useEffect(() => {
         getUserInfo(id).then((res) => {
@@ -25,11 +24,10 @@ export const UserProfile = () => {
             // console.log(err);
             setUserFound(false);
         });
-        getUserDailyStats(id).then((res) => {
-            let tempDailyMap = new Map(Object.entries(res.data ? res.data : {}));
-            setDailyData(tempDailyMap.get(selectedDay));
+        getAllStats().then((res) => {
+            setData(res.data[id]);
         });
-    }, [id, selectedDay]);
+    }, [id]);
 
     if (!userFound) {
         return <Error404 />;
@@ -44,8 +42,7 @@ export const UserProfile = () => {
             }}
         >
             <UserCard user={user} />
-            <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
-            <UserPie daily={dailyData} />
+            <UserPie data={data} user={user} />
         </Content>
     );
 }

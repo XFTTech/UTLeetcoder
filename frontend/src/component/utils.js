@@ -24,6 +24,10 @@ export const getWeeklyStats = async (week) => {
     return await fileClient.get("/weekly_stats/week-" + week + ".json");
 };
 
+export const getAllStats = async () => {
+    return await fileClient.get("/alltime.json");
+};
+
 export const getUserInfo = async (lcid) => {
     return await fileClient.get("/user_info/" + lcid + ".json");
 }
