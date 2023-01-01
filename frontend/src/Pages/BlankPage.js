@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Typography, Layout, theme } from 'antd';
 import SideBar from '../component/SideBar';
+import { Outlet } from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
 
@@ -31,8 +32,6 @@ const BlankPage = () => {
                             height: '100%',
                         }}
                     >
-                        {/* <Breadcrumb.Item>DailyLog</Breadcrumb.Item> */}
-                        {/* <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
                         <Typography.Title
                             style={{
                                 color: 'black',
@@ -51,7 +50,7 @@ const BlankPage = () => {
                         margin: '16px 16px',
                     }}
                 >
-                    {/* no content here */}
+                    <Outlet />
                 </Content>
                 <Footer
                     style={{

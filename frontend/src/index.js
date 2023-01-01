@@ -3,11 +3,36 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ErrorPage from './Pages/ErrorPage';
+import DailyLogTable from './Pages/DailyLogTable';
+import { UserProfile } from './Pages/UserProfile';
+import { userLoader } from './component/utils';
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <ErrorPage />,
+    loader: userLoader,
+    children: [
+      {
+        path: 'select_daily',
+        element: <DailyLogTable />,
+      },
+      {
+        path: ':id',
+        element: <UserProfile />,
+      }
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

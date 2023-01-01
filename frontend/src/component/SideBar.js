@@ -4,13 +4,12 @@ import leetcodeIcon from '../leetcode_icon.svg';
 import { getUsers } from '../component/utils';
 import {
     DesktopOutlined,
-    FileOutlined,
-    TeamOutlined,
     UserOutlined,
 } from '@ant-design/icons';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
+import { Link } from 'react-router-dom';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 
 function getItem(label, key, icon, children) {
     return {
@@ -37,11 +36,10 @@ const SideBar = () => {
     const value_nav_pair = new Map([
         ['1', 'select_daily']
     ]);
+
     users.forEach((user) => {
         value_nav_pair.set(user, user);
     });
-
-
 
     const menu_nav = (key) => {
         if (value_nav_pair.has(key)) {
@@ -51,9 +49,12 @@ const SideBar = () => {
     }
 
     const items = [
-        getItem('Daily Log', '1', <TodayOutlinedIcon />),
-        getItem('Weekly Log', '2', <DesktopOutlined />),
-        getItem('User', 'sub1', <UserOutlined />, users.map((user) => getItem(user, user))),
+        getItem(<Link to="/select_daily">Daily Log</Link>, '1', <TodayOutlinedIcon />),
+        getItem(<Link to="/weekly_log">Weekly Log</Link>, '2', <DesktopOutlined />),
+        getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
+            let temp = "/" + user;
+            return ( getItem(<Link to={temp}>{user}</Link>, user) );
+        })),
     ];
 
     return (
@@ -61,9 +62,6 @@ const SideBar = () => {
             collapsible
             collapsed={collapsed}
             onCollapse={(value) => setCollapsed(value)}
-            style={{
-                background: '#ffa31a',
-            }}
         >
             <div
                 style={{
@@ -77,24 +75,20 @@ const SideBar = () => {
                     marginRight: 'auto',
                 }}
             >
+            <Link to="/">
                 <Image
                     preview={false}
                     width={45}
                     height={45}
-                    style={{
-                    }}
-
                     src={leetcodeIcon}
-                    onClick={() => {
-                        window.location.href = '/';
-                    }}
                     onMouseEnter={() => {
                         document.body.style.cursor = 'pointer';
                     }}
                     onMouseLeave={() => {
                         document.body.style.cursor = 'default';
                     }}
-                />
+                /> 
+            </Link>
             </div>
             <Menu
                 theme="dark"
@@ -103,25 +97,8 @@ const SideBar = () => {
                 selectedKeys={[current]}
                 mode="inline"
                 items={items}
-                onClick={(item) => {
-                    window.location.href = menu_nav(item.key);
-                    setCurrent(item.key);
-                    console.log(item.key)
-                }}
-                style={{
-                    background: '#ffa31a',
-                    color: '#1b1b1b',
-                    fontFamily: 'Tahoma',
-                    fontWeight: 'bold',
-                }}
-                onMouseEnter={(e) => {
-                    e.target.style.color = 'purple';
-                }}
-                onMouseLeave={(e) => {
-                    e.target.style.color = '#1b1b1b';
-                }}
-                onSelect={(item) => {
-                    item.backgroundColor = 'purple';
+                onClick={(e) => {
+                    console.log(e.key);
                 }}
             />
         </Sider >

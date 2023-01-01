@@ -1,20 +1,60 @@
-import DailyLogTable from "./Pages/DailyLogTable";
-import BlankPage from "./Pages/BlankPage";
-import { UserProfile } from "./Pages/UserProfile";
-import {
-    BrowserRouter,
-    Routes, Route, Navigate
-} from 'react-router-dom';
+import React from 'react';
+import { Typography, Layout, theme } from 'antd';
+import SideBar from './component/SideBar';
+import { Outlet, useLoaderData } from 'react-router-dom';
+
+const { Header, Content, Footer } = Layout;
 
 const App = () => {
+    const {
+        token: { colorBgContainer },
+    } = theme.useToken();
+    const { users } = useLoaderData();
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route exact path='/' element={<BlankPage />} />
-                <Route exact path='/select_daily' element={<DailyLogTable />} />
-                <Route exact path=':id' element={<UserProfile/>} />
-            </Routes>
-        </BrowserRouter>
+        <Layout
+            style={{
+                minHeight: '100vh',
+            }}
+        >
+            <SideBar/>
+            <Layout className="site-layout">
+                <Header
+                    style={{
+                        padding: 0,
+                        background: colorBgContainer,
+                    }}
+                >
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center',
+                            height: '100%',
+                        }}
+                    >
+                        <Typography.Title
+                            style={{
+                                color: 'black',
+                                marginLeft: 16,
+                                marginTop: 'auto',
+                                marginBottom: 'auto',
+                            }}
+                            level={3}
+                        >
+                            UTLeetcoders
+                        </Typography.Title>
+                    </div>
+                </Header>
+                <Outlet />
+                <Footer
+                    style={{
+                        textAlign: 'center',
+                    }}
+                >
+                    UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>
+                </Footer>
+            </Layout>
+        </Layout>
     );
 };
 export default App;
