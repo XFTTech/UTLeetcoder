@@ -46,19 +46,19 @@ const split_daily_all_users = async (users) => {
     console.log('split_daily complete');
 }
 
-// const split_weekly_all_users = async (users) => {
-//     // console.log('start split_weekly');
-//     const user_all_weekly = await splitWeeklyAllUsers(users);
-//     for (const week of user_all_weekly.keys()) {
-//         const str_week = week.toString();
-//         if (str_week.length === 1) {
-//             str_week = '0' + str_week;
-//         }
-//         await writeData(file_path + `weekly_stats/week-${str_week}.json`,
-//             JSON.stringify(Object.fromEntries(user_all_weekly.get(week))));
-//     }
-//     console.log('split_weekly complete');
-// }
+const split_weekly_all_users = async (users) => {
+    // console.log('start split_weekly');
+    const user_all_weekly = await splitWeeklyAllUsers(users);
+    for (const week of user_all_weekly.keys()) {
+        const str_week = week.toString();
+        if (str_week.length === 1) {
+            str_week = '0' + str_week;
+        }
+        await writeData(file_path + `weekly_stats/week-${str_week}.json`,
+            JSON.stringify(Object.fromEntries(user_all_weekly.get(week))));
+    }
+    console.log('split_weekly complete');
+}
 
 const main = async () => {
     const users = JSON.parse(fs.readFileSync(file_path + 'leetcoder_ids.json', 'utf8'));
@@ -67,7 +67,10 @@ const main = async () => {
         await update_submission(user);
         await update_daily_log(user);
         idx--;
-        if (idx === 0) await split_daily_all_users(users);
+        if (idx === 0) {
+            await split_daily_all_users(users);
+            await split_weekly_all_users(users);
+        }
     });
 }
 
