@@ -2516,5 +2516,10 @@
     "shortest-distance-to-target-string-in-a-circular-array": "Easy",
     "take-k-of-each-character-from-left-and-right": "Medium",
     "maximum-tastiness-of-candy-basket": "Medium",
-    "number-of-great-partitions": "Hard"
+    "number-of-great-partitions": "Hard",
+    "count-the-number-of-k-big-indices": "Hard",
+    "count-the-digits-that-divide-a-number": "Easy",
+    "distinct-prime-factors-of-product-of-array": "Medium",
+    "partition-string-into-substrings-with-values-at-most-k": "Medium",
+    "closest-prime-numbers-in-range": "Medium"
 }

@@ -211,5 +211,21 @@
         ],
         "medium": [],
         "hard": []
+    },
+    "2023-1-1": {
+        "user": "Ethan-ZYF",
+        "total": 4,
+        "easy_cnt": 1,
+        "medium_cnt": 3,
+        "hard_cnt": 0,
+        "easy": [
+            "count-the-digits-that-divide-a-number"
+        ],
+        "medium": [
+            "closest-prime-numbers-in-range",
+            "partition-string-into-substrings-with-values-at-most-k",
+            "distinct-prime-factors-of-product-of-array"
+        ],
+        "hard": []
     }
 }
