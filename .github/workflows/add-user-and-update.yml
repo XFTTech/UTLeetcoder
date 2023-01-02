@@ -2,14 +2,14 @@ name: Add user and update
 
 on:
   schedule:
-    - cron: '50 * * * *'
+    - cron: "50 * * * *"
 
 jobs:
   add_user_and_update:
     runs-on: ubuntu-latest
 
     env:
-      TZ: Asia/Shanghai 
+      TZ: Asia/Shanghai
 
     steps:
       - name: Clone repository
@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: 'npm'
+          cache: "npm"
       - run: npm install
 
       - name: Add user
