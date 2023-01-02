@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Layout} from 'antd';
 import { getUsers, getWeeks } from '../component/utils';
 import { DownOutlined } from '@ant-design/icons';
-import { Button, Dropdown, message, Space } from 'antd';
+import { Button, Dropdown, Space } from 'antd';
 import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import WeeklyLog from '../component/WeeklyLog';
 
@@ -35,7 +35,6 @@ const WeeklyTable = () => {
     });
 
     const handleMenuClick = (e) => {
-        // message.info('Switch to ' + e.key + '.');
         if (e.key !== 'Click to select a week'){
             setContent(e.key);
         }
