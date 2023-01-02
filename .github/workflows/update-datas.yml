@@ -41,3 +41,10 @@ jobs:
 
     - name: Update
       run: node index.js
+    - name: Add
+      run: git add .
+    - name: Commit
+      run: git commit -m "Update data"
+    - name: Push
+      run: git push origin main
+    
