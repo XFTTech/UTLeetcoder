@@ -38,6 +38,7 @@ jobs:
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
     - name: Update
+      working-directory: ./backend/src/
       run: node index.js
     - name: Add
       run: git add .
