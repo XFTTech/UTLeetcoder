@@ -16,10 +16,19 @@ const BlankPage = () => {
                 gutter={[16, 16]}
             >
                 <Col span={6}>
+                    <Row
+                gutter={[16, 16]}
+            >
+                <Col span={8}>
                     <EthanDescription />
                 </Col>
                 <Col span={7.5}>
                     <ZhuyuezxDescription />
+                </Col>
+                <Col span={8}>
+                    <Yorafa />
+                </Col>
+            </Row>
                 </Col>
                 <Col span={8}>
                     <Yorafa />
