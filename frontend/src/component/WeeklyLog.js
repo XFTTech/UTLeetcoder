@@ -16,7 +16,7 @@ const DailyLog = (props) => {
     const [data, setData] = useState();
 
     useEffect(() => {
-        if (props.week === 'Click to select a week') return;
+        if (props.week === '') return;
         const getData = async () => {
             let weeklyStatsList;
             let result = [];

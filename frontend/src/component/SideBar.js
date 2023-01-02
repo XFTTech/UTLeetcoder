@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Image, Menu } from 'antd';
-import leetcodeIcon from '../leetcode_icon.svg';
+import testLogo from '../test_logo.png';
 import { getUsers } from '../component/utils';
 import {
     DesktopOutlined,
@@ -57,12 +57,12 @@ const SideBar = () => {
                 style={{
                     height: 45,
                     width: 45,
-                    margin: 10,
                     alignItems: 'center',
                     justifyContent: 'center',
-                    display: 'flex',
+                    display: 'block',
                     marginLeft: 'auto',
                     marginRight: 'auto',
+                    marginTop : 10,
                 }}
             >
             <Link to="/">
@@ -70,7 +70,7 @@ const SideBar = () => {
                     preview={false}
                     width={45}
                     height={45}
-                    src={leetcodeIcon}
+                    src={testLogo}
                     onMouseEnter={() => {
                         document.body.style.cursor = 'pointer';
                     }}
