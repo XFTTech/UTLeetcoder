@@ -1,19 +1,76 @@
 export class IUser {
-    constructor(userName, userId, homepage, wxid) {
-        this.userName = userName;
-        this.userId = userId;
-        this.homepage = homepage;
+    constructor(lcid, wxid, fname, lname) {
+        this.lcid = lcid;
         this.wxid = wxid;
+        this.fname = fname;
+        this.lname = lname;
+        this.avatar = '';
     }
 }
 
 export class DailyLog {
     // date: str
-    // questions: [str]
-    // reviews: [str]
-    constructor(date, questions = []) {
+    // userDaily: [UserDaily]
+    constructor(date, userDaily = []) {
         this.date = date;
-        this.questions = questions;
+        this.userDaily = userDaily;
+    }
+}
+
+export class UserDaily {
+    // user: username(string)
+    // total: int
+    // easy_cnt: int
+    // medium_cnt: int
+    // hard_cnt: int
+    // easy: [str]
+    // medium: [str]
+    // hard: [str]
+    constructor(user, total = 0, easy_cnt = 0, medium_cnt = 0, hard_cnt = 0, easy = [], medium = [], hard = []) {
+        this.user = user;
+        this.total = total;
+        this.easy_cnt = easy_cnt;
+        this.medium_cnt = medium_cnt;
+        this.hard_cnt = hard_cnt;
+        this.easy = easy;
+        this.medium = medium;
+        this.hard = hard;
+    }
+}
+
+export class UserWeekly {
+    // user: username(string)
+    // total: int
+    // easy_cnt: int
+    // medium_cnt: int
+    // hard_cnt: int
+    // easy: [str]
+    // medium: [str]
+    // hard: [str]
+    constructor(user, total = 0, easy_cnt = 0, medium_cnt = 0, hard_cnt = 0, easy = [], medium = [], hard = []) {
+        this.user = user;
+        this.total = total;
+        this.easy_cnt = easy_cnt;
+        this.medium_cnt = medium_cnt;
+        this.hard_cnt = hard_cnt;
+        this.easy = easy;
+        this.medium = medium;
+        this.hard = hard;
+    }
+}
+
+export class UserAlltime {
+    // user: username(string)
+    // total: int
+    // easy_cnt: int
+    // medium_cnt: int
+    // hard_cnt: int
+    constructor(user, total = 0, easy_cnt = 0, medium_cnt = 0, hard_cnt = 0) {
+        this.user = user;
+        this.total = total;
+        this.easy_cnt = easy_cnt;
+        this.medium_cnt = medium_cnt;
+        this.hard_cnt = hard_cnt;
     }
 }
 
@@ -46,7 +103,7 @@ export class UserHistory {
 export class UserAllSubmission {
     // user: username(string)
     // submissions: {str: int}
-    constructor(user, submissions = {}) {
+    constructor(user, submissions = []) {
         this.user = user;
         this.submissions = submissions;
     }

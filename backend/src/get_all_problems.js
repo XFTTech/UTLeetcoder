@@ -1,6 +1,7 @@
 import axios from 'axios';
 import fs from 'fs';
 import { Problem, AllProblemList } from './entities.js';
+const file_path = '../../frontend/public/data/';
 
 
 const apiClient = axios.create({
@@ -43,7 +44,7 @@ export const getAllProblems = async (user) => {
         map.set(problem.titleSlug, problem.difficulty);
     });
 
-    fs.writeFile(`../data/problems.json`, JSON.stringify(Object.fromEntries(map)), (err) => {
+    fs.writeFile(file_path + `problems.json`, JSON.stringify(Object.fromEntries(map)), (err) => {
         if (err) {
             console.error(err);
         }

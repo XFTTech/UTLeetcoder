@@ -1,0 +1,41 @@
+name: Add user and update
+
+on:
+  schedule:
+    - cron: "50 * * * *"
+
+jobs:
+  add_user_and_update:
+    runs-on: ubuntu-latest
+
+    env:
+      TZ: Asia/Shanghai
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: To Backend Directory
+        run: cd ./backend
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+      - run: npm install
+
+      - name: Add user
+        run: |
+          git pull
+          node ./src/index.js
+          git pull
+
+      - name: Update GitHub
+        run: |
+          git config --local user.email "ethany.zhao@mail.utoronto.ca"
+          git config --local user.name "Ethan-ZYF-Bot"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git add *
+          git commit -m "ci: update by github action"
+          git push
