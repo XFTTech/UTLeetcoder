@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Avatar, Card } from 'antd';
 import { getUserInfo } from './utils';
 const { Meta } = Card;
+const scale = 400;
 
 const Yorafa = () => {
     const [user, setUser] = useState({});
@@ -18,7 +19,10 @@ const Yorafa = () => {
     return (
         // set the width of poster and video to 500
         <Card
-            style={{ width: 500 }}
+            style={{
+                width: scale,
+                height : scale,
+            }}
             cover={
                 <video
                     id="my-video"
@@ -26,7 +30,7 @@ const Yorafa = () => {
                     controls
                     preload="auto"
                     width="550"
-                    height="330"
+                    height="auto"
                     poster="http://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"
                     data-setup="{}"
               >
@@ -36,7 +40,7 @@ const Yorafa = () => {
         >
             <Meta
                 avatar={<Avatar src={user.avatar}
-                    style={{ width: 100, height: 100 }}
+                    style={{ width: 64, height: 64 }}
                 />}
                 title="Yorafa (Tianle Wang)"
                 description="Do or do not, there is no try."
