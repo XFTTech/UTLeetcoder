@@ -22,7 +22,7 @@ function getItem(label, key, icon, children) {
 
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
-    
+
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -43,7 +43,7 @@ const SideBar = () => {
         getItem(<Link to="/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
             let temp = "/" + user;
-            return ( getItem(<Link to={temp}>{user}</Link>, user) );
+            return (getItem(<Link to={temp}>{user}</Link>, user));
         })),
     ];
 
@@ -62,26 +62,26 @@ const SideBar = () => {
                     display: 'block',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    marginTop : 10,
+                    marginTop: 10,
                 }}
             >
-            <Link to="/">
-                <Image
-                    preview={false}
-                    width={45}
-                    height={45}
-                    src={testLogo}
-                    onMouseEnter={() => {
-                        document.body.style.cursor = 'pointer';
-                    }}
-                    onMouseLeave={() => {
-                        document.body.style.cursor = 'default';
-                    }}
-                    onClick={() => {
-                        window.location.href = '/';
-                    }}
-                /> 
-            </Link>
+                <Link to="/">
+                    <Image
+                        preview={false}
+                        width={45}
+                        height={45}
+                        src={testLogo}
+                        onMouseEnter={() => {
+                            document.body.style.cursor = 'pointer';
+                        }}
+                        onMouseLeave={() => {
+                            document.body.style.cursor = 'default';
+                        }}
+                        onClick={() => {
+                            window.location.href = '/';
+                        }}
+                    />
+                </Link>
             </div>
             <Menu
                 theme="dark"

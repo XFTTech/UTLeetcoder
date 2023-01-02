@@ -2,6 +2,9 @@ import React from 'react';
 import { Typography, Layout, theme } from 'antd';
 import SideBar from './component/SideBar';
 import { Outlet } from 'react-router-dom';
+import { Col, Row } from 'antd';
+import { Image } from 'antd';
+import github from './github-mark/github-mark.png';
 
 const { Header, Footer } = Layout;
 
@@ -15,7 +18,7 @@ const App = () => {
                 minHeight: '100vh',
             }}
         >
-            <SideBar/>
+            <SideBar />
             <Layout className="site-layout">
                 <Header
                     style={{
@@ -23,26 +26,64 @@ const App = () => {
                         background: colorBgContainer,
                     }}
                 >
-                    <div
+                    <Row
                         style={{
-                            display: 'flex',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
                             height: '100%',
                         }}
                     >
-                        <Typography.Title
+                        <Col span={20}
                             style={{
-                                color: 'black',
-                                marginLeft: 16,
-                                marginTop: 'auto',
-                                marginBottom: 'auto',
+                                height: '100%',
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                alignItems: 'center',
                             }}
-                            level={3}
                         >
-                            UTLeetcoders
-                        </Typography.Title>
-                    </div>
+                            <Typography.Title
+                                style={{
+                                    color: 'black',
+                                    marginLeft: 16,
+                                    marginTop: 'auto',
+                                    marginBottom: 'auto',
+                                }}
+                                level={3}
+                            >
+                                UTLeetcoders
+                            </Typography.Title>
+                        </Col>
+                        <Col span={4}
+                            style={{
+                                height: '100%',
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                alignItems: 'center',
+                                padding : 16,
+                            }}
+                        >
+                            <Image
+                                preview={false}
+                                width={45}
+                                height={45}
+                                src={github}
+                                style={{
+                                    display: 'block',
+                                }}
+                                onMouseEnter={() => {
+                                    document.body.style.cursor = 'pointer';
+                                }}
+                                onMouseLeave={() => {
+                                    document.body.style.cursor = 'default';
+                                }}
+                                onClick={() => {
+                                    // window.location.href = 'https://github.com/Ethan-ZYF/UTLeetcoder';
+                                    // open a new tab
+                                    window.open(
+                                        'https://github.com/Ethan-ZYF/UTLeetcoder'
+                                    );
+                                }}
+                            />
+                        </Col>
+                    </Row>
                 </Header>
                 <Outlet />
                 <Footer
