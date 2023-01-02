@@ -2,8 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Image } from 'antd';
-import { getUserInfo } from '../component/utils';
-
+import { getUserInfo } from './utils';
+import HomePage from './Ethan-ZYF.png';
 const { Meta } = Card;
 
 const EthanDescription = () => {
@@ -24,7 +24,7 @@ const EthanDescription = () => {
                 <Image
                     alt="example"
                     width={500}
-                    src="https://drive.google.com/file/d/1VH5p3G3xZiqPpNSbZ9O3gqC6h0-6nNj0/view?usp=share_link"
+                    src={HomePage}
                 />
             }
         >
