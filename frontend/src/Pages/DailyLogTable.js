@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Layout, DatePicker } from 'antd';
 import DailyLog from '../component/DailyLog';
 import { getUsers } from '../component/utils';
+import dayjs from 'dayjs';
 
 const { Content } = Layout;
 
@@ -22,7 +23,10 @@ const DailyLogTable = () => {
                 margin: '16px 16px',
             }}
         >
-            <DatePicker onChange={(date, dateString) => setSelectedDay(dateString)} />
+            <DatePicker 
+                defaultValue={dayjs(today)}
+                onChange={(date, dateString) => setSelectedDay(dateString)} 
+            />
             <DailyLog date={selectedDay} users={users} />
         </Content>
     );
