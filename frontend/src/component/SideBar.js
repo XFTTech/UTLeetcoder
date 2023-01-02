@@ -65,7 +65,7 @@ const SideBar = () => {
                     marginTop: 10,
                 }}
             >
-                <Link to="/UTLeetcoder">
+                <Link to="/UTLeetcoder/">
                     <Image
                         preview={false}
                         width={45}
