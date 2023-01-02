@@ -48,7 +48,7 @@ const App = () => {
                                 }}
                                 level={3}
                             >
-                                UTLeetcoders
+                                UTLeetcoder
                             </Typography.Title>
                         </Col>
                         <Col span={4}
@@ -57,7 +57,7 @@ const App = () => {
                                 display: 'flex',
                                 justifyContent: 'flex-end',
                                 alignItems: 'center',
-                                padding : 16,
+                                padding: 16,
                             }}
                         >
                             <Image
@@ -85,13 +85,14 @@ const App = () => {
                         </Col>
                     </Row>
                 </Header>
-                <Outlet />
+                <Outlet/>
                 <Footer
                     style={{
                         textAlign: 'center',
                     }}
                 >
-                    UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>
+                    UTLeetcoder ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>, <a href="
+                        https://github.com/zhuyuezx">zhuyuezx</a>, and <a href="https://github.com/Yorafa">Yorafa</a>
                 </Footer>
             </Layout>
         </Layout>

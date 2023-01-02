@@ -40,3 +40,7 @@ export const userLoader = async () => {
     const users = (await getUsers()).data;
     return { users };
 }
+
+export const getUserImage = async (lcid) => {
+    return await fileClient.get("/Creator/" + lcid + "/page.png");
+}
