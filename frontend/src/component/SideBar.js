@@ -65,7 +65,7 @@ const SideBar = () => {
                     marginTop: 10,
                 }}
             >
-                <Link to="/">
+                <Link to="/UTLeetcoder">
                     <Image
                         preview={false}
                         width={45}
@@ -76,9 +76,6 @@ const SideBar = () => {
                         }}
                         onMouseLeave={() => {
                             document.body.style.cursor = 'default';
-                        }}
-                        onClick={() => {
-                            window.location.href = '/UTLeetcoder/';
                         }}
                     />
                 </Link>
