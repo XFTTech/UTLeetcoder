@@ -5,9 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: [ "Yorafa/Action" ]
 
 jobs:
   build:
@@ -35,4 +33,4 @@ jobs:
     - name: Deploy
       run: serve -s build -l 80
       working-directory: frontend
-      
+
