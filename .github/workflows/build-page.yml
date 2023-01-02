@@ -23,8 +23,9 @@ jobs:
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:
+        with: 
           node-version: 16
+          cache: 'npm'
       - run: |
           npm install
 
@@ -35,7 +36,7 @@ jobs:
           git pull
 
       - name: Deploy
-        uses: npm run start
+        uses: serve -s build
 
       - name: Update GitHub
         run: |
