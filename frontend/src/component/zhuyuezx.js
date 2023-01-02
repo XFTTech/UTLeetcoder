@@ -18,12 +18,12 @@ const ZhuyuezxDescription = () => {
 
     return (
         <Card
-            style={{ width: 550 }}
+            style={{ width: 500 }}
             cover={
                 <Image
                     alt="example"
-                    width={550}
-                    height={400}
+                    width={500}
+                    height={350}
                     src={HomePage}
                 />
             }
@@ -33,8 +33,10 @@ const ZhuyuezxDescription = () => {
                     style={{ width: 100, height: 100 }}
                 />}
                 title="Jason Zhu"
-                description="Love to create cool things by coding. 
-                Leetcoder by enthusiasm!"
+                description="Love to create cool things through coding. 
+                Leetcoder by enthusiasm!
+                
+                More stuff on 'zhuyuezx.github.io'"
             />
         </Card>
     )

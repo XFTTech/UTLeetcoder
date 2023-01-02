@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Image } from 'antd';
 import { getUserInfo } from './utils';
 import HomePage from './Ethan-ZYF.png';
 const { Meta } = Card;
+const scale = 400;
 
 const EthanDescription = () => {
     const [user, setUser] = useState({});
@@ -19,18 +19,21 @@ const EthanDescription = () => {
 
     return (
         <Card
-            style={{ width: 500 }}
+            style={{
+                width: scale,
+                height : scale,
+            }}
             cover={
                 <Image
                     alt="example"
-                    width={500}
+                    width={scale}
                     src={HomePage}
                 />
             }
         >
             <Meta
                 avatar={<Avatar src={user.avatar}
-                    style={{ width: 100, height: 100 }}
+                    style={{ width: 64, height: 64 }}
                 />}
                 title="Ethan Zhao (Yifan Zhao)"
                 description="1 year LeetCoder. Guardian of the LeetCode weekly contest."
