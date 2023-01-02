@@ -39,10 +39,10 @@ const SideBar = () => {
     });
 
     const items = [
-        getItem(<Link to="/select_daily">Daily Log</Link>, '1', <CalendarOutlined />),
-        getItem(<Link to="/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
+        getItem(<Link to="/UTLeetcoder/select_daily">Daily Log</Link>, '1', <CalendarOutlined />),
+        getItem(<Link to="/UTLeetcoder/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
-            let temp = "/" + user;
+            let temp = "/UTLeetcoder/" + user;
             return (getItem(<Link to={temp}>{user}</Link>, user));
         })),
     ];
@@ -78,7 +78,7 @@ const SideBar = () => {
                             document.body.style.cursor = 'default';
                         }}
                         onClick={() => {
-                            window.location.href = '/';
+                            window.location.href = '/UTLeetcoder/';
                         }}
                     />
                 </Link>
