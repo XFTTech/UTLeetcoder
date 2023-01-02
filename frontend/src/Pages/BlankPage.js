@@ -1,6 +1,7 @@
 import React from 'react';
-import { Layout, Empty } from 'antd';
+import { Layout } from 'antd';
 import EthanDescription from '../component/Ethan-ZYF';
+import Yorafa from '../component/Yorafa';
 const { Content } = Layout;
 
 const BlankPage = () => {
@@ -11,6 +12,7 @@ const BlankPage = () => {
             }}
         >
             <EthanDescription />
+            <Yorafa />
         </Content>
 
     );
