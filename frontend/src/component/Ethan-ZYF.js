@@ -4,7 +4,7 @@ import { Avatar, Card, Image } from 'antd';
 import { getUserInfo } from './utils';
 import HomePage from './Ethan-ZYF.png';
 const { Meta } = Card;
-const scale = 400;
+const scale = '100%';
 
 const EthanDescription = () => {
     const [user, setUser] = useState({});

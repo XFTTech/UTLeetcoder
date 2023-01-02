@@ -5,6 +5,7 @@ import Yorafa from '../component/Yorafa';
 import ZhuyuezxDescription from '../component/zhuyuezx';
 const { Content } = Layout;
 
+
 const BlankPage = () => {
     return (
         <Content
@@ -15,10 +16,10 @@ const BlankPage = () => {
             <Row
                 gutter={[16, 16]}
             >
-                <Col span={6}>
+                <Col span={8}>
                     <EthanDescription />
                 </Col>
-                <Col span={7.5}>
+                <Col span={8}>
                     <ZhuyuezxDescription />
                 </Col>
                 <Col span={8}>
