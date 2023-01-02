@@ -5,8 +5,8 @@ import { getUsers } from '../component/utils';
 import {
     DesktopOutlined,
     UserOutlined,
+    CalendarOutlined,
 } from '@ant-design/icons';
-import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import { Link } from 'react-router-dom';
 
 const { Sider } = Layout;
@@ -39,7 +39,7 @@ const SideBar = () => {
     });
 
     const items = [
-        getItem(<Link to="/select_daily">Daily Log</Link>, '1', <TodayOutlinedIcon />),
+        getItem(<Link to="/select_daily">Daily Log</Link>, '1', <CalendarOutlined />),
         getItem(<Link to="/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
             let temp = "/" + user;
