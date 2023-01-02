@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Empty } from 'antd';
-
+import EthanDescription from '../component/Ethan-ZYF';
 const { Content } = Layout;
 
 const BlankPage = () => {
@@ -10,9 +10,9 @@ const BlankPage = () => {
                 margin: '16px 16px',
             }}
         >
-            <Empty />
+            <EthanDescription />
         </Content>
-              
+
     );
 }
 

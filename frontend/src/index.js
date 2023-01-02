@@ -8,37 +8,42 @@ import Error404 from './Pages/Error404';
 import DailyLogTable from './Pages/DailyLogTable';
 import { UserProfile } from './Pages/UserProfile';
 import { userLoader } from './component/utils';
+import BlankPage from './Pages/BlankPage';
 import WeeklyTable from './Pages/WeeklyTable';
 
 
 const router = createBrowserRouter([
-  {
-    path: '/UTLeetcoder/',
-    element: <App />,
-    errorElement: <Error404 />,
-    loader: userLoader,
-    children: [
-      {
-        path: 'select_daily',
-        element: <DailyLogTable />,
-      },
-      {
-        path: 'select_weekly',
-        element: <WeeklyTable />,
-      },
-      {
-        path: ':id',
-        element: <UserProfile />,
-      },
-    ],
-  },
+    {
+        path: '/UTLeetcoder/',
+        element: <App />,
+        errorElement: <Error404 />,
+        loader: userLoader,
+        children: [
+            {
+                path: 'select_daily',
+                element: <DailyLogTable />,
+            },
+            {
+                path: 'select_weekly',
+                element: <WeeklyTable />,
+            },
+            {
+                path: ':id',
+                element: <UserProfile />,
+            },
+            {
+                path: '',
+                element: <BlankPage />,
+            }
+        ],
+    },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
