@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/UTLeetcoder/static/css/main.e6c13ad2.css",
+    "main.js": "/UTLeetcoder/static/js/main.ae79008e.js",
+    "static/js/787.cda612ba.chunk.js": "/UTLeetcoder/static/js/787.cda612ba.chunk.js",
+    "static/media/test_logo.png": "/UTLeetcoder/static/media/test_logo.61090c903d4b8a3a0cc2.png",
+    "index.html": "/UTLeetcoder/index.html",
+    "main.e6c13ad2.css.map": "/UTLeetcoder/static/css/main.e6c13ad2.css.map",
+    "main.ae79008e.js.map": "/UTLeetcoder/static/js/main.ae79008e.js.map",
+    "787.cda612ba.chunk.js.map": "/UTLeetcoder/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.ae79008e.js"
+  ]
+}
