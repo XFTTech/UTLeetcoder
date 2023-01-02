@@ -1,0 +1,43 @@
+name: Update Data
+
+on:
+  schedule:
+    - cron: '50 * * * *'
+
+defaults:
+  run:
+    working-directory: backend/src
+
+jobs:
+  update_data:
+
+    runs-on: ubuntu-latest
+
+    env:
+      TZ: America/Toronto
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm i
+
+    - name: Setup Github Users
+      run: |
+          git config --local user.email "thomasyorafa@gmail.com"
+          git config --local user.name "Yorafa"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
+    - name: Update
+      run: node index.js
