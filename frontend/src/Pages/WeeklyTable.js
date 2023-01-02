@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Layout} from 'antd';
 import { getUsers, getWeeks } from '../component/utils';
-import { DownOutlined } from '@ant-design/icons';
+import { DownOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
-import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import WeeklyLog from '../component/WeeklyLog';
 
 const { Content } = Layout;
@@ -11,9 +10,11 @@ const getItem = (label, key) => {
     return {
         label,
         key,
-        icon : <TodayOutlinedIcon />
+        icon : <CalendarOutlined />
     };
 };
+
+const defaultContent = '';
 
 const WeeklyTable = () => {
     const [users, setUsers] = useState(() => {
@@ -22,7 +23,7 @@ const WeeklyTable = () => {
         });
         return [];
     });
-    const [content, setContent] = useState('Click to select a week');
+    const [content, setContent] = useState(defaultContent);
     const [weeks, setWeeks] = useState(() => {
         getWeeks().then((res) => {
             setWeeks(res.data);
@@ -35,7 +36,7 @@ const WeeklyTable = () => {
     });
 
     const handleMenuClick = (e) => {
-        if (e.key !== 'Click to select a week'){
+        if (e.key !== defaultContent){
             setContent(e.key);
         }
     };
