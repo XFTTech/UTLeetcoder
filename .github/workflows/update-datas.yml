@@ -33,9 +33,9 @@ jobs:
 
     - name: Setup Github Users
       run: |
-          git config --local user.email "thomasyorafa@gmail.com"
-          git config --local user.name "Yorafa"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git config --local user.email "ethany.zhao@mail.utoronto.ca"
+          git config --local user.name "Ethan-ZYF"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
 
     - name: Update
       working-directory: ./backend/src/
