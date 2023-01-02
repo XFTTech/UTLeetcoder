@@ -91,7 +91,8 @@ const App = () => {
                         textAlign: 'center',
                     }}
                 >
-                    UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>
+                    UTLeetcoders ©2022 Created by <a href="https://github.com/Ethan-ZYF">Ethan-ZYF</a>, <a href="
+                        https://github.com/zhuyuezx">zhuyuezx</a>, and <a href="https://github.com/Yorafa">Yorafa</a>
                 </Footer>
             </Layout>
         </Layout>
