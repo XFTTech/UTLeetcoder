@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: '50 * * * *'
 
-defaults:
-  run:
-    working-directory: backend/src
 
 jobs:
   update_data:
@@ -31,6 +28,7 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
+      working-directory: ./backend/src/
       run: npm i
 
     - name: Setup Github Users
