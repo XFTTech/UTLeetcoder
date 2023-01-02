@@ -5,7 +5,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "Yorafa/Action" ]
 
 defaults:
   run:
@@ -30,10 +30,6 @@ jobs:
         cache: 'npm'
     - name: Install dependencies
       run: npm i
-    - name: Build
-      run: npm run build
-    - name: Install Serve
-      run: npm i -g serve
     - name: Deploy
-      run: serve -s build
+      run: npm run start
 
