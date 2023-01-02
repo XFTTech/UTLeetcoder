@@ -17,9 +17,9 @@ const BlankPage = () => {
                 <Col span={8}>
                     <EthanDescription />
                 </Col>
-                {/* <Col span={8}>
+                <Col span={8}>
                     <Yorafa />
-                </Col> */}
+                </Col>
             </Row>
         </Content>
 

@@ -31,10 +31,10 @@ const Yorafa = () => {
                     preload="auto"
                     width="550"
                     height="auto"
-                    poster="http://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"
+                    poster="https://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"
                     data-setup="{}"
               >
-                    <source src='http://yorafa.com/wp-content/uploads/2023/01/YorafaItai.mp4' type="video/mp4" />
+                    <source src='https://yorafa.com/wp-content/uploads/2023/01/YorafaItai.mp4' type="video/mp4" />
               </video>
             }
         >
