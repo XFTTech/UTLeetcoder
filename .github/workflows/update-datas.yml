@@ -1,9 +1,8 @@
 name: Update Data
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: "50 * * * *"
 
 jobs:
   update_data:
