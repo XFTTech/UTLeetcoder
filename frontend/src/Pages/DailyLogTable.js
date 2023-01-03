@@ -20,7 +20,6 @@ getAllDate().then((res) => {
         if (day > lastest_date) lastest_date.setTime(day.getTime());
     }
     lastest_date = lastest_date.toLocaleString('en-CA').split(',')[0].replaceAll('/', '-');
-    console.log(lastest_date);
 });
 
 const disabledDate = (current) => {

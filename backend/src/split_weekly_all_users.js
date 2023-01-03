@@ -28,7 +28,6 @@ const dateToWeek = (date) => {
 export const splitWeeklyAllUsers = async (users) => {
     let user_all_daily = new Map();
     users.map(async (user) => {
-        console.log("user", user)
         // console.log(file_path + `daily_log/${user}.json`);
         const json = fs.readFileSync(file_path + `daily_log/${user}.json`, 'utf8');
         const obj = JSON.parse(json);
