@@ -21,7 +21,6 @@
 ;(function(l, projectPages) {
 
     var repo = projectPages ? '/' + l.pathname.split('/')[1] : ''
-    console.log(repo);
      /* redirect all 404 trafic to index.html */
     function redirect() {
        l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repo + '/UTLeetcoder/?' +
