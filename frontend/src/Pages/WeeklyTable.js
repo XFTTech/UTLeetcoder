@@ -5,7 +5,6 @@ import { DownOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import WeeklyLog from '../component/WeeklyLog';
 import github from '../github-mark/github-mark.png';
-import { match } from 'minimatch';
 
 const { Header, Content } = Layout;
 const getItem = (label, key) => {

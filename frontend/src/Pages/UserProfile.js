@@ -67,7 +67,7 @@ export const UserProfile = () => {
                             }}
                             level={3}
                         >
-                            {`${id}\'s Homepage`}
+                            {`${id}'s Homepage`}
                         </Typography.Title>
                     </Col>
                     <Col span={4}
