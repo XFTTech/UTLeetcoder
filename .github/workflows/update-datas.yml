@@ -32,6 +32,7 @@ jobs:
       - name: Update
         working-directory: ./backend/src/
         run: node index.js
+      
       - name: Setup Github Users
         run: |
           git config --local user.email "ethany.zhao@mail.utoronto.ca"
@@ -40,3 +41,7 @@ jobs:
           git add .
           git commit -m "Update data"
           git push origin main
+        
+      - name: Deploy Static
+        working-directory: ./frontend/
+        run: npm run deploy
