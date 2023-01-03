@@ -32,8 +32,6 @@
 
 ## TODO
 - [ ] front end
-    - [ ] daily ranking
-    - [ ] weekly ranking
-    - [ ] total submission ranking
-    - [ ] date string format setting a timezone by user
-        - [ ] `today.toLocaleDateString("en-US", { timeZone: "America/New_York" });`
+    - [ ] user profile page Modal of problem list with given difficulty
+    - [ ] Change the header of each page
+    - [ ] Better UI
