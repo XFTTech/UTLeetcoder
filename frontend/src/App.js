@@ -1,17 +1,24 @@
 import React from 'react';
 import { Typography, Layout, theme } from 'antd';
 import SideBar from './component/SideBar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Col, Row } from 'antd';
 import { Image } from 'antd';
 import github from './github-mark/github-mark.png';
-
 const { Header, Footer } = Layout;
+
 
 const App = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
+
+    const location = useLocation();
+    const location_header_content = {
+        '/UTLeetcoder/': 'Project Developers',
+        '/UTLeetcoder/select_daily': 'Check Daily Logs Here',
+        '/UTLeetcoder/select_weekly': 'Check Weekly Logs Here',
+    };
     return (
         <Layout
             style={{
@@ -48,7 +55,11 @@ const App = () => {
                                 }}
                                 level={3}
                             >
-                                UTLeetcoder
+                                {
+                                    location_header_content[location.pathname] ? 
+                                    location_header_content[location.pathname]:
+                                    'UTLeetcoder'
+                                }
                             </Typography.Title>
                         </Col>
                         <Col span={4}
