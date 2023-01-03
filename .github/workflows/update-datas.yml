@@ -1,8 +1,9 @@
 name: Update Data
 
 on:
-  schedule:
-    - cron: "50 * * * *"
+  push:
+    branches:
+      - main
 
 jobs:
   update_data:
@@ -39,9 +40,5 @@ jobs:
           git config --local user.name "Ethan-ZYF"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
           git add .
-          git commit -m "Update data"
+          git diff-index --quiet HEAD || git commit -m "Update data"
           git push origin main
-        
-      - name: Deploy Static
-        working-directory: ./frontend/
-        run: npm run deploy

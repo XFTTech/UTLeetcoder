@@ -37,5 +37,5 @@ jobs:
           git config --local user.email "ethany.zhao@mail.utoronto.ca"
           git config --local user.name "Ethan-ZYF"
           git add .
-          git commit -m "Update data"
+          git diff-index --quiet HEAD || git commit -m "Update data"
           git push origin main
