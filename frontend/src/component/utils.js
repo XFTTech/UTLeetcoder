@@ -44,3 +44,7 @@ export const userLoader = async () => {
 export const getUserImage = async (lcid) => {
     return await fileClient.get("/Creator/" + lcid + "/page.png");
 }
+
+export const getAllDate = async () => {
+    return await fileClient.get("/dates.json");
+}

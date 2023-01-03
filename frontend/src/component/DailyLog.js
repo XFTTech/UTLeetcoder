@@ -19,6 +19,7 @@ const DailyLog = (props) => {
         const getData = async () => {
             let dailyStatsList;
             let result = [];
+            console.log(props.date);
             await getDailyStats(props.date)
                 .then((res) => {
                     dailyStatsList = new Map(Object.entries(res.data));

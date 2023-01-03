@@ -40,10 +40,13 @@ const update_daily_log = async (user) => {
 const split_daily_all_users = async (users) => {
     // console.log('start split_daily');
     const user_all_daily = await splitDailyAllUsers(users);
+    let dates = [];
     for (const date of user_all_daily.keys()) {
+        dates.push(date);
         await writeData(file_path + `daily_stats/${date}.json`,
             JSON.stringify(Object.fromEntries(user_all_daily.get(date))));
     }
+    await writeData(file_path + `dates.json`, JSON.stringify(dates));
     console.log('split_daily complete');
 }
 
