@@ -1,12 +1,8 @@
 name: Update Data
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-#   schedule:
-#     - cron: "50 * * * *"
+  schedule:
+    - cron: "50 * * * *"
 
 jobs:
   update_data:
@@ -43,4 +39,4 @@ jobs:
           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
           git add .
           git commit -m "Update data"
-          git push origin main --force
+          git push origin main
