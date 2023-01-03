@@ -4,6 +4,8 @@ import { RecentAcSubmissionList, UserRecentSubmissionList } from './entities.js'
 import { getSubmission } from './last_submission.js';
 const file_path = '../../frontend/public/data/';
 
+const startTimestamp = new Date('2022-12-16').getTime() / 1000;
+
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
     baseURL: 'https://leetcode.com',
@@ -29,7 +31,9 @@ export const getRecentSubmissionList = async (user) => {
         .then((res) => {
             // console.log(res.data.data.recentAcSubmissionList);
             res.data.data.recentAcSubmissionList.forEach((submission) => {
-                if (last_submission.get(submission.titleSlug) === 0) {
+                if (last_submission.get(submission.titleSlug) === 0
+                    && submission.timestamp > startTimestamp
+                ) {
                     recentSubmissionList.submissions.push(new RecentAcSubmissionList(submission.id, submission.title, submission.titleSlug, submission.timestamp));
                     last_submission.set(submission.titleSlug, submission.timestamp);
                     // console.log(`New submission: ${submission.titleSlug} ${submission.timestamp}`);

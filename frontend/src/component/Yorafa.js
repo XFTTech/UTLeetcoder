@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Avatar, Card } from 'antd';
 import { getUserInfo } from './utils';
 const { Meta } = Card;
-const scale = 400;
+const scale = '100%';
 
 const Yorafa = () => {
     const [user, setUser] = useState({});
@@ -33,6 +33,9 @@ const Yorafa = () => {
                     height="auto"
                     poster="https://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"
                     data-setup="{}"
+                    style={{
+                        borderRadius: 8,
+                    }}
               >
                     <source src='https://yorafa.com/wp-content/uploads/2023/01/YorafaItai.mp4' type="video/mp4" />
               </video>

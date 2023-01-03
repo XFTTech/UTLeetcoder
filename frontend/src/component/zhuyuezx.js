@@ -4,6 +4,7 @@ import { Avatar, Card, Image } from 'antd';
 import { getUserInfo } from './utils';
 import HomePage from './zhuyuezx.png';
 const { Meta } = Card;
+const scale = '100%';
 
 const ZhuyuezxDescription = () => {
     const [user, setUser] = useState({});
@@ -17,12 +18,12 @@ const ZhuyuezxDescription = () => {
 
     return (
         <Card
-            style={{ width: 500 }}
+            style={{ width: scale }}
             cover={
                 <Image
                     alt="example"
-                    width={500}
-                    height={350}
+                    width={scale}
+                    height='auto'
                     src={HomePage}
                 />
             }
