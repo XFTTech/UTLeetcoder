@@ -43,4 +43,4 @@ jobs:
           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
           git add .
           git commit -m "Update data"
-          git push origin main
+          git push origin main --force
