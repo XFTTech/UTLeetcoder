@@ -13,15 +13,15 @@ export const UserPie = (props) => {
             let temp = [
                 {
                     type: 'Easy',
-                    value: props.data.easy_cnt? props.data.easy_cnt : 0,
+                    value: props.data.easy_cnt ? props.data.easy_cnt : 0,
                 },
                 {
                     type: 'Medium',
-                    value: props.data.medium_cnt? props.data.medium_cnt : 0,
+                    value: props.data.medium_cnt ? props.data.medium_cnt : 0,
                 },
                 {
                     type: 'Hard',
-                    value: props.data.hard_cnt? props.data.hard_cnt : 0,
+                    value: props.data.hard_cnt ? props.data.hard_cnt : 0,
                 },
             ];
             setData(temp);
@@ -30,13 +30,13 @@ export const UserPie = (props) => {
     function renderStatistic(containerWidth, text, style) {
         const { width: textWidth, height: textHeight } = measureTextWidth(text, style);
         const R = containerWidth / 2; // r^2 = (w / 2)^2 + (h - offsetY)^2
-    
+
         let scale = 1;
-    
+
         if (containerWidth < textWidth) {
-          scale = Math.min(Math.sqrt(Math.abs(Math.pow(R, 2) / (Math.pow(textWidth / 2, 2) + Math.pow(textHeight, 2)))), 1);
+            scale = Math.min(Math.sqrt(Math.abs(Math.pow(R, 2) / (Math.pow(textWidth / 2, 2) + Math.pow(textHeight, 2)))), 1);
         }
-    
+
         const textStyleStr = `width:${containerWidth}px;`;
         return `<div style="${textStyleStr};font-size:${scale}em;line-height:${scale < 1 ? 1 : 'inherit'};">${text}</div>`;
     }
@@ -65,18 +65,18 @@ export const UserPie = (props) => {
             title: {
                 offsetY: -4,
                 customHtml: (container, view, datum) => {
-                const { width, height } = container.getBoundingClientRect();
-                const d = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height / 2, 2));
-                const text = datum ? datum.type : 'Total';
-                return renderStatistic(d, text, {
-                    fontSize: 28,
-                });
+                    const { width, height } = container.getBoundingClientRect();
+                    const d = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height / 2, 2));
+                    const text = datum ? datum.type : 'Total';
+                    return renderStatistic(d, text, {
+                        fontSize: 28,
+                    });
                 },
             },
             content: {
                 offsetY: 4,
                 style: {
-                    fontSize: '32px', 
+                    fontSize: '32px',
                 },
                 customHtml: (container, view, datum, data) => {
                     const { width } = container.getBoundingClientRect();

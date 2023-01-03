@@ -65,12 +65,15 @@ export class UserAlltime {
     // easy_cnt: int
     // medium_cnt: int
     // hard_cnt: int
-    constructor(user, total = 0, easy_cnt = 0, medium_cnt = 0, hard_cnt = 0) {
+    constructor(user, total = 0, easy_cnt = 0, medium_cnt = 0, hard_cnt = 0, easy = [], medium = [], hard = []) {
         this.user = user;
         this.total = total;
         this.easy_cnt = easy_cnt;
         this.medium_cnt = medium_cnt;
         this.hard_cnt = hard_cnt;
+        this.easy = easy;
+        this.medium = medium;
+        this.hard = hard;
     }
 }
 

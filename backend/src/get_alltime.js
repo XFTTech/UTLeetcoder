@@ -10,16 +10,18 @@ export const UserAlltimeStats = async (users) => {
         const obj = JSON.parse(json);
         const user_daily = new Map(Object.entries(obj));
         // console.log(user_daily, "here")
-        let curr_user = new UserAlltime(user, 0, 0, 0, 0);
+        let curr_user = new UserAlltime(user, 0, 0, 0, 0, [], [], []);
         for (const [date, detail] of user_daily) {
             curr_user.total += detail.total;
             curr_user.easy_cnt += detail.easy_cnt;
             curr_user.medium_cnt += detail.medium_cnt;
             curr_user.hard_cnt += detail.hard_cnt;
+            curr_user.easy = curr_user.easy.concat(detail.easy);
+            curr_user.medium = curr_user.medium.concat(detail.medium);
+            curr_user.hard = curr_user.hard.concat(detail.hard);
         }
         user_alltime.set(user, curr_user);
     });
-
     return user_alltime;
 }
 
