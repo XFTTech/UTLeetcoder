@@ -26,13 +26,11 @@ const Yorafa = () => {
             cover={
                 <video
                     id="my-video"
-                    class="video-js"
                     controls
                     preload="auto"
                     width="550"
                     height="auto"
                     poster="https://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"
-                    data-setup="{}"
                     style={{
                         borderRadius: 8,
                     }}

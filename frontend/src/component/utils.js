@@ -48,3 +48,7 @@ export const getUserImage = async (lcid) => {
 export const getAllDate = async () => {
     return await fileClient.get("/dates.json");
 }
+
+export const getRelativeUrl = () => {
+    return window.location.href.split('/UTLeetcoder/')[1].split('?');
+}

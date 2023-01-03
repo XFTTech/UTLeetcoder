@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Image, Menu } from 'antd';
 import testLogo from '../test_logo.png';
-import { getUsers } from '../component/utils';
+import { getRelativeUrl, getUsers } from '../component/utils';
 import {
     DesktopOutlined,
     UserOutlined,
@@ -20,9 +20,10 @@ function getItem(label, key, icon, children) {
     };
 }
 
+const path = getRelativeUrl()[0];
+
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
-
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -30,17 +31,9 @@ const SideBar = () => {
         return [];
     });
 
-    const value_nav_pair = new Map([
-        ['1', 'select_daily']
-    ]);
-
-    users.forEach((user) => {
-        value_nav_pair.set(user, user);
-    });
-
     const items = [
-        getItem(<Link to="/UTLeetcoder/select_daily">Daily Log</Link>, '1', <CalendarOutlined />),
-        getItem(<Link to="/UTLeetcoder/select_weekly">Weekly Log</Link>, '2', <DesktopOutlined />),
+        getItem(<Link to="/UTLeetcoder/select_daily">Daily Log</Link>, 'select_daily', <CalendarOutlined />),
+        getItem(<Link to="/UTLeetcoder/select_weekly">Weekly Log</Link>, 'select_weekly', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
             let temp = "/UTLeetcoder/" + user;
             return (getItem(<Link to={temp}>{user}</Link>, user));
@@ -86,6 +79,7 @@ const SideBar = () => {
             <Menu
                 theme="dark"
                 defaultOpenKeys={['sub1']}
+                defaultSelectedKeys={[path]}
                 mode="inline"
                 items={items}
             />
