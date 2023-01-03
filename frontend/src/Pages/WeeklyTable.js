@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, Image } from 'antd';
-import { getUsers, getWeeks } from '../component/utils';
+import { getUsers, getWeeks, getRelativeUrl } from '../component/utils';
 import { DownOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import WeeklyLog from '../component/WeeklyLog';
 import github from '../github-mark/github-mark.png';
+import { Link } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 const getItem = (label, key) => {
@@ -15,9 +16,11 @@ const getItem = (label, key) => {
     };
 };
 
+
 const defaultContent = '';
 
 const WeeklyTable = () => {
+    const query = getRelativeUrl()[1];
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -33,14 +36,22 @@ const WeeklyTable = () => {
     const [weeks, setWeeks] = useState(() => {
         getWeeks().then((res) => {
             setWeeks(res.data);
-            setContent(res.data[0]);
-            const [year, week] =res.data[0].split('-');
-            setParsed(`Statistics for Week ${week} of ${year}`);
+            if (res.data.includes(query)){
+                setContent(query);
+                const [year, week] = query.split('-');
+                setParsed(`Statistics for Week ${week} of ${year}`);
+            }
+            else {
+                setContent(res.data[0]);
+                const [year, week] =res.data[0].split('-');
+                setParsed(`Statistics for Week ${week} of ${year}`);
+            }
         });
         return [];
     });
     const items = weeks.map((week) => {
-        return getItem(week, week);
+        let tempUrl = '/UTLeetcoder/select_weekly?' + week;
+        return getItem(<Link to={tempUrl}>{week}</Link>, week);
     });
 
     const handleMenuClick = (e) => {

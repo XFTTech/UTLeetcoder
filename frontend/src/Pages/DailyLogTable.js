@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, DatePicker, Image } from 'antd';
 import DailyLog from '../component/DailyLog';
-import { getUsers } from '../component/utils';
+import { getRelativeUrl, getUsers } from '../component/utils';
 import { getAllDate } from '../component/utils';
 import dayjs from 'dayjs';
 import github from '../github-mark/github-mark.png';
-import { useLocation } from 'react-router-dom';
+// import { redirect } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 
 const formatDate = (date) => date + 'T05:00:00.000Z';
-
-const useQuery = () => {
-    const { search } = useLocation();
-    console.log(search);
-    return React.useMemo(() => new URLSearchParams(search), [search]);
-};
 
 const all_dates = new Map();
 let lastest_date = new Date(0);
@@ -34,17 +28,18 @@ const disabledDate = (current) => {
     return !all_dates.has(current.format('YYYY-MM-DD'));
 };
 
+const query = getRelativeUrl()[1];
+
 const DailyLogTable = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
 
-    const query = useQuery();
-    for (const [key, value] of query.entries()) {
-        console.log(key, value);
-    }
+    const [selectedDay, setSelectedDay] = useState(() => {
+        if (all_dates.has(query)) return query;
+        return lastest_date;
+    });
 
-    const [selectedDay, setSelectedDay] = useState(lastest_date);
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -52,6 +47,10 @@ const DailyLogTable = () => {
         return [];
     });
 
+    const onDateChange = (date, dateString) => {
+        setSelectedDay(dateString);
+        // let tempUrl = '/UTLeetcoder/select_daily?' + dateString;
+    };
     return (
         <>
             <Header
@@ -109,8 +108,6 @@ const DailyLogTable = () => {
                                 document.body.style.cursor = 'default';
                             }}
                             onClick={() => {
-                                // window.location.href = 'https://github.com/Ethan-ZYF/UTLeetcoder';
-                                // open a new tab
                                 window.open(
                                     'https://github.com/Ethan-ZYF/UTLeetcoder'
                                 );
@@ -125,9 +122,12 @@ const DailyLogTable = () => {
                 }}
             >
                 <DatePicker
-                    defaultValue={dayjs(lastest_date)}
+                    defaultValue={() => {
+                        if (all_dates.has(query)) return dayjs(query);
+                        return dayjs(lastest_date);
+                    }}
                     disabledDate={disabledDate}
-                    onChange={(date, dateString) => setSelectedDay(dateString)}
+                    onChange={onDateChange}
                 />
                 <DailyLog date={selectedDay} users={users} />
             </Content>
