@@ -200,10 +200,11 @@ const DailyLog = (props) => {
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
                         e.target.style.backgroundColor = 'lightgreen';
                     },
                     onMouseLeave: (e) => {
-                        e.target.style.backgroundColor = 'white';
+                        e.target.style.backgroundColor = e.target.orig_bg;
                     },
                     style: {
                         color: 'green',
@@ -240,10 +241,11 @@ const DailyLog = (props) => {
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
                         e.target.style.backgroundColor = '#FFDB89';
                     },
                     onMouseLeave: (e) => {
-                        e.target.style.backgroundColor = 'white';
+                        e.target.style.backgroundColor = e.target.orig_bg;
                     },
                     style: {
                         color: 'orange',
@@ -280,10 +282,11 @@ const DailyLog = (props) => {
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
                         e.target.style.backgroundColor = 'lightcoral';
                     },
                     onMouseLeave: (e) => {
-                        e.target.style.backgroundColor = 'white';
+                        e.target.style.backgroundColor = e.target.orig_bg;
                     },
                     style: {
                         color: 'red',
@@ -321,10 +324,11 @@ const DailyLog = (props) => {
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
                         e.target.style.backgroundColor = 'lightgray';
                     },
                     onMouseLeave: (e) => {
-                        e.target.style.backgroundColor = 'white';
+                        e.target.style.backgroundColor = e.target.orig_bg;
                     },
                     style: {
                         color: 'black',
