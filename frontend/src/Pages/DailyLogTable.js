@@ -9,19 +9,16 @@ import github from '../github-mark/github-mark.png';
 
 const { Header, Content } = Layout;
 
-const formatDate = (date) => date + 'T05:00:00.000Z';
-
 const all_dates = new Map();
-let lastest_date = new Date(0);
+let lastest_date = dayjs().format('YYYY-MM-DD');
 getAllDate().then((res) => {
     for (const date of res.data) {
         all_dates.set(date, true);
-        // compare date with lastest_date
-        const fmtDay = formatDate(date);
-        const day = new Date(fmtDay);
-        if (day > lastest_date) lastest_date.setTime(day.getTime());
     }
-    lastest_date = lastest_date.toLocaleString('en-CA').split(',')[0].replaceAll('/', '-');
+    if (all_dates.size > 0) {
+        lastest_date = [...all_dates.keys()].
+        reduce((a, b) => (dayjs(a) > dayjs(b) ? a : b));
+    }
 });
 
 const disabledDate = (current) => {
