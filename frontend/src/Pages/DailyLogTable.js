@@ -78,6 +78,7 @@ const DailyLogTable = () => {
                                 marginLeft: 16,
                                 marginTop: 'auto',
                                 marginBottom: 'auto',
+                                fontFamily: 'Verdana',
                             }}
                             level={3}
                         >

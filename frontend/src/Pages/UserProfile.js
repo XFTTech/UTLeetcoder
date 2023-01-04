@@ -64,10 +64,11 @@ export const UserProfile = () => {
                                 marginLeft: 16,
                                 marginTop: 'auto',
                                 marginBottom: 'auto',
+                                fontFamily: 'Verdana',
                             }}
                             level={3}
                         >
-                            {`${id}'s Homepage`}
+                            {`${id}'s Profile`}
                         </Typography.Title>
                     </Col>
                     <Col span={4}

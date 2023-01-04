@@ -40,6 +40,7 @@ const BlankPage = () => {
                                 marginLeft: 16,
                                 marginTop: 'auto',
                                 marginBottom: 'auto',
+                                fontFamily: 'Verdana',
                             }}
                             level={3}
                         >
