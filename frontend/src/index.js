@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Error404 from './Pages/Error404';
 import DailyLogTable from './Pages/DailyLogTable';
-import { UserProfile } from './Pages/UserProfile';
+import UserProfile from './Pages/UserProfile';
 import { userLoader } from './component/utils';
 import BlankPage from './Pages/BlankPage';
 import WeeklyTable from './Pages/WeeklyTable';
