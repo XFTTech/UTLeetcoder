@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/UTLeetcoder/static/css/main.e6c13ad2.css",
-    "main.js": "/UTLeetcoder/static/js/main.13193f44.js",
+    "main.js": "/UTLeetcoder/static/js/main.99d7cdb5.js",
     "static/js/787.cda612ba.chunk.js": "/UTLeetcoder/static/js/787.cda612ba.chunk.js",
     "static/media/zhuyuezx.png": "/UTLeetcoder/static/media/zhuyuezx.c8a12dc4088e4f05c787.png",
     "static/media/test_logo.png": "/UTLeetcoder/static/media/test_logo.61090c903d4b8a3a0cc2.png",
@@ -9,11 +9,11 @@
     "static/media/leetcode.svg": "/UTLeetcoder/static/media/leetcode.6971d830f6805a54b0a7bf5785ff6245.svg",
     "index.html": "/UTLeetcoder/index.html",
     "main.e6c13ad2.css.map": "/UTLeetcoder/static/css/main.e6c13ad2.css.map",
-    "main.13193f44.js.map": "/UTLeetcoder/static/js/main.13193f44.js.map",
+    "main.99d7cdb5.js.map": "/UTLeetcoder/static/js/main.99d7cdb5.js.map",
     "787.cda612ba.chunk.js.map": "/UTLeetcoder/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.13193f44.js"
+    "static/js/main.99d7cdb5.js"
   ]
 }
