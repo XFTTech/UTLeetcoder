@@ -6,7 +6,7 @@ import { Modal } from "antd";
 const { Link } = Typography;
 
 const DataModal = (props) => {
-    const {visible, data, difficulty, getModalVisible} = props;
+    const { visible, data, difficulty, getModalVisible } = props;
     const [color, setColor] = useState('black');
     const [did, setDid] = useState(true);
 
@@ -18,7 +18,7 @@ const DataModal = (props) => {
             else color = 'red';
             setColor(color);
             setDid(true);
-        }else{
+        } else {
             setDid(false);
         }
     }, [data, difficulty]);
@@ -32,24 +32,36 @@ const DataModal = (props) => {
                 footer={null}
                 onDestory={handleCancel}
                 onCancel={handleCancel}
-                width="50%"
-                height="50%"
+                width='50%'
+                title={difficulty + ' problems'}
+                bodyStyle={{
+                    height: '50vh',
+                    overflow: 'auto',
+                    marginTop: '1px',
+                }}
             >
-                {did?data.map((item) => (
-                <Row key={item}>
-                    <Link href={problemUrl + item + '/'}
-                        target="_blank"
-                        onMouseOver={(e) => {
-                            e.target.style.textDecoration = 'underline';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.target.style.textDecoration = 'none';
-                        }}
-                    >
-                        <Typography style={{color: color}}>[{item}]</Typography>
-                    </Link>
-                </ Row>
-            )):<Empty />}
+
+                {did ? data.map((item) => (
+                    <Row key={item}>
+                        <Link href={problemUrl + item + '/'}
+                            target="_blank"
+                            onMouseOver={(e) => {
+                                e.target.style.textDecoration = 'underline';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.textDecoration = 'none';
+                            }}
+                        >
+                            <Typography
+                                style={{
+                                    color: color,
+                                    fontSize: 18,
+                                }}>
+                                [{item}]
+                            </Typography>
+                        </Link>
+                    </ Row>
+                )) : <Empty />}
             </Modal>
         </>
     );
