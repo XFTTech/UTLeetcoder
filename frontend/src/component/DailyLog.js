@@ -182,6 +182,7 @@ const DailyLog = (props) => {
             width: '20%',
             sorter: (a, b) => a.total - b.total,
             sortDirections: ['descend', 'ascend'],
+            defaultSortOrder: 'descend',
         },
         {
             title: 'Easy',
