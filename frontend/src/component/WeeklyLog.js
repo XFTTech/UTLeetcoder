@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
-import { getWeeklyStats, userUrl, problemUrl } from './utils';
+import { Button, Input, Space, Table } from 'antd';
+import { getWeeklyStats, userUrl } from './utils';
 import Highlighter from 'react-highlight-words';
+import DataModal from './DataModal';
 
-const { Link } = Typography;
 /*
     props: 
         week: string of date in format "YYYY-WEEK"
@@ -14,6 +14,13 @@ const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const [data, setData] = useState();
+    const [modalData, setModalData] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalDifficulty, setModalDifficulty] = useState('');
+
+    const getModalVisible = (visible) => {
+        setModalVisible(visible);
+    };
 
     useEffect(() => {
         if (props.week === '') return;
@@ -171,7 +178,147 @@ const DailyLog = (props) => {
                     }
                 }
             },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'navy',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                    }
+                }
+            },
             ...getColumnSearchProps('user'),
+        },
+        {
+            title: 'Easy',
+            dataIndex: 'easy_cnt',
+            key: 'easy_cnt',
+            width: '20%',
+            sorter: (a, b) => a.easy_cnt - b.easy_cnt,
+            sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    onClick: () => {
+                        // alert('click easy: ' + record.user);
+                        setModalData(record.easy);
+                        setModalVisible(true);
+                        setModalDifficulty('easy');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = 'lightgreen';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = e.target.orig_bg;
+                    },
+                    style: {
+                        color: 'green',
+                        fontSize: '18px',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'green',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+        },
+        {
+            title: 'Medium',
+            dataIndex: 'medium_cnt',
+            key: 'medium_cnt',
+            width: '20%',
+            sorter: (a, b) => a.medium_cnt - b.medium_cnt,
+            sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    onClick: () => {
+                        setModalData(record.medium);
+                        setModalVisible(true);
+                        setModalDifficulty('medium');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = '#FFDB89';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = e.target.orig_bg;
+                    },
+                    style: {
+                        color: 'orange',
+                        fontSize: '18px',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'orange',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+        },
+        {
+            title: 'Hard',
+            dataIndex: 'hard_cnt',
+            key: 'hard_cnt',
+            width: '20%',
+            sorter: (a, b) => a.hard_cnt - b.hard_cnt,
+            sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    onClick: () => {
+                        setModalData(record.hard);
+                        setModalVisible(true);
+                        setModalDifficulty('hard');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = 'lightcoral';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = e.target.orig_bg;
+                    },
+                    style: {
+                        color: 'red',
+                        fontSize: '18px',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'red',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
         },
         {
             title: 'Total',
@@ -181,126 +328,44 @@ const DailyLog = (props) => {
             sorter: (a, b) => a.total - b.total,
             sortDirections: ['descend', 'ascend'],
             defaultSortOrder: 'descend',
-        },
-        {
-            title: 'Easy',
-            dataIndex: 'easy_cnt',
-            key: 'easy_cnt',
-            width: '20%',
-            sorter: (a, b) => a.easy_cnt - b.easy_cnt,
-            sortDirections: ['descend', 'ascend'],
-        },
-        {
-            title: 'Medium',
-            dataIndex: 'medium_cnt',
-            key: 'medium_cnt',
-            width: '20%',
-            sorter: (a, b) => a.medium_cnt - b.medium_cnt,
-            sortDirections: ['descend', 'ascend'],
-        },
-        {
-            title: 'Hard',
-            dataIndex: 'hard_cnt',
-            key: 'hard_cnt',
-            width: '20%',
-            sorter: (a, b) => a.hard_cnt - b.hard_cnt,
-            sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    onMouseOver: (e) => {
+                        e.target.orig_bg = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = 'lightgray';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = e.target.orig_bg;
+                    },
+                    style: {
+                        color: 'black',
+                        fontSize: '18px',
+                        fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'black',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
         },
     ];
 
-    return <Table
-        columns={columns}
-        expandable={{
-            expandedRowRender: (record) => (
-                <Row key={record.key}
-                    gutter={30}
-                >
-                    <Col span={8}
-                        key='easy'
-                        style={{
-                            borderLeft: '1px solid #e8e8e8',
-                        }}
-                    >
-                        {(record.easy).map((item) => (
-                            <Row key={item} >
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'green',
-                                        fontSize: '16px'
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))}
-                    </Col>
-
-                    <Col span={8}
-                        key='medium'
-                        style={{
-                            borderLeft: '1px solid #e8e8e8',
-                            borderRight: '1px solid #e8e8e8',
-                        }}
-                    >
-                        {(record.medium).map((item) => (
-                            <Row key={item}>
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'orange',
-                                        fontSize: '16px'
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))
-                        }
-                    </Col >
-                    <Col span={8}
-                        key='hard'
-                        style={{
-                            borderRight: '1px solid #e8e8e8',
-                        }}
-                    >
-                        {(record.hard).map((item) => (
-                            <Row key={item}>
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'red',
-                                        fontSize: '16px'
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))}
-                    </Col>
-                </Row >
-            ),
-            rowExpandable: (record) => record.name !== 'Not Expandable',
-        }}
-        dataSource={data}
-    />;
+    return <>
+        <Table
+            columns={columns}
+            dataSource={data}
+        />
+        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+    </>;
 };
 export default DailyLog;
