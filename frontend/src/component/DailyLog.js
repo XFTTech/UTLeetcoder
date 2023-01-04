@@ -196,7 +196,7 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        alert('click');
+                        alert('click easy: ' + record.user);
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
@@ -234,6 +234,16 @@ const DailyLog = (props) => {
             sortDirections: ['descend', 'ascend'],
             onCell: (record) => {
                 return {
+                    onClick: () => {
+                        alert('click medium: ' + record.user);
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.backgroundColor = '#FFDB89';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = 'white';
+                    },
                     style: {
                         color: 'orange',
                         fontSize: '16px',
@@ -263,6 +273,16 @@ const DailyLog = (props) => {
             sortDirections: ['descend', 'ascend'],
             onCell: (record) => {
                 return {
+                    onClick: () => {
+                        alert('click hard: ' + record.user);
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.backgroundColor = 'lightcoral';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = 'white';
+                    },
                     style: {
                         color: 'red',
                         fontSize: '16px',
@@ -292,6 +312,16 @@ const DailyLog = (props) => {
             sortDirections: ['descend', 'ascend'],
             onCell: (record) => {
                 return {
+                    onClick: () => {
+                        alert('click total: ' + record.user);
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.backgroundColor = 'lightgray';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = 'white';
+                    },
                     style: {
                         color: 'black',
                         fontSize: '16px',
