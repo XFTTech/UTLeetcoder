@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Empty, Row, Typography } from 'antd';
 import { problemUrl } from './utils';
-import { Link } from 'react-router-dom';
 import { Modal } from "antd";
+
+const { Link } = Typography;
 
 const DataModal = (props) => {
     const {visible, data, difficulty, getModalVisible} = props;
