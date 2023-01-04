@@ -207,8 +207,9 @@ const DailyLog = (props) => {
                     },
                     style: {
                         color: 'green',
-                        fontSize: '16px',
+                        fontSize: '18px',
                         fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
                         textAlign: 'center',
                     }
                 }
@@ -246,8 +247,9 @@ const DailyLog = (props) => {
                     },
                     style: {
                         color: 'orange',
-                        fontSize: '16px',
+                        fontSize: '18px',
                         fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
                         textAlign: 'center',
                     }
                 }
@@ -285,8 +287,9 @@ const DailyLog = (props) => {
                     },
                     style: {
                         color: 'red',
-                        fontSize: '16px',
+                        fontSize: '18px',
                         fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
                         textAlign: 'center',
                     }
                 }
@@ -325,8 +328,9 @@ const DailyLog = (props) => {
                     },
                     style: {
                         color: 'black',
-                        fontSize: '16px',
+                        fontSize: '18px',
                         fontFamily: 'Helvetica',
+                        fontWeight: 'bold',
                         textAlign: 'center',
                     }
                 }
