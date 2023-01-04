@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table, Col, Row, Typography } from 'antd';
-import { getDailyStats, userUrl, problemUrl } from './utils';
+import { Button, Input, Space, Table } from 'antd';
+import { getDailyStats, userUrl } from './utils';
 import Highlighter from 'react-highlight-words';
+import DataModal from './DataModal';
 
-const { Link } = Typography;
 /*
     props: 
         date: string of date in format "YYYY-MM-DD"
@@ -14,6 +14,13 @@ const DailyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const [data, setData] = useState();
+    const [modalData, setModalData] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalDifficulty, setModalDifficulty] = useState('');
+
+    const getModalVisible = (visible) => {
+        setModalVisible(visible);
+    };
 
     useEffect(() => {
         const getData = async () => {
@@ -196,7 +203,10 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        alert('click easy: ' + record.user);
+                        // alert('click easy: ' + record.user);
+                        setModalData(record.easy);
+                        setModalVisible(true);
+                        setModalDifficulty('easy');
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
@@ -237,7 +247,9 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        alert('click medium: ' + record.user);
+                        setModalData(record.medium);
+                        setModalVisible(true);
+                        setModalDifficulty('medium');
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
@@ -278,7 +290,9 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        alert('click hard: ' + record.user);
+                        setModalData(record.hard);
+                        setModalVisible(true);
+                        setModalDifficulty('hard');
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
@@ -319,11 +333,7 @@ const DailyLog = (props) => {
             defaultSortOrder: 'descend',
             onCell: (record) => {
                 return {
-                    onClick: () => {
-                        alert('click total: ' + record.user);
-                    },
                     onMouseOver: (e) => {
-                        e.target.style.cursor = 'pointer';
                         e.target.orig_bg = e.target.style.backgroundColor;
                         e.target.style.backgroundColor = 'lightgray';
                     },
@@ -353,93 +363,12 @@ const DailyLog = (props) => {
         },
     ];
 
-    return <Table
-        columns={columns}
-        expandable={{
-            expandedRowRender: (record) => (
-                <Row key={record.key}
-                    gutter={30}
-                >
-                    <Col span={8}
-                        key='easy'
-                    >
-                        {(record.easy).map((item) => (
-                            <Row key={item} >
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'green',
-                                        fontSize: '16px',
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))}
-                    </Col>
-
-                    <Col span={8}
-                        key='medium'
-                        style={{
-                            borderLeft: '1px solid #e8e8e8',
-                            borderRight: '1px solid #e8e8e8',
-                        }}
-                    >
-                        {(record.medium).map((item) => (
-                            <Row key={item}>
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'orange',
-                                        fontSize: '16px',
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))
-                        }
-                    </Col >
-                    <Col span={8}
-                        key='hard'
-                    >
-                        {(record.hard).map((item) => (
-                            <Row key={item}>
-                                <Link href={problemUrl + item + '/'}
-                                    target="_blank"
-                                    style={{
-                                        color: 'red',
-                                        fontSize: '16px',
-                                    }}
-                                    onMouseOver={(e) => {
-                                        e.target.style.textDecoration = 'underline';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.textDecoration = 'none';
-                                    }}
-                                >
-                                    [{item}]
-                                </Link>
-                            </ Row>
-                        ))}
-                    </Col>
-                </Row >
-            ),
-            rowExpandable: (record) => record.name !== 'Not Expandable',
-        }}
-        dataSource={data}
-    />;
+    return <>
+        <Table
+            columns={columns}
+            dataSource={data}
+        />
+        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+    </>
 };
 export default DailyLog;

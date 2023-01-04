@@ -3,7 +3,7 @@ import { Pie, measureTextWidth } from '@ant-design/plots';
 
 /*
     props:
-        daily: the given daily statistics
+        data: the given user data statistics
 */
 
 export const UserPie = (props) => {
@@ -12,15 +12,15 @@ export const UserPie = (props) => {
         if (props.data) {
             let temp = [
                 {
-                    type: 'Easy',
+                    type: 'easy',
                     value: props.data.easy_cnt ? props.data.easy_cnt : 0,
                 },
                 {
-                    type: 'Medium',
+                    type: 'medium',
                     value: props.data.medium_cnt ? props.data.medium_cnt : 0,
                 },
                 {
-                    type: 'Hard',
+                    type: 'hard',
                     value: props.data.hard_cnt ? props.data.hard_cnt : 0,
                 },
             ];
@@ -90,6 +90,17 @@ export const UserPie = (props) => {
         interactions: [
             {
                 type: 'element-selected',
+                cfg: {
+                    start: [
+                        {
+                            trigger: 'element:click',
+                            action: (e) => {
+                                let key = e.event.data.data.type;
+                                console.log(props.data[key]);
+                            },
+                        },
+                    ],
+                },
             },
             {
                 type: 'element-active',
