@@ -142,9 +142,10 @@ const DailyLog = (props) => {
                     autoEscape
                     textToHighlight={text ? text.toString() : ''}
                 />
-      ) : (
-        text
-      ),});
+            ) : (
+                text
+            ),
+    });
     const columns = [
         {
             title: 'User',
@@ -169,20 +170,21 @@ const DailyLog = (props) => {
                         color: 'navy',
                         fontSize: '16px',
                         fontWeight: 'bold',
+                        fontFamily: 'Trebuchet MS',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'navy',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
                         fontFamily: 'Helvetica',
                     }
                 }
             },
             ...getColumnSearchProps('user'),
-        },
-        {
-            title: 'Total',
-            dataIndex: 'total',
-            key: 'total',
-            width: '20%',
-            sorter: (a, b) => a.total - b.total,
-            sortDirections: ['descend', 'ascend'],
-            defaultSortOrder: 'descend',
         },
         {
             title: 'Easy',
@@ -191,6 +193,27 @@ const DailyLog = (props) => {
             width: '20%',
             sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    style: {
+                        color: 'green',
+                        fontSize: '16px',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'green',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
         },
         {
             title: 'Medium',
@@ -199,6 +222,27 @@ const DailyLog = (props) => {
             width: '20%',
             sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    style: {
+                        color: 'orange',
+                        fontSize: '16px',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'orange',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
         },
         {
             title: 'Hard',
@@ -207,6 +251,56 @@ const DailyLog = (props) => {
             width: '20%',
             sorter: (a, b) => a.hard_cnt - b.hard_cnt,
             sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    style: {
+                        color: 'red',
+                        fontSize: '16px',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'red',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+        },
+        {
+            title: 'Total',
+            dataIndex: 'total',
+            key: 'total',
+            width: '20%',
+            sorter: (a, b) => a.total - b.total,
+            sortDirections: ['descend', 'ascend'],
+            onCell: (record) => {
+                return {
+                    style: {
+                        color: 'black',
+                        fontSize: '16px',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
+            onHeaderCell: (column) => {
+                return {
+                    style: {
+                        color: 'black',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        fontFamily: 'Helvetica',
+                        textAlign: 'center',
+                    }
+                }
+            },
         },
     ];
 
@@ -219,9 +313,6 @@ const DailyLog = (props) => {
                 >
                     <Col span={8}
                         key='easy'
-                        style={{
-                            borderLeft: '1px solid #e8e8e8',
-                        }}
                     >
                         {(record.easy).map((item) => (
                             <Row key={item} >
@@ -229,7 +320,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'green',
-                                        fontSize: '16px'
+                                        fontSize: '16px',
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
@@ -257,7 +348,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'orange',
-                                        fontSize: '16px'
+                                        fontSize: '16px',
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
@@ -274,9 +365,6 @@ const DailyLog = (props) => {
                     </Col >
                     <Col span={8}
                         key='hard'
-                        style={{
-                            borderRight: '1px solid #e8e8e8',
-                        }}
                     >
                         {(record.hard).map((item) => (
                             <Row key={item}>
@@ -284,7 +372,7 @@ const DailyLog = (props) => {
                                     target="_blank"
                                     style={{
                                         color: 'red',
-                                        fontSize: '16px'
+                                        fontSize: '16px',
                                     }}
                                     onMouseOver={(e) => {
                                         e.target.style.textDecoration = 'underline';
