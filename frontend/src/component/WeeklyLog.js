@@ -165,16 +165,22 @@ const DailyLog = (props) => {
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
+                        e.target.orig_bg = e.target.style.backgroundColor;
+                        e.target.style.backgroundColor = 'lightcyan';
                         e.target.style.color = 'blue';
+                        e.target.style.textDecoration = 'underline';
                     },
                     onMouseLeave: (e) => {
                         e.target.style.color = 'navy';
+                        e.target.style.textDecoration = 'none';
+                        e.target.style.backgroundColor = e.target.orig_bg;
                     },
                     style: {
+                        borderRadius: '0px',
                         color: 'navy',
                         fontSize: '16px',
                         fontWeight: 'bold',
-                        fontFamily: 'Arial',
+                        fontFamily: 'Trebuchet MS',
                     }
                 }
             },
