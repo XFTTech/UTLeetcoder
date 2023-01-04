@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
-import { getWeeklyStats, userUrl } from './utils';
+import { getWeeklyStats } from './utils';
 import Highlighter from 'react-highlight-words';
 import DataModal from './DataModal';
 
@@ -161,7 +161,7 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        window.open(userUrl + record.user + '/');
+                        window.open('/UTLeetcoder/' + record.user);
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
-import { getDailyStats, userUrl } from './utils';
+import { getDailyStats } from './utils';
 import Highlighter from 'react-highlight-words';
 import DataModal from './DataModal';
 
