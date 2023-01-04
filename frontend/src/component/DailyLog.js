@@ -195,6 +195,16 @@ const DailyLog = (props) => {
             sortDirections: ['descend', 'ascend'],
             onCell: (record) => {
                 return {
+                    onClick: () => {
+                        alert('click');
+                    },
+                    onMouseOver: (e) => {
+                        e.target.style.cursor = 'pointer';
+                        e.target.style.backgroundColor = 'lightgreen';
+                    },
+                    onMouseLeave: (e) => {
+                        e.target.style.backgroundColor = 'white';
+                    },
                     style: {
                         color: 'green',
                         fontSize: '16px',
