@@ -16,8 +16,7 @@ getAllDate().then((res) => {
         all_dates.set(date, true);
     }
     if (all_dates.size > 0) {
-        lastest_date = [...all_dates.keys()].
-        reduce((a, b) => (dayjs(a) > dayjs(b) ? a : b));
+        lastest_date = [...all_dates.keys()].reduce((a, b) => (dayjs(a) > dayjs(b) ? a : b));
     }
 });
 
