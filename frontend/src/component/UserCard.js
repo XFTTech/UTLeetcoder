@@ -1,15 +1,16 @@
 import React from 'react';
 import { Typography } from 'antd';
 import { Avatar } from 'antd';
-import { Col, Row } from 'antd';
+import { Col, Row, Image } from 'antd';
 import { userUrl } from './utils';
+import leetcode_icon from '../leetcode.svg';
 
 const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
 
 export const UserCard = (props) => {
     return (<Row>
         <Col span={12}>
-            <Row>
+            <Row span={2}>
                 <Typography.Title
                     style={{
                         color: 'navy',
@@ -17,22 +18,29 @@ export const UserCard = (props) => {
                         marginBottom: 'auto',
                     }}
                     level={2}
+                >
+                    {props.user.lcid}
+                </Typography.Title>
+                <Image
+                    preview={false}
+                    width={30}
+                    height={30}
+                    src={leetcode_icon}
+                    style={{
+                        marginTop: 5,
+                        marginLeft: 10,
+                        display: 'block',
+                    }}
                     onClick={() => {
                         window.open(userUrl + props.user.lcid);
                     }}
                     onMouseEnter={(e) => {
                         document.body.style.cursor = 'pointer';
-                        e.target.style.color = 'blue';
-                        e.target.style.textDecoration = 'underline';
                     }}
                     onMouseLeave={(e) => {
                         document.body.style.cursor = 'default';
-                        e.target.style.color = 'navy';
-                        e.target.style.textDecoration = 'none';
                     }}
-                >
-                    {props.user.lcid}
-                </Typography.Title>
+                />
             </Row>
             <Row>
                 <Typography.Title
