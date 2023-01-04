@@ -3,15 +3,15 @@ import { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, Image } from 'antd';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../component/utils';
-import { UserCard } from '../component/UserCard';
-import { UserPie } from '../component/UserPie';
+import UserCard from '../component/UserCard';
+import UserPie from '../component/UserPie';
 import Error404 from './Error404';
 import { getAllStats } from '../component/utils';
 import github from '../github-mark/github-mark.png';
 
 const { Header, Content } = Layout;
 
-export const UserProfile = () => {
+const UserProfile = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -117,4 +117,5 @@ export const UserProfile = () => {
             </Content>
         </>
     );
-}
+};
+export default UserProfile;

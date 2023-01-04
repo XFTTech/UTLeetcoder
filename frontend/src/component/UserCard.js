@@ -7,7 +7,7 @@ import leetcode_icon from '../leetcode.svg';
 
 const default_avatar = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
 
-export const UserCard = (props) => {
+const UserCard = (props) => {
     return (<Row>
         <Col span={12}>
             <Row span={2}>
@@ -79,3 +79,4 @@ export const UserCard = (props) => {
     </Row>
     );
 };
+export default UserCard;

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Pie, measureTextWidth } from '@ant-design/plots';
+import DataModal from '../component/DataModal';
 
 /*
     props:
         data: the given user data statistics
 */
 
-export const UserPie = (props) => {
+const UserPie = (props) => {
     const [data, setData] = useState([]);
+    const [modalData, setModalData] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalDifficulty, setModalDifficulty] = useState('');
+
+    const getModalVisible = (visible) => {
+        setModalVisible(visible);
+    };
+
     useEffect(() => {
         if (props.data) {
             let temp = [
@@ -96,7 +105,9 @@ export const UserPie = (props) => {
                             trigger: 'element:click',
                             action: (e) => {
                                 let key = e.event.data.data.type;
-                                console.log(props.data[key]);
+                                setModalDifficulty(key);
+                                setModalData(props.data[key]);
+                                setModalVisible(true);
                             },
                         },
                     ],
@@ -111,5 +122,9 @@ export const UserPie = (props) => {
         ],
         color: ['#00AF9B', '#FFB800', '#EF4743'],
     };
-    return <Pie {...config} />;
+    return <>
+        <Pie {...config} />
+        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+    </>;
 };
+export default UserPie;
