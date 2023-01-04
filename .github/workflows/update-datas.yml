@@ -19,15 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Github Users
-        run: |
-          git config --local user.email "ethany.zhao@mail.utoronto.ca"
-          git config --local user.name "Ethan-ZYF"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Update data"
-          git push origin main
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -41,6 +32,15 @@ jobs:
       - name: Update
         working-directory: ./backend/src/
         run: node index.js
+
+      - name: Setup Github Users
+        run: |
+          git config --local user.email "ethany.zhao@mail.utoronto.ca"
+          git config --local user.name "Ethan-ZYF"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update data"
+          git push origin main
 
       - name: Setup Github Pages
         working-directory: ./frontend/
