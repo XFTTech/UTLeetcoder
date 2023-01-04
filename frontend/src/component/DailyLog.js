@@ -159,15 +159,17 @@ const DailyLog = (props) => {
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
                         e.target.style.color = 'blue';
+                        e.target.style.textDecoration = 'underline';
                     },
                     onMouseLeave: (e) => {
                         e.target.style.color = 'navy';
+                        e.target.style.textDecoration = 'none';
                     },
                     style: {
                         color: 'navy',
                         fontSize: '16px',
                         fontWeight: 'bold',
-                        fontFamily: 'Arial',
+                        fontFamily: 'Helvetica',
                     }
                 }
             },
