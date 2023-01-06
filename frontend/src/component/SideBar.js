@@ -8,6 +8,7 @@ import {
     CalendarOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { isMobile } from '../component/utils';
 
 const { Sider } = Layout;
 
@@ -23,7 +24,11 @@ function getItem(label, key, icon, children) {
 const path = getRelativeUrl()[0];
 
 const SideBar = () => {
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(() => isMobile());
+    const [open] = useState(() => {
+        if (isMobile()) return null;
+        return 'sub1';
+    });
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -78,7 +83,7 @@ const SideBar = () => {
             </div>
             <Menu
                 theme="dark"
-                defaultOpenKeys={['sub1']}
+                defaultOpenKeys={[open]}
                 defaultSelectedKeys={[path]}
                 mode="inline"
                 items={items}

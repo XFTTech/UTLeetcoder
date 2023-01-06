@@ -30,25 +30,37 @@ export const getAllStats = async () => {
 
 export const getUserInfo = async (lcid) => {
     return await fileClient.get("/user_info/" + lcid + ".json");
-}
+};
 
 export const getUserDailyStats = async (lcid) => {
     return await fileClient.get("/daily_log/" + lcid + ".json");
-}
+};
 
 export const userLoader = async () => {
     const users = (await getUsers()).data;
     return { users };
-}
+};
 
 export const getUserImage = async (lcid) => {
     return await fileClient.get("/Creator/" + lcid + "/page.png");
-}
+};
 
 export const getAllDate = async () => {
     return await fileClient.get("/dates.json");
-}
+};
 
 export const getRelativeUrl = () => {
     return window.location.href.split('/UTLeetcoder/')[1].split('?');
+};
+
+export const  getWindowDimensions = () => {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+};
+
+export const isMobile = () => {
+    return getWindowDimensions().width < 768;
 }

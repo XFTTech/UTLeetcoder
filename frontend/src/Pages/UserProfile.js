@@ -6,7 +6,7 @@ import { getUserInfo } from '../component/utils';
 import UserCard from '../component/UserCard';
 import UserPie from '../component/UserPie';
 import Error404 from './Error404';
-import { getAllStats } from '../component/utils';
+import { getAllStats, isMobile } from '../component/utils';
 import github from '../github-mark/github-mark.png';
 
 const { Header, Content } = Layout;
@@ -77,7 +77,7 @@ const UserProfile = () => {
                             display: 'flex',
                             justifyContent: 'flex-end',
                             alignItems: 'center',
-                            padding: 16,
+                            MarginRight: 'auto',
                         }}
                     >
                         <Image
@@ -105,7 +105,7 @@ const UserProfile = () => {
                     </Col>
                 </Row>
             </Header>
-            <Content
+            {!isMobile()?<Content
                 style={{
                     width: '50%',
                     margin: 'auto',
@@ -114,7 +114,16 @@ const UserProfile = () => {
             >
                 <UserCard user={user} />
                 <UserPie data={data} user={user} />
+            </Content>:<><Content style={{
+                    width: 'auto',
+                    margin: 'auto',
+                }}
+            >
+                <UserCard user={user} />
             </Content>
+            <UserPie data={data} user={user} /></>
+            }
+            
         </>
     );
 };

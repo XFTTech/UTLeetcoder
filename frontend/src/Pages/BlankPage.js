@@ -5,14 +5,17 @@ import Yorafa from '../component/Yorafa';
 import ZhuyuezxDescription from '../component/zhuyuezx';
 import { Image } from 'antd';
 import github from '../github-mark/github-mark.png';
+import { isMobile } from '../component/utils';
+
 const { Header, Content } = Layout;
 
+const isMobiled = isMobile();
 
 const BlankPage = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-
+    
     return (
         <>
             <Header
@@ -86,7 +89,7 @@ const BlankPage = () => {
                     margin: '16px 16px',
                 }}
             >
-                <Row
+                {!isMobiled?<Row
                     gutter={[16, 16]}
                 >
                     <Col span={8}>
@@ -98,7 +101,17 @@ const BlankPage = () => {
                     <Col span={8}>
                         <Yorafa />
                     </Col>
-                </Row>
+                </Row>:<>
+                    <Row>
+                        <EthanDescription />
+                    </Row>
+                    <Row>
+                        <ZhuyuezxDescription />
+                    </Row>
+                    <Row>
+                        <Yorafa />
+                    </Row>
+                </>}
             </Content>
         </>
     );
