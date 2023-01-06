@@ -62,9 +62,10 @@ const split_weekly_all_users = async (users) => {
         weeks.push(str_week);
         await writeData(file_path + `weekly_stats/week-${str_week}.json`,
             JSON.stringify(Object.fromEntries(user_all_weekly.get(week))));
-        await writeData(file_path + `weeks.json`, JSON.stringify(weeks));
-        await writeData(file_path + `alltime.json`, JSON.stringify(Object.fromEntries(await UserAlltimeStats(users))));
     }
+    weeks.sort().reverse();
+    await writeData(file_path + `weeks.json`, JSON.stringify(weeks));
+    await writeData(file_path + `alltime.json`, JSON.stringify(Object.fromEntries(await UserAlltimeStats(users))));
     console.log('split_weekly complete');
 }
 
