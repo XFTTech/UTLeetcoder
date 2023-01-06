@@ -372,7 +372,7 @@ const DailyLog = (props) => {
             dataSource={data}
             pagination={{
                 position: ['bottomCenter'],
-                defaultPageSize: 10,
+                defaultPageSize: 8,
             }}
         />
         <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>

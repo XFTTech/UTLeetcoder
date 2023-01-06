@@ -30,7 +30,7 @@ const ZhuyuezxDescription = () => {
         >
             <Meta
                 avatar={<Avatar src={user.avatar}
-                    style={{ width: 100, height: 100 }}
+                    style={{ width: 64, height: 64 }}
                 />}
                 title="Jason Zhu"
                 description="Love to create cool things through coding. 
