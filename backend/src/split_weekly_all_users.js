@@ -21,7 +21,11 @@ const dateToWeek = (date) => {
     const oneDay = 1000 * 60 * 60 * 24;
     const day = Math.floor(diff / oneDay);
     const week = Math.floor(day / 7);
-    return `${year}-${week + 1}`;
+    if (week + 1 < 10) {
+        return `${year}-0${week + 1}`;
+    } else {
+        return `${year}-${week + 1}`;
+    }
 }
 
 
