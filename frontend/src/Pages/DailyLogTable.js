@@ -48,7 +48,7 @@ const DailyLogTable = () => {
     };
     return (
         <>
-            <Header
+            {isMobile() ? null : <Header
                 style={{
                     padding: 0,
                     background: colorBgContainer,
@@ -111,7 +111,7 @@ const DailyLogTable = () => {
                         />
                     </Col>
                 </Row>
-            </Header>
+            </Header>}
             <Content
                 style={{
                     margin: '16px 16px',
