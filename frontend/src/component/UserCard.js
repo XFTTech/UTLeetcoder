@@ -72,6 +72,15 @@ const UserCard = (props) => {
                     marginLeft: 'auto',
                     display: 'block',
                 }}
+                onClick={() => {
+                    window.open(userUrl + props.user.lcid);
+                }}
+                onMouseEnter={(e) => {
+                    document.body.style.cursor = 'pointer';
+                }}
+                onMouseLeave={(e) => {
+                    document.body.style.cursor = 'default';
+                }}
             />
         </Col>
     </Row>:<Row>
