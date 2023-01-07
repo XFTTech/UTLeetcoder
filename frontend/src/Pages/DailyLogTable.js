@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, DatePicker, Image } from 'antd';
 import DailyLog from '../component/DailyLog';
-import Tabs from '../mobile/DailyLogMobile'
+import Difficulties from '../mobile/DailyLogMobile'
 import { getRelativeUrl, getUsers, isMobile, getAllDate } from '../component/utils';
 import dayjs from 'dayjs';
 import github from '../github-mark/github-mark.png';
@@ -126,7 +126,7 @@ const DailyLogTable = () => {
                     disabledDate={disabledDate}
                     onChange={onDateChange}
                 />
-                {isMobile() ? <Tabs /> : <DailyLog date={selectedDay} users={users} />}
+                {isMobile() ? <Difficulties date={selectedDay} users={users} /> : <DailyLog date={selectedDay} users={users} />}
             </Content>
         </>
     );
