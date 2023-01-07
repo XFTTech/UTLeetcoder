@@ -10,7 +10,7 @@ import DataModal from '../component/DataModal';
         date: string of date in format "YYYY-MM-DD"
         users: list of users
 */
-const MobileDailyLog = (props) => {
+const MobileWeeklyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const [data, setData] = useState();
@@ -393,4 +393,4 @@ const MobileDailyLog = (props) => {
         <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
     </>
 };
-export default MobileDailyLog;
+export default MobileWeeklyLog;

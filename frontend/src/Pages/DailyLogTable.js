@@ -111,7 +111,8 @@ const DailyLogTable = () => {
                         />
                     </Col>
                 </Row>
-            </Header>}
+            </Header>
+            }
             <Content
                 style={{
                     margin: '16px 16px',
