@@ -5,7 +5,6 @@ import Difficulties from '../mobile/DailyLogMobile'
 import { getRelativeUrl, getUsers, isMobile, getAllDate } from '../component/utils';
 import dayjs from 'dayjs';
 import github from '../github-mark/github-mark.png';
-// import { redirect } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 

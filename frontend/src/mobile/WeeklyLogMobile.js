@@ -43,16 +43,16 @@ const Difficulties = (props) => {
                 }}
             >
                 <Swiper.Item>
-                    <MobileDailyLog date={props.date} users={props.users} difficulty="easy" />
+                    <MobileDailyLog week={props.week} users={props.users} difficulty="easy" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog date={props.date} users={props.users} difficulty="medium" />
+                    <MobileDailyLog week={props.week} users={props.users} difficulty="medium" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog date={props.date} users={props.users} difficulty="hard" />
+                    <MobileDailyLog week={props.week} users={props.users} difficulty="hard" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog date={props.date} users={props.users} difficulty="total" />
+                    <MobileDailyLog week={props.week} users={props.users} difficulty="total" />
                 </Swiper.Item>
             </Swiper>
         </>

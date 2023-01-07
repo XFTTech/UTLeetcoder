@@ -205,7 +205,6 @@ const MobileDailyLog = (props) => {
             width: '50%',
             sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
-            defaultSortOrder: 'descend',
             onCell: (record) => {
                 return {
                     onClick: () => {
@@ -252,7 +251,6 @@ const MobileDailyLog = (props) => {
             width: '50%',
             sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
-            defaultSortOrder: 'descend',
             onCell: (record) => {
                 return {
                     onClick: () => {
@@ -299,7 +297,6 @@ const MobileDailyLog = (props) => {
                 width: '50%',
                 sorter: (a, b) => a.hard_cnt - b.hard_cnt,
                 sortDirections: ['descend', 'ascend'],
-                defaultSortOrder: 'descend',
                 onCell: (record) => {
                     return {
                         onClick: () => {
