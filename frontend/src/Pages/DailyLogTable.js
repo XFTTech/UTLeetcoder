@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, DatePicker, Image } from 'antd';
 import DailyLog from '../component/DailyLog';
-import { getRelativeUrl, getUsers } from '../component/utils';
-import { getAllDate } from '../component/utils';
+import Tabs from '../mobile/DailyLogMobile'
+import { getRelativeUrl, getUsers, isMobile, getAllDate } from '../component/utils';
 import dayjs from 'dayjs';
 import github from '../github-mark/github-mark.png';
 // import { redirect } from 'react-router-dom';
@@ -126,7 +126,7 @@ const DailyLogTable = () => {
                     disabledDate={disabledDate}
                     onChange={onDateChange}
                 />
-                <DailyLog date={selectedDay} users={users} />
+                {isMobile() ? <Tabs /> : <DailyLog date={selectedDay} users={users} />}
             </Content>
         </>
     );

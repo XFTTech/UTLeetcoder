@@ -377,7 +377,7 @@ const DailyLog = (props) => {
                 defaultPageSize: 8,
             }}
         />
-        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
     </>
 };
 export default DailyLog;
