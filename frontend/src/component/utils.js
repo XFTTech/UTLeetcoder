@@ -5,7 +5,7 @@ export const userUrl = "https://leetcode.com/"
 
 export const fileClient = axios.create({
     baseURL: './data',
-    timeout: 10000
+    timeout: 30000
 });
 
 export const getUsers = async () => {
@@ -53,7 +53,7 @@ export const getRelativeUrl = () => {
     return window.location.href.split('/UTLeetcoder/')[1].split('?');
 };
 
-export const  getWindowDimensions = () => {
+export const getWindowDimensions = () => {
     const { innerWidth: width, innerHeight: height } = window;
     return {
         width,

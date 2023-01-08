@@ -7,7 +7,7 @@ const file_path = '../../frontend/public/data/';
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
     baseURL: 'https://leetcode.com',
-    timeout: 10000
+    timeout: 30000
 })
 
 const getNumProblems = async () => {

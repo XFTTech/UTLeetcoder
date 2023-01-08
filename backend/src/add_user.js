@@ -7,7 +7,7 @@ const new_user = '../new_user.json'
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
     baseURL: 'https://leetcode.com',
-    timeout: 10000
+    timeout: 30000
 })
 
 const getAllLCID = () => {
