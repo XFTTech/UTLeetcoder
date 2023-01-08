@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
-import { getDailyStats } from '../component/utils';
+import { getWeeklyStats } from '../component/utils';
 import Highlighter from 'react-highlight-words';
 import DataModal from '../component/DataModal';
 
@@ -10,7 +10,7 @@ import DataModal from '../component/DataModal';
         date: string of date in format "YYYY-MM-DD"
         users: list of users
 */
-const MobileDailyLog = (props) => {
+const MobileWeeklyLog = (props) => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const [data, setData] = useState();
@@ -24,17 +24,17 @@ const MobileDailyLog = (props) => {
 
     useEffect(() => {
         const getData = async () => {
-            let dailyStatsList;
+            let weeklyStatsList;
             let result = [];
-            await getDailyStats(props.date)
+            await getWeeklyStats(props.week)
                 .then((res) => {
-                    dailyStatsList = new Map(Object.entries(res.data));
+                    weeklyStatsList = new Map(Object.entries(res.data));
                 })
                 .catch((err) => {
                     console.error(err);
                 });
             props.users.forEach((user) => {
-                let userdata = dailyStatsList.get(user)
+                let userdata = weeklyStatsList.get(user)
                 if (userdata) {
                     let usermap = new Map(Object.entries(userdata ? userdata : {}));
                     usermap.set('key', user);
@@ -43,7 +43,7 @@ const MobileDailyLog = (props) => {
             });
             return result;
         };
-        if (props.date === '') return;
+        if (props.week === '') return;
         getData().then((res) => {
             setData(res);
         });
@@ -205,6 +205,7 @@ const MobileDailyLog = (props) => {
             width: '50%',
             sorter: (a, b) => a.easy_cnt - b.easy_cnt,
             sortDirections: ['descend', 'ascend'],
+            defaultSortOrder: 'descend',
             onCell: (record) => {
                 return {
                     onClick: () => {
@@ -251,6 +252,7 @@ const MobileDailyLog = (props) => {
             width: '50%',
             sorter: (a, b) => a.medium_cnt - b.medium_cnt,
             sortDirections: ['descend', 'ascend'],
+            defaultSortOrder: 'descend',
             onCell: (record) => {
                 return {
                     onClick: () => {
@@ -297,6 +299,7 @@ const MobileDailyLog = (props) => {
                 width: '50%',
                 sorter: (a, b) => a.hard_cnt - b.hard_cnt,
                 sortDirections: ['descend', 'ascend'],
+                defaultSortOrder: 'descend',
                 onCell: (record) => {
                     return {
                         onClick: () => {
@@ -390,4 +393,4 @@ const MobileDailyLog = (props) => {
         <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
     </>
 };
-export default MobileDailyLog;
+export default MobileWeeklyLog;

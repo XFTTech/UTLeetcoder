@@ -12,7 +12,7 @@ const tabItems = [
 
 const Difficulties = (props) => {
     const swiperRef = useRef(null)
-    const [activeIndex, setActiveIndex] = useState(1)
+    const [activeIndex, setActiveIndex] = useState(3)
 
     return (
         <>
@@ -23,6 +23,11 @@ const Difficulties = (props) => {
                     setActiveIndex(index)
                     swiperRef.current?.swipeTo(index)
                 }}
+                style={{
+                    "--active-line-color": tabItems[activeIndex].color,
+                    "--active-title-color": tabItems[activeIndex].color,
+                }}
+                // set the color of selected tab to tab color
             >
                 {tabItems.map(item => (
                     <Tabs.Tab title={item.title} key={item.key} 

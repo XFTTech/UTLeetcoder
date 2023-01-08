@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Tabs, Swiper } from 'antd-mobile'
-import MobileDailyLog from './DailyList'
+import MobileWeeklyLog from './WeekList'
 
 
 const tabItems = [
@@ -12,7 +12,7 @@ const tabItems = [
 
 const Difficulties = (props) => {
     const swiperRef = useRef(null)
-    const [activeIndex, setActiveIndex] = useState(1)
+    const [activeIndex, setActiveIndex] = useState(3)
 
     return (
         <>
@@ -22,6 +22,10 @@ const Difficulties = (props) => {
                     const index = tabItems.findIndex(item => item.key === key)
                     setActiveIndex(index)
                     swiperRef.current?.swipeTo(index)
+                }}
+                style={{
+                    "--active-line-color": tabItems[activeIndex].color,
+                    "--active-title-color": tabItems[activeIndex].color,
                 }}
             >
                 {tabItems.map(item => (
@@ -43,16 +47,16 @@ const Difficulties = (props) => {
                 }}
             >
                 <Swiper.Item>
-                    <MobileDailyLog week={props.week} users={props.users} difficulty="easy" />
+                    <MobileWeeklyLog week={props.week} users={props.users} difficulty="easy" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog week={props.week} users={props.users} difficulty="medium" />
+                    <MobileWeeklyLog week={props.week} users={props.users} difficulty="medium" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog week={props.week} users={props.users} difficulty="hard" />
+                    <MobileWeeklyLog week={props.week} users={props.users} difficulty="hard" />
                 </Swiper.Item>
                 <Swiper.Item>
-                    <MobileDailyLog week={props.week} users={props.users} difficulty="total" />
+                    <MobileWeeklyLog week={props.week} users={props.users} difficulty="total" />
                 </Swiper.Item>
             </Swiper>
         </>

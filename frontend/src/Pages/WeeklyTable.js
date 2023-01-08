@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, Image } from 'antd';
-import { getUsers, getWeeks, getRelativeUrl } from '../component/utils';
+import { getUsers, getWeeks, getRelativeUrl, isMobile } from '../component/utils';
 import { DownOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import WeeklyLog from '../component/WeeklyLog';
 import github from '../github-mark/github-mark.png';
 import { Link } from 'react-router-dom';
+import Difficulties from '../mobile/WeeklyLogMobile';
 
 const { Header, Content } = Layout;
 const getItem = (label, key) => {
@@ -69,7 +70,7 @@ const WeeklyTable = () => {
 
     return (
         <>
-            <Header
+            {isMobile()? null : <Header
                 style={{
                     padding: 0,
                     background: colorBgContainer,
@@ -135,6 +136,7 @@ const WeeklyTable = () => {
                     </Col>
                 </Row>
             </Header>
+            }
             <Content
                 style={{
                     margin: '16px 16px',
@@ -150,7 +152,7 @@ const WeeklyTable = () => {
                         </Button>
                     </Dropdown>
                 </Space>
-                <WeeklyLog week={content} users={users} />
+                {isMobile() ? <Difficulties week={content} users={users} /> :<WeeklyLog week={content} users={users} />}
             </Content>
         </>
 
