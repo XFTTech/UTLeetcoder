@@ -21,7 +21,7 @@ function getItem(label, key, icon, children) {
     };
 }
 
-const path = getRelativeUrl()[0];
+const path = getRelativeUrl().substring(1);
 
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(() => isMobile());
