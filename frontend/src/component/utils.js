@@ -50,7 +50,7 @@ export const getAllDate = async () => {
 };
 
 export const getRelativeUrl = () => {
-    return window.location.href.split('/UTLeetcoder/')[1].split('?');
+    return window.location.href.split('/')[1].split('?');
 };
 
 export const getWindowDimensions = () => {

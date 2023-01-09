@@ -44,7 +44,7 @@ const DailyLogTable = () => {
 
     const onDateChange = (date, dateString) => {
         setSelectedDay(dateString);
-        // let tempUrl = '/UTLeetcoder/select_daily?' + dateString;
+        // let tempUrl = '/select_daily?' + dateString;
     };
     return (
         <>

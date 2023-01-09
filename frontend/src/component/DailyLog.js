@@ -162,7 +162,7 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        window.open('/UTLeetcoder/' + record.user);
+                        window.open('/' + record.user);
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';

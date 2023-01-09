@@ -37,10 +37,10 @@ const SideBar = () => {
     });
 
     const items = [
-        getItem(<Link to="/UTLeetcoder/select_daily">Daily Log</Link>, 'select_daily', <CalendarOutlined />),
-        getItem(<Link to="/UTLeetcoder/select_weekly">Weekly Log</Link>, 'select_weekly', <DesktopOutlined />),
+        getItem(<Link to="/select_daily">Daily Log</Link>, 'select_daily', <CalendarOutlined />),
+        getItem(<Link to="/select_weekly">Weekly Log</Link>, 'select_weekly', <DesktopOutlined />),
         getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
-            let temp = "/UTLeetcoder/" + user;
+            let temp = "/" + user;
             return (getItem(<Link to={temp}>{user}</Link>, user));
         })),
     ];
@@ -63,7 +63,7 @@ const SideBar = () => {
                     marginTop: 10,
                 }}
             >
-                <Link to="/UTLeetcoder/">
+                <Link to="/">
                     <Image
                         preview={false}
                         width={45}
@@ -76,7 +76,7 @@ const SideBar = () => {
                             document.body.style.cursor = 'default';
                         }}
                         onClick={() => {
-                            window.location.href = '/UTLeetcoder/';
+                            window.location.href = '/';
                         }}
                     />
                 </Link>

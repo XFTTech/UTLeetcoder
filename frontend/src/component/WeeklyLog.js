@@ -149,9 +149,10 @@ const DailyLog = (props) => {
                     autoEscape
                     textToHighlight={text ? text.toString() : ''}
                 />
-      ) : (
-        text
-      ),});
+            ) : (
+                text
+            ),
+    });
     const columns = [
         {
             title: 'User',
@@ -161,7 +162,7 @@ const DailyLog = (props) => {
             onCell: (record) => {
                 return {
                     onClick: () => {
-                        window.open('/UTLeetcoder/' + record.user);
+                        window.open('/' + record.user);
                     },
                     onMouseOver: (e) => {
                         e.target.style.cursor = 'pointer';
@@ -375,7 +376,7 @@ const DailyLog = (props) => {
                 defaultPageSize: 8,
             }}
         />
-        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
     </>;
 };
 export default DailyLog;

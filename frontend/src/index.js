@@ -14,7 +14,7 @@ import WeeklyTable from './Pages/WeeklyTable';
 
 const router = createBrowserRouter([
     {
-        path: '/UTLeetcoder/',
+        path: '/',
         element: <App />,
         errorElement: <Error404 />,
         loader: userLoader,

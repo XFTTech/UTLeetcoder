@@ -25,7 +25,7 @@ const WeeklyTable = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    
+
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -37,21 +37,21 @@ const WeeklyTable = () => {
     const [weeks, setWeeks] = useState(() => {
         getWeeks().then((res) => {
             setWeeks(res.data);
-            if (res.data.includes(query)){
+            if (res.data.includes(query)) {
                 setContent(query);
                 const [year, week] = query.split('-');
                 setParsed(`Statistics for Week ${week} of ${year}`);
             }
             else {
                 setContent(res.data[0]);
-                const [year, week] =res.data[0].split('-');
+                const [year, week] = res.data[0].split('-');
                 setParsed(`Statistics for Week ${week} of ${year}`);
             }
         });
         return [];
     });
     const items = weeks.map((week) => {
-        let tempUrl = '/UTLeetcoder/select_weekly?' + week;
+        let tempUrl = '/select_weekly?' + week;
         return getItem(<Link to={tempUrl}>{week}</Link>, week);
     });
 
@@ -70,7 +70,7 @@ const WeeklyTable = () => {
 
     return (
         <>
-            {isMobile()? null : <Header
+            {isMobile() ? null : <Header
                 style={{
                     padding: 0,
                     background: colorBgContainer,
@@ -152,7 +152,7 @@ const WeeklyTable = () => {
                         </Button>
                     </Dropdown>
                 </Space>
-                {isMobile() ? <Difficulties week={content} users={users} /> :<WeeklyLog week={content} users={users} />}
+                {isMobile() ? <Difficulties week={content} users={users} /> : <WeeklyLog week={content} users={users} />}
             </Content>
         </>
 

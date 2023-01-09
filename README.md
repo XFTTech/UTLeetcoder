@@ -1,9 +1,9 @@
 # UTLeetcoder
 
 ## Website
-- [UTLeetcoder](https://xfttech.github.io/UTLeetcoder/)
-- [Daily Log](https://xfttech.github.io/UTLeetcoder/select_daily)
-- [Weekly Log](https://xfttech.github.io/UTLeetcoder/select_weekly)
+- [UTLeetcoder](https://xfttech.github.io/)
+- [Daily Log](https://xfttech.github.io/select_daily)
+- [Weekly Log](https://xfttech.github.io/select_weekly)
 
 
 ## Get from leetcode api
