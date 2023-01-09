@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, Image } from 'antd';
-import { getUsers, getWeeks, getRelativeUrl, isMobile } from '../component/utils';
+import { getUsers, getWeeks, getQuery, isMobile } from '../component/utils';
 import { DownOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Space } from 'antd';
 import WeeklyLog from '../component/WeeklyLog';
@@ -21,7 +21,7 @@ const getItem = (label, key) => {
 const defaultContent = '';
 
 const WeeklyTable = () => {
-    const query = getRelativeUrl()[1];
+    const query = getQuery().substring(1);
     const {
         token: { colorBgContainer },
     } = theme.useToken();

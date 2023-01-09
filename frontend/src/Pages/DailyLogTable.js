@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Row, Col, Typography, theme, DatePicker, Image } from 'antd';
 import DailyLog from '../component/DailyLog';
 import Difficulties from '../mobile/DailyLogMobile'
-import { getRelativeUrl, getUsers, isMobile, getAllDate } from '../component/utils';
+import { getUsers, isMobile, getAllDate, getQuery } from '../component/utils';
 import dayjs from 'dayjs';
 import github from '../github-mark/github-mark.png';
 
@@ -23,7 +23,7 @@ const disabledDate = (current) => {
     return !all_dates.has(current.format('YYYY-MM-DD'));
 };
 
-const query = getRelativeUrl()[1];
+const query = getQuery().substring(1);
 
 const DailyLogTable = () => {
     const {

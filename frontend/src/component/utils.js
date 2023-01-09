@@ -53,6 +53,10 @@ export const getRelativeUrl = () => {
     return window.location.pathname;
 };
 
+export const getQuery = () => {
+    return window.location.search;
+};
+
 export const isLocal = () => {
     return window.location.href.includes('localhost');
 };
