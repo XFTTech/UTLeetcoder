@@ -5,7 +5,7 @@ export const userUrl = "https://leetcode.com/"
 
 export const fileClient = axios.create({
     baseURL: './data',
-    timeout: 30000
+    timeout: 100000
 });
 
 export const getUsers = async () => {
