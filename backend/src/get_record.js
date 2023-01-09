@@ -9,7 +9,7 @@ const startTimestamp = new Date('2022-12-16').getTime() / 1000;
 const apiClient = axios.create({
     headers: { "Accept-Encoding": "gzip,deflate,compress" },
     baseURL: 'https://leetcode.com',
-    timeout: 30000
+    timeout: 100000
 })
 
 export const getRecentSubmission = async (username) => {
