@@ -50,7 +50,11 @@ export const getAllDate = async () => {
 };
 
 export const getRelativeUrl = () => {
-    return window.location.href.split('/')[1].split('?');
+    return window.location.href.split('.org/')[1].split('?');
+};
+
+export const isLocal = () => {
+    return window.location.href.includes('localhost');
 };
 
 export const getWindowDimensions = () => {

@@ -27,7 +27,6 @@ const Yorafa = () => {
                 <video
                     id="my-video"
                     controls
-                    preload="auto"
                     width="550"
                     height="auto"
                     poster="https://yorafa.com/wp-content/uploads/2023/01/Yorafa-scaled.jpg"

@@ -11,7 +11,7 @@ By Network feature of chrome, we not hard to get the request and response of Lee
 
 
 
-## URL Schema of Leetcode API
+## URL Schema of Leetcode API (for axios)
 
 ```
 ?query=
@@ -149,3 +149,49 @@ By Network feature of chrome, we not hard to get the request and response of Lee
     }
 }
 ```
+
+```
+?query=
+{
+    activeDailyCodingChallengeQuestion {
+        date
+		userStatus
+		link
+		question {
+			acRate
+			difficulty
+			freqBar
+			frontendQuestionId: questionFrontendId
+			isFavor
+			paidOnly: isPaidOnly
+			status
+			title
+			titleSlug
+			hasVideoSolution
+			hasSolution
+			topicTags {
+				name
+				id
+				slug
+			}
+		}
+    }
+}
+```
+
+## Use Fetch
+
+If you are more familiar with fetch, you can use fetch to get the data from Leetcode API. The following is an example of using fetch to get the user's information.
+
+```javascript
+const init = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: QUERY }),
+}
+const response = await fetch('https://leetcode.com/graphql', init)
+```
+
+And for above `init` object, you can get `QUERY` just simply open your chrome/firefox or something else and inspect the network request of Leetcode. Then you will see the subsection `graphql/` in the network request, and you can get the `QUERY` from the `query` field in the request body from `Payload`.
+
+
