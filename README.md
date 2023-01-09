@@ -1,9 +1,9 @@
 # UTLeetcoder
 
 ## Website
-- [UTLeetcoder](https://xfttech.github.io/)
-- [Daily Log](https://xfttech.github.io/select_daily)
-- [Weekly Log](https://xfttech.github.io/select_weekly)
+- [UTLeetcoder](https://coder.xfttech.org/)
+- [Daily Log](https://coder.xfttech.org/select_daily)
+- [Weekly Log](https://coder.xfttech.org/select_weekly)
 
 
 ## Get from leetcode api
@@ -38,7 +38,7 @@
 
 ## TODO
 - [ ] front end
-    - [ ] user profile page Modal of problem list with given difficulty
+    - [x] user profile page Modal of problem list with given difficulty
     - [ ] Change the header of each page
     - [ ] Better UI
 
