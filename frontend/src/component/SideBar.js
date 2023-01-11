@@ -25,10 +25,6 @@ const path = getRelativeUrl().substring(1);
 
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(() => isMobile());
-    const [open] = useState(() => {
-        if (isMobile()) return null;
-        return 'sub1';
-    });
     const [users, setUsers] = useState(() => {
         getUsers().then((res) => {
             setUsers(res.data);
@@ -39,10 +35,12 @@ const SideBar = () => {
     const items = [
         getItem(<Link to="/select_daily">Daily Log</Link>, 'select_daily', <CalendarOutlined />),
         getItem(<Link to="/select_weekly">Weekly Log</Link>, 'select_weekly', <DesktopOutlined />),
-        getItem('User', 'sub1', <UserOutlined />, users.map((user) => {
-            let temp = "/" + user;
-            return (getItem(<Link to={temp}>{user}</Link>, user));
-        })),
+        getItem('User', 'sub1', <UserOutlined />,
+            users.map((user) => {
+                let temp = "/" + user;
+                return (getItem(<Link to={temp}>{user}</Link>, user));
+            })
+        ),
     ];
 
     return (
@@ -83,10 +81,9 @@ const SideBar = () => {
             </div>
             <Menu
                 theme="dark"
-                defaultOpenKeys={[open]}
                 defaultSelectedKeys={[path]}
-                mode="inline"
                 items={items}
+                mode="vertical"
             />
         </Sider >
     )
