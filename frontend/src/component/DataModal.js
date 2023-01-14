@@ -11,12 +11,8 @@ const DataModal = (props) => {
     const [did, setDid] = useState(true);
     const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState((parseInt)((window.innerHeight * 0.6 - 24 - 32) / 28.28));
-    const [showPage, setShowPage] = useState(true);
     function handleResize() {
         setPageSize((parseInt)((window.innerHeight * 0.6 - 24 - 32) / 28.28));
-        console.log(pageSize);
-        if (data.length > pageSize) setShowPage(true);
-        else setShowPage(false);
     };
     window.addEventListener('resize', handleResize);
 
@@ -33,6 +29,12 @@ const DataModal = (props) => {
             setDid(false);
         }
     }, [data, difficulty]);
+
+    useEffect(() => {
+        if (page * pageSize > data.length) {
+            setPage((parseInt)(data.length / pageSize) + 1);
+        }
+    }, [pageSize, data, page]);
 
     const handleCancel = (e) => {
         getModalVisible(false);
@@ -72,7 +74,7 @@ const DataModal = (props) => {
                         </Link>
                     </ Row>
                 ))) : <Empty />}
-                {did && showPage ? <Pagination
+                {did ? <Pagination
                     style={{
                         // at bottom center
                         marginTop: '10px',
