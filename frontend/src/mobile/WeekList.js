@@ -3,7 +3,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
 import { getWeeklyStats } from '../component/utils';
 import Highlighter from 'react-highlight-words';
-import DataModal from '../component/DataModal';
+import PopUp from '../component/PopUp';
 
 /*
     props: 
@@ -390,7 +390,7 @@ const MobileWeeklyLog = (props) => {
                 defaultPageSize: 8,
             }}
         />
-        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
+        <PopUp visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
     </>
 };
 export default MobileWeeklyLog;

@@ -4,6 +4,7 @@ import { Button, Input, Space, Table } from 'antd';
 import { getDailyStats } from '../component/utils';
 import Highlighter from 'react-highlight-words';
 import DataModal from '../component/DataModal';
+import PopUp from '../component/PopUp';
 
 /*
     props: 
@@ -390,7 +391,10 @@ const MobileDailyLog = (props) => {
                 defaultPageSize: 8,
             }}
         />
-        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
+        {/* <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} /> */}
+        <PopUp
+            visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible}
+        />
     </>
 };
 export default MobileDailyLog;
