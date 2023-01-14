@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Popup, Space, Button } from 'antd-mobile'
+import { Popup } from 'antd-mobile'
 import { problemUrl } from './utils';
 import { Empty, Row, Typography } from 'antd';
 
