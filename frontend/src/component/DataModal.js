@@ -10,10 +10,11 @@ const DataModal = (props) => {
     const [color, setColor] = useState('black');
     const [did, setDid] = useState(true);
     const [page, setPage] = useState(1);
-    const [showPage, setShowPage] = useState(true);
     const [pageSize, setPageSize] = useState((parseInt)((window.innerHeight * 0.6 - 24 - 32) / 28.28));
+    const [showPage, setShowPage] = useState(true);
     function handleResize() {
         setPageSize((parseInt)((window.innerHeight * 0.6 - 24 - 32) / 28.28));
+        console.log(pageSize);
         if (data.length > pageSize) setShowPage(true);
         else setShowPage(false);
     };
@@ -30,7 +31,6 @@ const DataModal = (props) => {
             setPage(1);
         } else {
             setDid(false);
-            setShowPage(false);
         }
     }, [data, difficulty]);
 
