@@ -71,6 +71,13 @@ const split_weekly_all_users = async (users) => {
 
 const main = async () => {
     const users = JSON.parse(fs.readFileSync(file_path + 'leetcoder_ids.json', 'utf8'));
+    let now = new Date();
+    // to Toronto time
+    now.setHours(now.getHours() - 5);
+    await fs.writeFile(file_path + '/lastUpdate.json', JSON.stringify(now), (err) => {
+        if (err) throw err;
+        console.log('record lastUpdate time');
+    });
     let idx = users.length;
     await users.map(async (user) => {
         await update_submission(user);

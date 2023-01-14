@@ -1,17 +1,27 @@
-import React from 'react';
-import { Layout, Row, Col, Typography, theme } from 'antd';
+import { React, useState } from 'react';
+import { Layout, Row, Col, Typography, theme, Result, Image } from 'antd';
 import EthanDescription from '../component/Ethan-ZYF';
 import Yorafa from '../component/Yorafa';
 import ZhuyuezxDescription from '../component/zhuyuezx';
-import { Image } from 'antd';
 import github from '../github-mark/github-mark.png';
-import { isMobile } from '../component/utils';
+import { getLastUpdate, isMobile } from '../component/utils';
+import { SmileOutlined } from '@ant-design/icons';
 
 const { Header, Content } = Layout;
 
 const isMobiled = isMobile();
 
 const BlankPage = () => {
+    const [tt, setTt] = useState(() => {
+        getLastUpdate().then((res) => {
+            let temp = res.data;
+            temp = temp.replace('T', ' ');
+            temp = temp.substring(0, temp.length - 8);
+            setTt(temp);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -89,7 +99,8 @@ const BlankPage = () => {
                     margin: '16px 16px',
                 }}
             >
-                {!isMobiled?<Row
+                {!isMobiled?<>
+                <Row
                     gutter={[16, 16]}
                 >
                     <Col span={8}>
@@ -101,7 +112,23 @@ const BlankPage = () => {
                     <Col span={8}>
                         <Yorafa />
                     </Col>
-                </Row>:<>
+                </Row>
+                <Row> 
+                    <Col span={8}>
+                        
+                    </Col>
+                    <Col span={8}>
+                    <Result
+                        icon={<SmileOutlined />}
+                        title={'last update at: ' + tt}
+                    />
+                    </Col>
+                    <Col span={8}>
+                        
+                    </Col>
+                    
+                </Row>
+                </>:<>
                     <Row>
                         <EthanDescription />
                     </Row>
@@ -110,6 +137,12 @@ const BlankPage = () => {
                     </Row>
                     <Row>
                         <Yorafa />
+                    </Row>
+                    <Row>
+                    <Result
+                        icon={<SmileOutlined />}
+                        title={'last update at: ' + tt}
+                    />
                     </Row>
                 </>}
             </Content>

@@ -72,3 +72,7 @@ export const getWindowDimensions = () => {
 export const isMobile = () => {
     return getWindowDimensions().width < 768;
 }
+
+export const getLastUpdate = async () => {
+    return await fileClient.get("/lastUpdate.json");
+}

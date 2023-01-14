@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { DailyLog, UserDaily, UserRecentSubmissionList, RecentAcSubmissionList } from './entities.js';
+import { UserDaily } from './entities.js';
 const file_path = '../../frontend/public/data/';
 
 const format_date = (date) => {
