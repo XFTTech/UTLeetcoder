@@ -391,6 +391,7 @@ const MobileWeeklyLog = (props) => {
             }}
         />
         <PopUp visible={modalVisible} data={modalData} difficulty={modalDifficulty} getModalVisible={getModalVisible} />
+        
     </>
 };
 export default MobileWeeklyLog;
