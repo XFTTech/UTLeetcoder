@@ -3,7 +3,6 @@ import { SearchOutlined } from '@ant-design/icons';
 import { Button, Input, Space, Table } from 'antd';
 import { getDailyStats } from '../component/utils';
 import Highlighter from 'react-highlight-words';
-import DataModal from '../component/DataModal';
 import PopUp from '../component/PopUp';
 
 /*
