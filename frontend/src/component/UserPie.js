@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Pie, measureTextWidth } from '@ant-design/plots';
 import DataModal from '../component/DataModal';
+import { isMobile } from './utils';
+import PopUp from '../component/PopUp';
 
 /*
     props:
@@ -124,7 +126,9 @@ const UserPie = (props) => {
     };
     return <>
         <Pie {...config} />
-        <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+        {isMobile() ? <PopUp visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+        : <DataModal visible={modalVisible} data={modalData} difficulty={modalDifficulty}  getModalVisible={getModalVisible}/>
+        }
     </>;
 };
 export default UserPie;
