@@ -66,7 +66,6 @@ const BlankPage = () => {
                             display: 'flex',
                             justifyContent: 'flex-end',
                             alignItems: 'center',
-                            padding: 16,
                         }}
                     >
                         <Image
