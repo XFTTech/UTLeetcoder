@@ -36,7 +36,7 @@ jobs:
       - name: Setup Github Users
         run: |
           git config --local user.email "ethany.zhao@mail.utoronto.ca"
-          git config --local user.name "Ethan-ZYF"
+          git config --local user.name "Bot"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
           git add .
           git diff-index --quiet HEAD || git commit -m "Update data"
