@@ -35,7 +35,7 @@ jobs:
 
       - name: Setup Github Users
         run: |
-          git config --local user.email "ethany.zhao@mail.utoronto.ca"
+          git config --local user.email "ethany.zhao-Bot@mail.utoronto.ca"
           git config --local user.name "Bot"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
           git add .

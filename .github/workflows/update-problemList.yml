@@ -34,7 +34,7 @@ jobs:
         run: node get_all_problems.js
       - name: Setup Github Users
         run: |
-          git config --local user.email "ethany.zhao@mail.utoronto.ca"
+          git config --local user.email "ethany.zhao-Bot@mail.utoronto.ca"
           git config --local user.name "Bot"
           git pull
           git add .

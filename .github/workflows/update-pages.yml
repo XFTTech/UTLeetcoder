@@ -31,7 +31,7 @@ jobs:
       - name: Setup Github Users
         run: |
           git config --local user.email "thomasyorafa@gmail.com"
-          git config --local user.name "Yorafa"
+          git config --local user.name "Bot"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Deploy
