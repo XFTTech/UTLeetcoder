@@ -34,5 +34,5 @@ jobs:
           git config --local user.name "Bot"
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
-      - name: Deploy
-        run: npm run deploy
+      # - name: Deploy
+      #   run: npm run deploy
