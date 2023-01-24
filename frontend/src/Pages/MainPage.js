@@ -3,6 +3,7 @@ import { Layout, Row, Col, Typography, theme, Result, Image } from 'antd';
 import github from '../github-mark/github-mark.png';
 import { getLastUpdate, isMobile } from '../component/utils';
 import { SmileOutlined } from '@ant-design/icons';
+import Podium from '../component/Podium';
 
 const { Header, Content } = Layout;
 
@@ -22,7 +23,7 @@ const MainPage = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    
+
     return (
         <>
             <Header
@@ -54,7 +55,7 @@ const MainPage = () => {
                             }}
                             level={3}
                         >
-                            Project Developers
+                            Leaderboard
                         </Typography.Title>
                     </Col>
                     <Col span={4}
@@ -100,7 +101,7 @@ const MainPage = () => {
                     gutter={[16, 16]}
                 >
                     <Col span={12}>
-                       
+                       <Podium />
                     </Col>
                     <Col span={12}>
                     </Col>
