@@ -121,10 +121,10 @@ const MainPage = () => {
                     gutter={[16, 16]}
                 >
                     <Col span={12}>
-                       <Podium stats={sortedTotal} type={"contest"}/>
+                       <Podium stats={sortedTotal} type={"totalSubs"}/>
                     </Col>
                     <Col span={12}>
-                        <Podium stats={sortedRank} type={"ranking"}/>
+                        <Podium stats={sortedRank} type={"contestRating"}/>
                     </Col>
                 </Row>
                 <Row> 
