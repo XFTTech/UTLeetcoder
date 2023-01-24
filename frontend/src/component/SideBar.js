@@ -6,6 +6,7 @@ import {
     DesktopOutlined,
     UserOutlined,
     CalendarOutlined,
+    SmileOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { isMobile } from '../component/utils';
@@ -41,6 +42,7 @@ const SideBar = () => {
                 return (getItem(<Link to={temp}>{user}</Link>, user));
             })
         ),
+        getItem(<Link to="/about">About</Link>, 'about', <SmileOutlined />)
     ];
 
     return (
