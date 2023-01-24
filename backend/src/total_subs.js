@@ -1,5 +1,7 @@
 import axios from 'axios';
+import fs from 'fs';
 const file_path = '../../frontend/public/data/';
+
 
 
 const apiClient = axios.create({
@@ -28,10 +30,18 @@ export const getNumSubs = async (username) => {
         .catch((err) => {
             console.error(err);
         });
-    // console.log(totalSubs, avatar);
-    return totalSubs, avatar;
+    return { totalSubs, avatar };
 }
 
-// getNumSubs("Yorafa");
-// getNumSubs("Ethan-ZYF");
-// getNumSubs("zhuyuezx");
+export const writeSubs = async (users) => {
+    console.log('start writeSubs');
+    // console.log(users);
+    let totalSubs = new Map();
+    for (const user of users) {
+        const { totalSubs: nums, avatar } = await getNumSubs(user);
+        totalSubs.set(user, { nums, avatar });
+    }
+    fs.writeFileSync(file_path + `total_subs.json`, JSON.stringify(Object.fromEntries(totalSubs)));
+}
+
+// writeSubs(["Ethan-ZYF", "Yorafa"]);

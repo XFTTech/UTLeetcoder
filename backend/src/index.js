@@ -3,6 +3,7 @@ import { getRecentSubmissionList } from './get_record.js';
 import { splitDailyAllUsers } from './split_daily_all_users.js';
 import { splitWeeklyAllUsers } from './split_weekly_all_users.js';
 import { UserAlltimeStats } from './get_alltime.js';
+import { writeSubs } from './total_subs.js';
 import fs from 'fs';
 const file_path = '../../frontend/public/data/';
 
@@ -69,6 +70,7 @@ const split_weekly_all_users = async (users) => {
     console.log('split_weekly complete');
 }
 
+
 const main = async () => {
     const users = JSON.parse(fs.readFileSync(file_path + 'leetcoder_ids.json', 'utf8'));
     let now = new Date();
@@ -79,6 +81,7 @@ const main = async () => {
         console.log('record lastUpdate time');
     });
     let idx = users.length;
+    let allsubmissions = new Map();
     await users.map(async (user) => {
         await update_submission(user);
         await update_daily_log(user);
@@ -86,11 +89,9 @@ const main = async () => {
         if (idx === 0) {
             await split_daily_all_users(users);
             await split_weekly_all_users(users);
+            await writeSubs(users);
         }
-        const [num, avatar] = await getNumSubs(user);
-        allsubmissions.set(user, [num, avatar]);
     });
-    await writeData(file_path + 'allsubmissions.json', JSON.stringify(Object.fromEntries(allsubmissions)));
 }
 
 main();
