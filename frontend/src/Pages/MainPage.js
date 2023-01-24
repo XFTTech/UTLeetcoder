@@ -1,7 +1,7 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Layout, Row, Col, Typography, theme, Result, Image } from 'antd';
 import github from '../github-mark/github-mark.png';
-import { getLastUpdate, isMobile } from '../component/utils';
+import { getLastUpdate, isMobile, getUserTotalSub } from '../component/utils';
 import { SmileOutlined } from '@ant-design/icons';
 import Podium from '../component/Podium';
 
@@ -20,6 +20,26 @@ const MainPage = () => {
             console.error(err);
         });
     });
+    const [sortedTotal, setSortedTotal] = useState([]);
+    const [sortedRank, setSortedRank] = useState([]);
+    useEffect(() => {
+        getUserTotalSub().then((res) => {
+            let temp = Object.entries(res.data);
+            temp = temp.map((item) => item[1]);
+            let tempRank = [...temp];
+            tempRank.sort((a, b) => {
+                return b.contestRating - a.contestRating;
+            });
+            let tempTotal = [...temp];
+            tempTotal.sort((a, b) => {
+                return b.totalSubs - a.totalSubs;
+            });
+            setSortedTotal(tempTotal);
+            setSortedRank(tempRank);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }, []);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -101,9 +121,10 @@ const MainPage = () => {
                     gutter={[16, 16]}
                 >
                     <Col span={12}>
-                       <Podium />
+                       <Podium stats={sortedTotal} type={"contest"}/>
                     </Col>
                     <Col span={12}>
+                        <Podium stats={sortedRank} type={"ranking"}/>
                     </Col>
                 </Row>
                 <Row> 

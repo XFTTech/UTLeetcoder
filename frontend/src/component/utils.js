@@ -36,6 +36,10 @@ export const getUserDailyStats = async (lcid) => {
     return await fileClient.get("/daily_log/" + lcid + ".json");
 };
 
+export const getUserTotalSub = async () => {
+    return await fileClient.get("/total_subs.json");
+};
+
 export const userLoader = async () => {
     const users = (await getUsers()).data;
     return { users };
