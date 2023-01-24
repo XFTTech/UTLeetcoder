@@ -3,30 +3,41 @@ import { useState, useEffect } from 'react';
 
 const Podium = (props) => {
     const [first, setFirst] = useState();
-    // const [second, setSecond] = useState();
-    // const [third, setThird] = useState();
-    // const [others, setOthers] = useState([]);
-    // const [type, setType] = useState("");
+    const [second, setSecond] = useState();
+    const [third, setThird] = useState();
+    const [others, setOthers] = useState([]);
+    const [type, setType] = useState("");
     useEffect(() => {
         if (props.stats.length === 0) return;
         setFirst(props.stats[0]);
-        // setSecond(props.stats[1]);
-        // setThird(props.stats[2]);
-        // setType(props.type);
-        // setOthers(props.stats.slice(3, 10));
+        setSecond(props.stats[1]);
+        setThird(props.stats[2]);
+        setType(props.type);
+        setOthers(props.stats.slice(3, 10));
     }, [props]);
+    // fix the height of the podium
     return (
-        <Row>
+        <Row
+            style={{
+                minHeight: 200,
+            }}
+            align="bottom">
             <Col span={6}></Col>
             <Col span={4}>
 
                 <div style={{
-                    height: "15vh",
-                    display: 'block',
-                }}></ div>
+                    height: 100,
+                }}>
+                    <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={second?.avatar} style={{
+                        position: 'absolute',
+                        bottom: 100,
+                        left: '50%',
+                        transform: 'translate(-50%, 0)',
+                    }} />
+                </ div>
                 <Alert message="2nd" type="warning" style={
                     {
-                        height: '15vh',
+                        height: 100,
                         fontSize: '1.5em',
                         fontWeight: 'bold',
                         textAlign: 'center',
@@ -35,31 +46,40 @@ const Podium = (props) => {
             </Col>
             <Col span={4} >
                 <div style={{
-                    height: "10vh",
-                    display: 'flex',
+                    height: 80,
                 }}>
                     <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={first?.avatar} style={{
-                        marginBottom: '1px',
+
                         position: 'absolute',
-                        // center the avatar
+                        bottom: 120,
                         left: '50%',
                         transform: 'translate(-50%, 0)',
                     }} />
                 </ div>
                 <Alert message="1st" type="info" style={
                     {
-                        height: '20vh',
+                        height: 120,
                         fontSize: '1.5em',
                         fontWeight: 'bold',
                         textAlign: 'center',
+                        display: 'block',
                     }
                 } />
             </Col>
             <Col span={4}>
-                <div style={{ height: "20vh" }}></ div>
+                <div style={{
+                    height: 120,
+                }}>
+                    <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={third?.avatar} style={{
+                        position: 'absolute',
+                        bottom: 80,
+                        left: '50%',
+                        transform: 'translate(-50%, 0)',
+                    }} />
+                </ div>
                 <Alert message="3rd" type="error" style={
                     {
-                        height: '10vh',
+                        height: 80,
                         fontSize: '1.5em',
                         fontWeight: 'bold',
                         textAlign: 'center',
