@@ -1,49 +1,49 @@
-# name: Update Data
+name: Update Data
 
-# on:
-#   schedule:
-#     - cron: "0,30 * * * *"
+on:
+  schedule:
+    - cron: "0,30 * * * *"
 
-# jobs:
-#   update_data:
-#     runs-on: ubuntu-latest
+jobs:
+  update_data:
+    runs-on: ubuntu-latest
 
-#     env:
-#       TZ: America/Toronto
+    env:
+      TZ: America/Toronto
 
-#     strategy:
-#       matrix:
-#         node-version: [18.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-#     steps:
-#       - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Use Node.js ${{ matrix.node-version }}
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: ${{ matrix.node-version }}
-#           cache: "npm"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
-#       - name: Install dependencies
-#         working-directory: ./backend/src/
-#         run: npm i
+      - name: Install dependencies
+        working-directory: ./backend/src/
+        run: npm i
 
-#       - name: Update
-#         working-directory: ./backend/src/
-#         run: node index.js
+      - name: Update
+        working-directory: ./backend/src/
+        run: node index.js
 
-#       - name: Setup Github Users
-#         run: |
-#           git config --local user.email "ethany.zhao-Bot@mail.utoronto.ca"
-#           git config --local user.name "Bot"
-#           git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
-#           git add .
-#           git diff-index --quiet HEAD || git commit -m "Update data"
-#           git push origin main
+      - name: Setup Github Users
+        run: |
+          git config --local user.email "ethany.zhao-Bot@mail.utoronto.ca"
+          git config --local user.name "Bot"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository }}
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update data"
+          git push origin main
 
-#       - name: Setup Github Pages
-#         working-directory: ./frontend/
-#         run: |
-#           npm i
-#           npm run deploy
+      - name: Setup Github Pages
+        working-directory: ./frontend/
+        run: |
+          npm i
+          npm run deploy
