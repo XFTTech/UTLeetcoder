@@ -87,7 +87,10 @@ const main = async () => {
             await split_daily_all_users(users);
             await split_weekly_all_users(users);
         }
+        const [num, avatar] = await getNumSubs(user);
+        allsubmissions.set(user, [num, avatar]);
     });
+    await writeData(file_path + 'allsubmissions.json', JSON.stringify(Object.fromEntries(allsubmissions)));
 }
 
 main();
