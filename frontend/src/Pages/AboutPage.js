@@ -11,7 +11,7 @@ const { Header, Content } = Layout;
 
 const isMobiled = isMobile();
 
-const BlankPage = () => {
+const AboutPage = () => {
     const [tt, setTt] = useState(() => {
         getLastUpdate().then((res) => {
             let temp = res.data;
@@ -83,10 +83,10 @@ const BlankPage = () => {
                                 document.body.style.cursor = 'default';
                             }}
                             onClick={() => {
-                                // window.location.href = 'https://github.com/Ethan-ZYF/UTLeetcoder';
+                                // window.location.href = 'https://github.com/XFTTech/UTLeetcoder';
                                 // open a new tab
                                 window.open(
-                                    'https://github.com/Ethan-ZYF/UTLeetcoder'
+                                    'https://github.com/XFTTech/UTLeetcoder'
                                 );
                             }}
                         />
@@ -149,4 +149,4 @@ const BlankPage = () => {
     );
 }
 
-export default BlankPage;
+export default AboutPage;

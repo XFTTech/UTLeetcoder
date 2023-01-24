@@ -126,10 +126,10 @@ const WeeklyTable = () => {
                                 document.body.style.cursor = 'default';
                             }}
                             onClick={() => {
-                                // window.location.href = 'https://github.com/Ethan-ZYF/UTLeetcoder';
+                                // window.location.href = 'https://github.com/XFTTech/UTLeetcoder';
                                 // open a new tab
                                 window.open(
-                                    'https://github.com/Ethan-ZYF/UTLeetcoder'
+                                    'https://github.com/XFTTech/UTLeetcoder'
                                 );
                             }}
                         />

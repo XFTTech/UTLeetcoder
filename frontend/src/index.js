@@ -8,8 +8,9 @@ import Error404 from './Pages/Error404';
 import DailyLogTable from './Pages/DailyLogTable';
 import UserProfile from './Pages/UserProfile';
 import { userLoader } from './component/utils';
-import BlankPage from './Pages/BlankPage';
 import WeeklyTable from './Pages/WeeklyTable';
+import AboutPage from './Pages/AboutPage';
+import MainPage from './Pages/MainPage';
 
 
 const router = createBrowserRouter([
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '',
-                element: <BlankPage />,
+                element: <MainPage />,
+            },
+            {
+                path: 'about',
+                element: <AboutPage />,
             }
         ],
     },

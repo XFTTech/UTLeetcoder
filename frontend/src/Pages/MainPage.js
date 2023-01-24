@@ -1,54 +1,31 @@
-import React, { useState } from 'react';
-import { Layout, Row, Col, Typography, theme, DatePicker, Image } from 'antd';
-import DailyLog from '../component/DailyLog';
-import Difficulties from '../mobile/DailyLogMobile'
-import { getUsers, isMobile, getAllDate, getQuery } from '../component/utils';
-import dayjs from 'dayjs';
+import { React, useState } from 'react';
+import { Layout, Row, Col, Typography, theme, Result, Image } from 'antd';
 import github from '../github-mark/github-mark.png';
+import { getLastUpdate, isMobile } from '../component/utils';
+import { SmileOutlined } from '@ant-design/icons';
 
 const { Header, Content } = Layout;
 
-const all_dates = new Map();
-let lastest_date = dayjs().format('YYYY-MM-DD');
-getAllDate().then((res) => {
-    for (const date of res.data) {
-        all_dates.set(date, true);
-    }
-    if (all_dates.size > 0) {
-        lastest_date = [...all_dates.keys()].reduce((a, b) => (dayjs(a) > dayjs(b) ? a : b));
-    }
-});
+const isMobiled = isMobile();
 
-const disabledDate = (current) => {
-    return !all_dates.has(current.format('YYYY-MM-DD'));
-};
-
-const query = getQuery().substring(1);
-
-const DailyLogTable = () => {
+const MainPage = () => {
+    const [tt, setTt] = useState(() => {
+        getLastUpdate().then((res) => {
+            let temp = res.data;
+            temp = temp.replace('T', ' ');
+            temp = temp.substring(0, temp.length - 8);
+            setTt(temp);
+        }).catch((err) => {
+            console.error(err);
+        });
+    });
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-
-    const [selectedDay, setSelectedDay] = useState(() => {
-        if (all_dates.has(query)) return query;
-        return lastest_date;
-    });
-
-    const [users, setUsers] = useState(() => {
-        getUsers().then((res) => {
-            setUsers(res.data);
-        });
-        return [];
-    });
-
-    const onDateChange = (date, dateString) => {
-        setSelectedDay(dateString);
-        // let tempUrl = '/select_daily?' + dateString;
-    };
+    
     return (
         <>
-            {isMobile() ? null : <Header
+            <Header
                 style={{
                     padding: 0,
                     background: colorBgContainer,
@@ -77,7 +54,7 @@ const DailyLogTable = () => {
                             }}
                             level={3}
                         >
-                            {'Daily Log for ' + selectedDay}
+                            Project Developers
                         </Typography.Title>
                     </Col>
                     <Col span={4}
@@ -86,7 +63,6 @@ const DailyLogTable = () => {
                             display: 'flex',
                             justifyContent: 'flex-end',
                             alignItems: 'center',
-                            padding: 16,
                         }}
                     >
                         <Image
@@ -104,6 +80,8 @@ const DailyLogTable = () => {
                                 document.body.style.cursor = 'default';
                             }}
                             onClick={() => {
+                                // window.location.href = 'https://github.com/XFTTech/UTLeetcoder';
+                                // open a new tab
                                 window.open(
                                     'https://github.com/XFTTech/UTLeetcoder'
                                 );
@@ -112,24 +90,49 @@ const DailyLogTable = () => {
                     </Col>
                 </Row>
             </Header>
-            }
             <Content
                 style={{
                     margin: '16px 16px',
                 }}
             >
-                <DatePicker
-                    defaultValue={() => {
-                        if (all_dates.has(query)) return dayjs(query);
-                        return dayjs(lastest_date);
-                    }}
-                    disabledDate={disabledDate}
-                    onChange={onDateChange}
-                />
-                {isMobile() ? <Difficulties date={selectedDay} users={users} /> : <DailyLog date={selectedDay} users={users} />}
+                {!isMobiled?<>
+                <Row
+                    gutter={[16, 16]}
+                >
+                    <Col span={12}>
+                       
+                    </Col>
+                    <Col span={12}>
+                    </Col>
+                </Row>
+                <Row> 
+                    <Col span={8}>
+                        
+                    </Col>
+                    <Col span={8}>
+                    <Result
+                        icon={<SmileOutlined />}
+                        title={'last update at: ' + tt}
+                    />
+                    </Col>
+                    <Col span={8}>
+                        
+                    </Col>
+                    
+                </Row>
+                </>:<>
+                    <Row>
+                    </Row>
+                    <Row>
+                    <Result
+                        icon={<SmileOutlined />}
+                        title={'last update at: ' + tt}
+                    />
+                    </Row>
+                </>}
             </Content>
         </>
     );
 }
 
-export default DailyLogTable;
+export default MainPage;
