@@ -1,86 +1,128 @@
 {
     "Yorafa": {
-        "nums": 904,
+        "username": "Yorafa",
+        "totalSubs": 904,
+        "contestRating": 1873.3110622365612,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1666966952.png"
     },
     "zhuyuezx": {
-        "nums": 936,
+        "username": "zhuyuezx",
+        "totalSubs": 936,
+        "contestRating": 2204.702266366909,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1637555517.png"
     },
     "Ethan-ZYF": {
-        "nums": 684,
+        "username": "Ethan-ZYF",
+        "totalSubs": 684,
+        "contestRating": 2222.076050009529,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1638857748.png"
     },
     "nopespace": {
-        "nums": 33,
+        "username": "nopespace",
+        "totalSubs": 33,
+        "contestRating": 1443.735,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1665197561.png"
     },
     "jmyanxiang": {
-        "nums": 854,
+        "username": "jmyanxiang",
+        "totalSubs": 854,
+        "contestRating": 2110.3815463981773,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1664739269.png"
     },
     "huiyu2802": {
-        "nums": 172,
+        "username": "huiyu2802",
+        "totalSubs": 172,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/huiyu2802/avatar_1618199251.png"
     },
     "Roccay": {
-        "nums": 4,
+        "username": "Roccay",
+        "totalSubs": 4,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1657657316.png"
     },
     "jasongangquanzhang": {
-        "nums": 0,
+        "username": "jasongangquanzhang",
+        "totalSubs": 0,
+        "contestRating": 0,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     },
     "roxanehe": {
-        "nums": 18,
+        "username": "roxanehe",
+        "totalSubs": 18,
+        "contestRating": 0,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     },
     "HLeiTR": {
-        "nums": 210,
+        "username": "HLeiTR",
+        "totalSubs": 210,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/xxleitinxx/avatar_1620386464.png"
     },
     "LittleAnt2023": {
-        "nums": 84,
+        "username": "LittleAnt2023",
+        "totalSubs": 84,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1652199974.png"
     },
     "GoneZzoe": {
-        "nums": 32,
+        "username": "GoneZzoe",
+        "totalSubs": 32,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1647231987.png"
     },
     "zhumengzhiren": {
-        "nums": 3,
+        "username": "zhumengzhiren",
+        "totalSubs": 3,
+        "contestRating": 0,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     },
     "ElizaZoldyck": {
-        "nums": 103,
+        "username": "ElizaZoldyck",
+        "totalSubs": 103,
+        "contestRating": 1448.885,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1641419196.png"
     },
     "jadenzhang12345": {
-        "nums": 43,
+        "username": "jadenzhang12345",
+        "totalSubs": 43,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1667638036.png"
     },
     "Y11111111": {
-        "nums": 43,
+        "username": "Y11111111",
+        "totalSubs": 43,
+        "contestRating": 1578.1922881706735,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1639763907.png"
     },
     "frankqiaowxl2": {
-        "nums": 125,
+        "username": "frankqiaowxl2",
+        "totalSubs": 125,
+        "contestRating": 1540.548,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     },
     "enmeng_l": {
-        "nums": 53,
+        "username": "enmeng_l",
+        "totalSubs": 53,
+        "contestRating": 0,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     },
     "YukiJudaiii": {
-        "nums": 8,
+        "username": "YukiJudaiii",
+        "totalSubs": 8,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1673556167.png"
     },
     "ScottCTD": {
-        "nums": 39,
+        "username": "ScottCTD",
+        "totalSubs": 39,
+        "contestRating": 0,
         "avatar": "https://assets.leetcode.com/users/avatars/avatar_1671928663.png"
     },
     "torpedooes": {
-        "nums": 0,
+        "username": "torpedooes",
+        "totalSubs": 0,
+        "contestRating": 0,
         "avatar": "https://s3-us-west-1.amazonaws.com/s3-lc-upload/assets/default_avatar.jpg"
     }
 }

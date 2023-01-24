@@ -11,12 +11,33 @@ const apiClient = axios.create({
 })
 
 export const getAllsubmissions = async (username) => {
-    const query = `{ matchedUser(username: "${username}") { username profile { userAvatar } submitStats: submitStatsGlobal { acSubmissionNum { difficulty count submissions }}}}`
+    const query = `{ matchedUser(username: "${username}") {
+        username
+        profile {
+            userAvatar
+        }
+        submitStats: submitStatsGlobal {
+                acSubmissionNum {
+                    difficulty
+                    count
+                }
+            }
+        }
+        userContestRanking(username: "${username}") 
+        {
+            attendedContestsCount
+            rating
+            globalRanking
+            totalParticipants
+            topPercentage
+        }
+    }`
     return await apiClient.get("graphql?query=" + query);
 }
 
 export const getNumSubs = async (username) => {
     let totalSubs = 0;
+    let contestRating = 1500;
     let avatar = "";
     await getAllsubmissions(username)
         .then((res) => {
@@ -26,11 +47,12 @@ export const getNumSubs = async (username) => {
                     totalSubs += submission.count;
                 }
             });
+            contestRating = res.data.data.userContestRanking ? res.data.data.userContestRanking.rating : 0;
         })
         .catch((err) => {
             console.error(err);
         });
-    return { totalSubs, avatar };
+    return { username, totalSubs, contestRating, avatar };
 }
 
 export const writeSubs = async (users) => {
@@ -38,10 +60,12 @@ export const writeSubs = async (users) => {
     // console.log(users);
     let totalSubs = new Map();
     for (const user of users) {
-        const { totalSubs: nums, avatar } = await getNumSubs(user);
-        totalSubs.set(user, { nums, avatar });
+        const res = await getNumSubs(user);
+        totalSubs.set(user, res);
     }
     fs.writeFileSync(file_path + `total_subs.json`, JSON.stringify(Object.fromEntries(totalSubs)));
 }
 
-// writeSubs(["Ethan-ZYF", "Yorafa"]);
+// await writeSubs(["Ethan-ZYF", "Yorafa"]);
+// const res = await getNumSubs("Roccay");
+// console.log(res);
