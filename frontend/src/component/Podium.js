@@ -1,6 +1,12 @@
 import { Alert, Row, Col, Avatar, List } from 'antd';
 import { useState, useEffect } from 'react';
 
+const Height = 400;
+const Width = 400;
+const First = 250;
+const Second = 200;
+const Third = 150;
+
 const Podium = (props) => {
     const [first, setFirst] = useState(null);
     const [second, setSecond] = useState(null);
@@ -20,67 +26,67 @@ const Podium = (props) => {
         <>
             <Row
                 style={{
-                    minHeight: 200,
+                    minHeight: Height,
+                    minWidth: Width,
                 }}
                 align="bottom">
-                <Col span={6}></Col>
-                <Col span={4}>
+                <Col span={3}></Col>
+                <Col span={6}>
 
                     <div style={{
-                        height: 100,
+                        height: Height - Second,
                     }}>
-                        <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={second?.avatar} style={{
+                        <Avatar size={{ xs: 40, sm: 40, md: 40, lg: 64, xl: 80, xxl: 100 }} src={second?.avatar} style={{
                             position: 'absolute',
-                            bottom: 100,
+                            bottom: Second,
                             left: '50%',
                             transform: 'translate(-50%, 0)',
                         }} />
                     </ div>
-                    <Alert message={"2nd " + (second && type !== "" ?(second[type]).toFixed(0):"")} type="warning" style={
+                    <Alert message={"2nd " + (second && type !== "" ? (second[type]).toFixed(0) : "")} type="warning" style={
                         {
-                            height: 100,
+                            height: Second,
                             fontSize: '1.5em',
                             fontWeight: 'bold',
                             textAlign: 'center',
                         }
                     } />
                 </Col>
-                <Col span={4} >
+                <Col span={6} >
                     <div style={{
-                        height: 80,
+                        height: Height - First,
                     }}>
-                        <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={first?.avatar} style={{
+                        <Avatar size={{ xs: 40, sm: 40, md: 40, lg: 64, xl: 80, xxl: 100 }} src={first?.avatar} style={{
 
                             position: 'absolute',
-                            bottom: 120,
+                            bottom: First,
                             left: '50%',
                             transform: 'translate(-50%, 0)',
                         }} />
                     </ div>
-                    <Alert message={"1st " + (first && type !== "" ?first[type].toFixed(0):"")} type="info" style={
+                    <Alert message={"1st " + (first && type !== "" ? first[type].toFixed(0) : "")} type="info" style={
                         {
-                            height: 120,
+                            height: First,
                             fontSize: '1.5em',
                             fontWeight: 'bold',
                             textAlign: 'center',
-                            display: 'block',
                         }
                     } />
                 </Col>
-                <Col span={4}>
+                <Col span={6}>
                     <div style={{
-                        height: 120,
+                        height: Height - Third,
                     }}>
-                        <Avatar size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} src={third?.avatar} style={{
+                        <Avatar size={{ xs: 40, sm: 40, md: 40, lg: 64, xl: 80, xxl: 100 }} src={third?.avatar} style={{
                             position: 'absolute',
-                            bottom: 80,
+                            bottom: Third,
                             left: '50%',
                             transform: 'translate(-50%, 0)',
                         }} />
                     </ div>
-                    <Alert message={"3rd " + (third && type !== "" ?third[type].toFixed(0):"")} type="error" style={
+                    <Alert message={"3rd " + (third && type !== "" ? third[type].toFixed(0) : "")} type="error" style={
                         {
-                            height: 80,
+                            height: Third,
                             fontSize: '1.5em',
                             fontWeight: 'bold',
                             textAlign: 'center',
@@ -88,22 +94,27 @@ const Podium = (props) => {
                     } />
                 </Col>
             </ Row>
-            <Row>
-                    <Col span={6}></Col>
-                    <Col span={12}>
+            <Row
+                style={{
+                    minWidth: 500,
+                }}
+            >
+                <Col span={3}></Col>
+                <Col span={12}>
                     <List
-                itemLayout="horizontal"
-                dataSource={others}
-                renderItem={(item) => (
-                <List.Item>
-                    <List.Item.Meta
-                    avatar={<Avatar src={item["avatar"]} />}
-                    title={item[type].toFixed(0)}
+                        itemLayout="horizontal"
+                        dataSource={others}
+                        renderItem={(item) => (
+                            <List.Item>
+                                <List.Item.Meta
+                                    avatar={<Avatar src={item["avatar"]} size={60} />}
+                                    title={item["username"]}
+                                    description={item[type].toFixed(0)}
+                                />
+                            </List.Item>
+                        )}
                     />
-                </List.Item>
-                )}
-            />
-                    </Col>
+                </Col>
             </Row>
         </>
     );

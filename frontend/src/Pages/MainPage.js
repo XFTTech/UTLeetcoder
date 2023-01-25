@@ -116,40 +116,48 @@ const MainPage = () => {
                     margin: '16px 16px',
                 }}
             >
-                {!isMobiled?<>
-                <Row
-                    gutter={[16, 16]}
-                >
-                    <Col span={12}>
-                       <Podium stats={sortedTotal} type={"totalSubs"}/>
-                    </Col>
-                    <Col span={12}>
-                        <Podium stats={sortedRank} type={"contestRating"}/>
-                    </Col>
-                </Row>
-                <Row> 
-                    <Col span={8}>
-                        
-                    </Col>
-                    <Col span={8}>
-                    <Result
-                        icon={<SmileOutlined />}
-                        title={'last update at: ' + tt}
-                    />
-                    </Col>
-                    <Col span={8}>
-                        
-                    </Col>
-                    
-                </Row>
-                </>:<>
+                {!isMobiled ? <>
+                    <Row
+                        gutter={[16, 16]}
+                    >
+                        <Col span={12}
+                            style={{
+                                minWidth: 400,
+                            }}
+                        >
+                            <Podium stats={sortedTotal} type={"totalSubs"} />
+                        </Col>
+                        <Col span={12}
+                            style={{
+                                minWidth: 400,
+                            }}
+                        >
+                            <Podium stats={sortedRank} type={"contestRating"} />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={8}>
+
+                        </Col>
+                        <Col span={8}>
+                            <Result
+                                icon={<SmileOutlined />}
+                                title={'last update at: ' + tt}
+                            />
+                        </Col>
+                        <Col span={8}>
+
+                        </Col>
+
+                    </Row>
+                </> : <>
                     <Row>
                     </Row>
                     <Row>
-                    <Result
-                        icon={<SmileOutlined />}
-                        title={'last update at: ' + tt}
-                    />
+                        <Result
+                            icon={<SmileOutlined />}
+                            title={'last update at: ' + tt}
+                        />
                     </Row>
                 </>}
             </Content>
