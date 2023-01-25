@@ -1,5 +1,4 @@
 import { Alert, Row, Col, Avatar, List, Typography } from 'antd';
-import ListBody from 'antd/es/transfer/ListBody';
 import { useState, useEffect } from 'react';
 const { Title, Paragraph } = Typography;
 
