@@ -152,6 +152,20 @@ const MainPage = () => {
                     </Row>
                 </> : <>
                     <Row>
+                        <Col span={12}
+                            style={{
+                                minWidth: 400,
+                            }}
+                        >
+                            <Podium stats={sortedTotal} type={"totalSubs"} />
+                        </Col>
+                        <Col span={12}
+                            style={{
+                                minWidth: 400,
+                            }}
+                        >
+                            <Podium stats={sortedRank} type={"contestRating"} />
+                        </Col>
                     </Row>
                     <Row>
                         <Result
