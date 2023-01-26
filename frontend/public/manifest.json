@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "UofT Leetcoder",
+  "name": "A website for UofT Leetcoder",
   "icons": [
     {
       "src": "favicon.ico",
