@@ -1,8 +1,9 @@
-import { Layout, Row, Col, Image, Typography, theme } from 'antd';
+import { Layout, Row, Col, Image, Typography, theme, Button, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import github from '../github-mark/github-mark.png';
 import { getProblemList } from '../component/utils';
 import { ProblemsTable } from '../component/ProblemsTable';
+import { NumericInput } from '../component/NumerInput';
 
 const { Header, Content } = Layout;
 
@@ -12,6 +13,9 @@ const ProblemsPage = () => {
     } = theme.useToken();
 
     const [data, setData] = useState([]);
+    const [minRating, setMinRating] = useState('');
+    const [maxRating, setMaxRating] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         getProblemList().then((res) => {
@@ -27,8 +31,22 @@ const ProblemsPage = () => {
                 };
             });
             setData(tempData);
+            setFilteredData(tempData);
         });
     }, []);
+
+    const filterData = () => {
+        if (minRating === '' && maxRating === '') {
+            return;
+        }
+        setFilteredData(
+            data.filter((item) => {
+                if (minRating === '') return item.rating <= maxRating;
+                if (maxRating === '') return item.rating >= minRating;
+                return item.rating >= minRating && item.rating <= maxRating;
+            })
+        );
+    };
 
     return (
         <>
@@ -105,9 +123,79 @@ const ProblemsPage = () => {
                     marginTop: 16,
                 }}
             >
-                <ProblemsTable data={data} />
+                <Input.Group
+                    style={{
+                        marginBottom: '1vh',
+                    }}
+                    compact>
+                    <Typography.Text
+                        style={{
+                            marginRight: '1vw',
+                            marginLeft: '0.4vw',
+                            fontSize: '1.2rem',
+                        }}
+                    >
+                        Filter by Rating Interval:
+                    </Typography.Text>
+                    <NumericInput
+                        id="min_rating_interval"
+                        value={minRating}
+                        onChange={setMinRating}
+                        style={{
+                            width: 100,
+                            textAlign: 'center',
+                            borderRadius: '5px 0 0 5px',
+                        }}
+                        // prevent non-numberic input
+                        placeholder="Minimum"
+                    />
+                    <Input
+                        className="site-input-split"
+                        style={{
+                            width: 30,
+                            borderLeft: 0,
+                            borderRight: 0,
+                            pointerEvents: 'none',
+                        }}
+                        placeholder="~"
+                        disabled
+                    />
+                    <NumericInput
+                        id="max_rating_interval"
+                        value={maxRating}
+                        onChange={setMaxRating}
+                        className="site-input-right"
+                        style={{
+                            width: 100,
+                            textAlign: 'center',
+                        }}
+                        placeholder="Maximum"
+                    />
+                    <Button
+                        style={{
+                            fontSize: '0.95rem',
+                        }}
+                        onClick={filterData}
+                        type="primary"
+                    >
+                        Filter
+                    </Button>
+                    <Button
+                        style={{
+                            fontSize: '0.95rem',
+                        }}
+                        onClick={() => {
+                            setMinRating('');
+                            setMaxRating('');
+                            setFilteredData(data);
+                        }}
+                        type="primary"
+                    >
+                        Reset
+                    </Button>
+                </Input.Group>
+                <ProblemsTable data={filteredData} />
             </Content>
-
         </>
     );
 };
