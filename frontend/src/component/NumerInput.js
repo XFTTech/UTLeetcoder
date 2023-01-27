@@ -1,5 +1,4 @@
-import { Input, Tooltip } from 'antd';
-const formatNumber = (value) => new Intl.NumberFormat().format(value);
+import { Input } from 'antd';
 
 export const NumericInput = (props) => {
   const value = props.value;
@@ -20,11 +19,7 @@ export const NumericInput = (props) => {
     }
     onChange(valueTemp.replace(/0*(\d+)/, '$1'));
   };
-  const title = value ? (
-    <span className="numeric-input-title">{value !== '-' ? formatNumber(Number(value)) : '-'}</span>
-  ) : (
-    'Input a number'
-  );
+
   return (
     <Input
     {...props}
