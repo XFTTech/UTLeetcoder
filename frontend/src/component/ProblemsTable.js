@@ -1,7 +1,8 @@
 import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 
-const url = 'https://leetcode.com/problems/';
+const problem_url = 'https://leetcode.com/problems/';
+const contest_url = 'https://leetcode.com/contest/';
 
 const columns = [
     {
@@ -15,14 +16,16 @@ const columns = [
         onCell: (record) => {
             return {
                 onClick: (event) => {
-                    window.location.href = url + record.key;
+                    window.location.href = problem_url + record.key;
                 },
                 onMouseEnter: (event) => {
                     event.target.style.color = 'blue';
+                    event.target.style.textDecoration = 'underline';
                     document.body.style.cursor = 'pointer';
                 },
                 onMouseLeave: (event) => {
                     event.target.style.color = 'black';
+                    event.target.style.textDecoration = 'none';
                     document.body.style.cursor = 'default';
                 }
             };
@@ -31,6 +34,23 @@ const columns = [
     {
         title: 'Contest',
         dataIndex: 'contest',
+        onCell: (record) => {
+            return {
+                onClick: (event) => {
+                    window.location.href = contest_url + record.c_slug;
+                },
+                onMouseEnter: (event) => {
+                    event.target.style.color = 'orange';
+                    event.target.style.textDecoration = 'underline';
+                    document.body.style.cursor = 'pointer';
+                },
+                onMouseLeave: (event) => {
+                    event.target.style.color = 'black';
+                    event.target.style.textDecoration = 'none';
+                    document.body.style.cursor = 'default';
+                }
+            }
+        },
     },
     {
         title: 'Q#',

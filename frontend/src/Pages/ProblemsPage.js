@@ -23,6 +23,7 @@ const ProblemsPage = () => {
                     contest: value.ContestID_en,
                     numbq: value.ProblemIndex,
                     rating: value.Rating.toFixed(0),
+                    c_slug: value.ContestSlug,
                 };
             });
             setData(tempData);
