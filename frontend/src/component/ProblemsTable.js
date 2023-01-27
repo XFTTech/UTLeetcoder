@@ -16,7 +16,7 @@ const columns = [
         onCell: (record) => {
             return {
                 onClick: (event) => {
-                    window.location.href = problem_url + record.key;
+                    window.open(problem_url + record.key)
                 },
                 onMouseEnter: (event) => {
                     event.target.style.color = 'blue';
@@ -37,7 +37,7 @@ const columns = [
         onCell: (record) => {
             return {
                 onClick: (event) => {
-                    window.location.href = contest_url + record.c_slug;
+                    window.open(contest_url + record.c_slug);
                 },
                 onMouseEnter: (event) => {
                     event.target.style.color = 'orange';

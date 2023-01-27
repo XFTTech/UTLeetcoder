@@ -4,6 +4,7 @@ import github from '../github-mark/github-mark.png';
 import { getProblemList } from '../component/utils';
 import { ProblemsTable } from '../component/ProblemsTable';
 import { NumericInput } from '../component/NumerInput';
+import useEventListener from '@use-it/event-listener';
 
 const { Header, Content } = Layout;
 
@@ -18,6 +19,7 @@ const ProblemsPage = () => {
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
+        // add event listener to handle keyup event if it has not been added
         getProblemList().then((res) => {
             let tempData = Object.entries(res.data).map(([key, value]) => {
                 return {
@@ -34,16 +36,28 @@ const ProblemsPage = () => {
             setFilteredData(tempData);
         });
     }, []);
+    
+    const handleKeyUp = (e) => {
+        if (e.keyCode === 13) {
+            filterData();
+        }
+    };
+    useEventListener('keyup', handleKeyUp);
 
     const filterData = () => {
         if (minRating === '' && maxRating === '') {
             return;
         }
+        var mn = Number.MIN_SAFE_INTEGER;
+        var mx = Number.MAX_SAFE_INTEGER;
+        if (minRating !== '') mn = parseInt(minRating);
+        if (maxRating !== '') mx = parseInt(maxRating);
         setFilteredData(
             data.filter((item) => {
-                if (minRating === '') return item.rating <= maxRating;
-                if (maxRating === '') return item.rating >= minRating;
-                return item.rating >= minRating && item.rating <= maxRating;
+                var cur = parseInt(item.rating);
+                if (minRating === '') return cur <= mx;
+                if (maxRating === '') return cur >= mn;
+                return cur >= mn && cur <= mx;
             })
         );
     };
