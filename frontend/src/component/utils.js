@@ -80,3 +80,11 @@ export const isMobile = () => {
 export const getLastUpdate = async () => {
     return await fileClient.get("/lastUpdate.json");
 }
+
+export const getProblemList = async () => {
+    let tempClient = axios.create({
+        baseURL: 'https://zerotrac.github.io/leetcode_problem_rating/data.json',
+        timeout: 100000
+    });
+    return await tempClient.get();
+}

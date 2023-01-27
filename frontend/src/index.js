@@ -11,6 +11,7 @@ import { userLoader } from './component/utils';
 import WeeklyTable from './Pages/WeeklyTable';
 import AboutPage from './Pages/AboutPage';
 import MainPage from './Pages/MainPage';
+import ProblemsPage from './Pages/ProblemsPage';
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <MainPage />,
+            },
+            {
+                path: 'problem_list',
+                element: <ProblemsPage />,
             },
             {
                 path: 'about',
