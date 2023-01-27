@@ -16,6 +16,8 @@ const ProblemsPage = () => {
     const [data, setData] = useState([]);
     const [minRating, setMinRating] = useState('');
     const [maxRating, setMaxRating] = useState('');
+    const [keyword, setKeyword] = useState('');
+    const [contest, setContest] = useState('');
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
@@ -36,7 +38,7 @@ const ProblemsPage = () => {
             setFilteredData(tempData);
         });
     }, []);
-    
+
     const handleKeyUp = (e) => {
         if (e.keyCode === 13) {
             filterData();
@@ -45,22 +47,52 @@ const ProblemsPage = () => {
     useEventListener('keyup', handleKeyUp);
 
     const filterData = () => {
+        let tempData = filterDataByRating(data);
+        tempData = filterDataByKeyword(tempData);
+        tempData = filterDataByContest(tempData);
+        setFilteredData(tempData);
+    };
+
+    const filterDataByRating = (data) => {
         if (minRating === '' && maxRating === '') {
-            return;
+            return data;
         }
         var mn = Number.MIN_SAFE_INTEGER;
         var mx = Number.MAX_SAFE_INTEGER;
         if (minRating !== '') mn = parseInt(minRating);
         if (maxRating !== '') mx = parseInt(maxRating);
-        setFilteredData(
-            data.filter((item) => {
-                var cur = parseInt(item.rating);
-                if (minRating === '') return cur <= mx;
-                if (maxRating === '') return cur >= mn;
-                return cur >= mn && cur <= mx;
-            })
-        );
+        return data.filter((item) => {
+            var cur = parseInt(item.rating);
+            if (minRating === '') return cur <= mx;
+            if (maxRating === '') return cur >= mn;
+            return cur >= mn && cur <= mx;
+        })
     };
+
+    const filterDataByKeyword = (data) => {
+        if (keyword === '') {
+            return data;
+        }
+        const reg = /^\d+$/;
+        if (reg.test(keyword)) {
+            return data.filter((item) => {
+                return item.questionId.toString().includes(keyword);
+            });
+        } else {
+            return data.filter((item) => {
+                return item.title.toLowerCase().includes(keyword.toLowerCase());
+            });
+        }
+    };
+
+    const filterDataByContest = (data) => {
+        if (contest === '') {
+            return data;
+        }
+        return data.filter((item) => {
+            return item.contest.toLowerCase().includes(contest.toLowerCase());
+        });
+    }
 
     return (
         <>
@@ -142,23 +174,13 @@ const ProblemsPage = () => {
                         marginBottom: '1vh',
                     }}
                     compact>
-                    <Typography.Text
-                        style={{
-                            marginRight: '1vw',
-                            marginLeft: '0.4vw',
-                            fontSize: '1.2rem',
-                        }}
-                    >
-                        Filter by Rating Interval:
-                    </Typography.Text>
                     <NumericInput
-                        id="min_rating_interval"
+                        addonBefore="Rating Range"
                         value={minRating}
                         onChange={setMinRating}
                         style={{
-                            width: 100,
+                            width: 200,
                             textAlign: 'center',
-                            borderRadius: '5px 0 0 5px',
                         }}
                         // prevent non-numberic input
                         placeholder="Minimum"
@@ -175,19 +197,65 @@ const ProblemsPage = () => {
                         disabled
                     />
                     <NumericInput
-                        id="max_rating_interval"
                         value={maxRating}
                         onChange={setMaxRating}
                         className="site-input-right"
                         style={{
                             width: 100,
                             textAlign: 'center',
+                            marginRight: '1vw',
+                            borderRadius: '0 5px 5px 0',
                         }}
                         placeholder="Maximum"
+                    />
+                    <Input
+                        addonBefore="Keyword"
+                        onChange={(event) => {
+                            setKeyword(event.target.value);
+                        }}
+                        style={{
+                            width: 200,
+                            textAlign: 'center',
+                            borderRadius: '0 5px 5px 0',
+                        }}
+                        placeholder="id or title"
+                        value={keyword}
+                    />
+                    <Input 
+                        disabled
+                        style={{
+                            width: 0,
+                            marginRight: '1vw',
+                            pointerEvents: 'none',
+                            borderRadius: '0 5px 5px 0',
+                        }}
+                        placeholder=""
+                    />
+                    <NumericInput
+                        addonBefore="Contest"
+                        value={contest}
+                        onChange={setContest}
+                        style={{
+                            width: 200,
+                            textAlign: 'center',
+                            borderRadius: '0 5px 5px 0',
+                        }}
+                        placeholder="contest number"
+                    />
+                    <Input 
+                        disabled
+                        style={{
+                            width: 0,
+                            marginRight: '1vw',
+                            pointerEvents: 'none',
+                            borderRadius: '0 5px 5px 0',
+                        }}
+                        placeholder=""
                     />
                     <Button
                         style={{
                             fontSize: '0.95rem',
+                            borderRadius: '5px 0 0 5px',
                         }}
                         onClick={filterData}
                         type="primary"
@@ -201,6 +269,8 @@ const ProblemsPage = () => {
                         onClick={() => {
                             setMinRating('');
                             setMaxRating('');
+                            setKeyword('');
+                            setContest('');
                             setFilteredData(data);
                         }}
                         type="primary"
