@@ -16,7 +16,7 @@ const columns = [
         onCell: (record) => {
             return {
                 onClick: (event) => {
-                    window.open(problem_url + record.key)
+                    window.open(problem_url + record.key);
                 },
                 onMouseEnter: (event) => {
                     event.target.style.color = 'blue';
