@@ -60,6 +60,7 @@ const columns = [
         title: 'Rating',
         dataIndex: 'rating',
         sorter: (a, b) => a.rating - b.rating,
+        defaultSortOrder: 'ascend',
     },
 ];
 
