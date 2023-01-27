@@ -10,7 +10,7 @@ const ProblemsPage = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    
+
     const [data, setData] = useState([]);
 
     useEffect(() => {
