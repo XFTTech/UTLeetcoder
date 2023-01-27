@@ -8,20 +8,53 @@ import useEventListener from '@use-it/event-listener';
 
 const { Header, Content } = Layout;
 
+const filterDataByRating = (data, minRating, maxRating) => {
+    if (minRating === '' && maxRating === '') {
+        return data;
+    }
+    var mn = Number.MIN_SAFE_INTEGER;
+    var mx = Number.MAX_SAFE_INTEGER;
+    if (minRating !== '') mn = parseInt(minRating);
+    if (maxRating !== '') mx = parseInt(maxRating);
+    return data.filter((item) => {
+        var cur = parseInt(item.rating);
+        if (minRating === '') return cur <= mx;
+        if (maxRating === '') return cur >= mn;
+        return cur >= mn && cur <= mx;
+    })
+};
+
+const filterDataByKeyword = (data, keyword) => {
+    if (keyword === '') {
+        return data;
+    }
+    const reg = /^\d+$/;
+    if (reg.test(keyword)) {
+        return data.filter((item) => {
+            return item.questionId.toString().includes(keyword);
+        });
+    } else {
+        return data.filter((item) => {
+            return item.title.toLowerCase().includes(keyword.toLowerCase());
+        });
+    }
+};
+
+const filterDataByContest = (data, contest) => {
+    if (contest === '') {
+        return data;
+    }
+    return data.filter((item) => {
+        return item.contest.toLowerCase().includes(contest.toLowerCase());
+    });
+}
+
 const ProblemsPage = () => {
     const {
         token: { colorBgContainer },
     } = theme.useToken();
 
-    const [data, setData] = useState([]);
-    const [minRating, setMinRating] = useState('');
-    const [maxRating, setMaxRating] = useState('');
-    const [keyword, setKeyword] = useState('');
-    const [contest, setContest] = useState('');
-    const [filteredData, setFilteredData] = useState([]);
-
-    useEffect(() => {
-        // add event listener to handle keyup event if it has not been added
+    const [data, setData] = useState(() => {
         getProblemList().then((res) => {
             let tempData = Object.entries(res.data).map(([key, value]) => {
                 return {
@@ -35,9 +68,21 @@ const ProblemsPage = () => {
                 };
             });
             setData(tempData);
-            setFilteredData(tempData);
         });
-    }, []);
+    });
+    const [minRating, setMinRating] = useState('');
+    const [maxRating, setMaxRating] = useState('');
+    const [keyword, setKeyword] = useState('');
+    const [contest, setContest] = useState('');
+    const [filteredData, setFilteredData] = useState([]);
+
+    useEffect(() => {
+        // add event listener to handle keyup event if it has not been added
+        let tempData = filterDataByRating(data, minRating, maxRating);
+        tempData = filterDataByKeyword(tempData, keyword);
+        tempData = filterDataByContest(tempData, contest);
+        setFilteredData(tempData);
+    }, [data, minRating, maxRating, keyword, contest]);
 
     const handleKeyUp = (e) => {
         if (e.keyCode === 13) {
@@ -52,47 +97,6 @@ const ProblemsPage = () => {
         tempData = filterDataByContest(tempData);
         setFilteredData(tempData);
     };
-
-    const filterDataByRating = (data) => {
-        if (minRating === '' && maxRating === '') {
-            return data;
-        }
-        var mn = Number.MIN_SAFE_INTEGER;
-        var mx = Number.MAX_SAFE_INTEGER;
-        if (minRating !== '') mn = parseInt(minRating);
-        if (maxRating !== '') mx = parseInt(maxRating);
-        return data.filter((item) => {
-            var cur = parseInt(item.rating);
-            if (minRating === '') return cur <= mx;
-            if (maxRating === '') return cur >= mn;
-            return cur >= mn && cur <= mx;
-        })
-    };
-
-    const filterDataByKeyword = (data) => {
-        if (keyword === '') {
-            return data;
-        }
-        const reg = /^\d+$/;
-        if (reg.test(keyword)) {
-            return data.filter((item) => {
-                return item.questionId.toString().includes(keyword);
-            });
-        } else {
-            return data.filter((item) => {
-                return item.title.toLowerCase().includes(keyword.toLowerCase());
-            });
-        }
-    };
-
-    const filterDataByContest = (data) => {
-        if (contest === '') {
-            return data;
-        }
-        return data.filter((item) => {
-            return item.contest.toLowerCase().includes(contest.toLowerCase());
-        });
-    }
 
     return (
         <>
