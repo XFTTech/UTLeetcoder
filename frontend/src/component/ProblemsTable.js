@@ -1,4 +1,4 @@
-import { Button, Table, theme } from 'antd';
+import { Table } from 'antd';
 import { useEffect, useState } from 'react';
 
 const columns = [
@@ -25,11 +25,6 @@ const columns = [
 ];
 
 export const ProblemsTable = (props) => {
-    const {
-        token: { colorBgContainer },
-    } = theme.useToken();
-    const [loading, setLoading] = useState(false);
-
     const [data, setData] = useState([]);
 
     useEffect(() => {
