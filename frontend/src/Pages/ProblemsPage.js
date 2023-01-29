@@ -4,7 +4,7 @@ import github from '../github-mark/github-mark.png';
 import { getProblemList } from '../component/utils';
 import { ProblemsTable } from '../component/ProblemsTable';
 import { NumericInput } from '../component/NumerInput';
-import useEventListener from '@use-it/event-listener';
+// import useEventListener from '@use-it/event-listener';
 
 const { Header, Content } = Layout;
 
@@ -84,19 +84,19 @@ const ProblemsPage = () => {
         setFilteredData(tempData);
     }, [data, minRating, maxRating, keyword, contest]);
 
-    const handleKeyUp = (e) => {
-        if (e.keyCode === 13) {
-            filterData();
-        }
-    };
-    useEventListener('keyup', handleKeyUp);
+    // const handleKeyUp = (e) => {
+    //     if (e.keyCode === 13) {
+    //         filterData();
+    //     }
+    // };
+    // useEventListener('keyup', handleKeyUp);
 
-    const filterData = () => {
-        let tempData = filterDataByRating(data);
-        tempData = filterDataByKeyword(tempData);
-        tempData = filterDataByContest(tempData);
-        setFilteredData(tempData);
-    };
+    // const filterData = () => {
+    //     let tempData = filterDataByRating(data, minRating, maxRating);
+    //     tempData = filterDataByKeyword(tempData, keyword);
+    //     tempData = filterDataByContest(tempData, contest);
+    //     setFilteredData(tempData);
+    // };
 
     return (
         <>
@@ -256,7 +256,7 @@ const ProblemsPage = () => {
                         }}
                         placeholder=""
                     />
-                    <Button
+                    {/* <Button
                         style={{
                             fontSize: '0.95rem',
                             borderRadius: '5px 0 0 5px',
@@ -265,10 +265,11 @@ const ProblemsPage = () => {
                         type="primary"
                     >
                         Filter
-                    </Button>
+                    </Button> */}
                     <Button
                         style={{
                             fontSize: '0.95rem',
+                            borderRadius: '5px 5px 5px 5px',
                         }}
                         onClick={() => {
                             setMinRating('');
