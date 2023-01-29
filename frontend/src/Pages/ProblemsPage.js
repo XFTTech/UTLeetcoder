@@ -4,7 +4,6 @@ import github from '../github-mark/github-mark.png';
 import { getProblemList } from '../component/utils';
 import { ProblemsTable } from '../component/ProblemsTable';
 import { NumericInput } from '../component/NumerInput';
-// import useEventListener from '@use-it/event-listener';
 
 const { Header, Content } = Layout;
 
@@ -77,26 +76,11 @@ const ProblemsPage = () => {
     const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
-        // add event listener to handle keyup event if it has not been added
         let tempData = filterDataByRating(data, minRating, maxRating);
         tempData = filterDataByKeyword(tempData, keyword);
         tempData = filterDataByContest(tempData, contest);
         setFilteredData(tempData);
     }, [data, minRating, maxRating, keyword, contest]);
-
-    // const handleKeyUp = (e) => {
-    //     if (e.keyCode === 13) {
-    //         filterData();
-    //     }
-    // };
-    // useEventListener('keyup', handleKeyUp);
-
-    // const filterData = () => {
-    //     let tempData = filterDataByRating(data, minRating, maxRating);
-    //     tempData = filterDataByKeyword(tempData, keyword);
-    //     tempData = filterDataByContest(tempData, contest);
-    //     setFilteredData(tempData);
-    // };
 
     return (
         <>
@@ -186,7 +170,6 @@ const ProblemsPage = () => {
                             width: 200,
                             textAlign: 'center',
                         }}
-                        // prevent non-numberic input
                         placeholder="Minimum"
                     />
                     <Input
@@ -256,16 +239,6 @@ const ProblemsPage = () => {
                         }}
                         placeholder=""
                     />
-                    {/* <Button
-                        style={{
-                            fontSize: '0.95rem',
-                            borderRadius: '5px 0 0 5px',
-                        }}
-                        onClick={filterData}
-                        type="primary"
-                    >
-                        Filter
-                    </Button> */}
                     <Button
                         style={{
                             fontSize: '0.95rem',
