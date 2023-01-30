@@ -30,7 +30,7 @@ const addUser = async () => {
     const id_list = getAllLCID();
     if (id_list.includes(user.lcid)) {
         console.log('User already exists');
-        throw new Error('User already exists');
+        // throw new Error('User already exists');
     } else {
         console.log('User added');
         id_list.push(user.lcid);
