@@ -27,10 +27,15 @@ const addUser = async () => {
     const user = new IUser(obj.LEETCODE_ID, obj.wechat_id, obj.first_name, obj.last_name);
     const avatar = await getAvatar(user.lcid);
     console.log(avatar.data.data);
-    user.avatar = avatar.data.data.matchedUser.profile.userAvatar;
+    try{
+        user.avatar = avatar.data.data.matchedUser.profile.userAvatar;
+    } catch (e) {
+        throw new Error('User not found');
+    };
     const id_list = getAllLCID();
     if (id_list.includes(user.lcid)) {
         console.log('User already exists');
+        throw new Error('User already exists');
     } else {
         console.log('User added');
         id_list.push(user.lcid);
