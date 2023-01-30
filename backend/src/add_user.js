@@ -21,12 +21,10 @@ const getAvatar = async (username) => {
 }
 
 const addUser = async () => {
-    const json = fs.readFileSync(new_user, 'utf8');
+    const obj = JSON.parse(fs.readFileSync(new_user, 'utf8'));
     // parse to a object
-    const obj = JSON.parse(json);
     const user = new IUser(obj.LEETCODE_ID, obj.wechat_id, obj.first_name, obj.last_name);
     const avatar = await getAvatar(user.lcid);
-    console.log(avatar.data.data);
     try{
         user.avatar = avatar.data.data.matchedUser.profile.userAvatar;
     } catch (e) {
